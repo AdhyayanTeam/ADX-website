@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { MeshGradient } from "@paper-design/shaders-react";
 
 type LeakageStage = "intake" | "followup" | "booking" | "payment";
 type IndustryKey = "coaching" | "healthcare" | "salon" | "gym" | "professional";
@@ -123,71 +124,38 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-glaucous-50 text-vivid-royal-950 selection:bg-coffee-bean-200 selection:text-coffee-bean-900 pt-16">
       {/* Hero Section */}
-      <section className="relative w-full border-b border-glaucous-200/80 bg-glaucous-50 overflow-hidden py-20 lg:py-32 flex items-center justify-center">
-        {/* Grid Background */}
-        <div
-          className="absolute inset-0 w-full h-full bg-[linear-gradient(rgba(66,47,208,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(66,47,208,0.03)_1px,transparent_1px)] bg-[length:50px_50px] animate-grid-move z-0"
-        />
-
-        {/* Animated Background Lines */}
-        <div className="absolute inset-0 w-full h-full overflow-hidden z-[1] pointer-events-none">
-          {["top-[10%]", "top-[30%]", "top-[50%]", "top-[70%]", "top-[90%]"].map((topClass, index) => (
-            <div key={index} className={`absolute w-full h-[100px] ${topClass}`}>
-              <div className="w-full h-0.5 relative overflow-hidden">
-                <div
-                  className={`absolute top-0 w-full h-full animate-line-move ${
-                    index % 2 !== 0 ? '[animation-direction:reverse] [animation-delay:3s]' : ''
-                  }`}
-                  style={{
-                    background: 'linear-gradient(90deg, transparent 0%, var(--color-coffee-bean-500) 20%, var(--color-vivid-royal-500) 50%, var(--color-coffee-bean-500) 80%, transparent 100%)',
-                  }}
-                />
-              </div>
-            </div>
-          ))}
+      <section className="relative w-full border-b border-glaucous-200/80 bg-glaucous-950 overflow-hidden py-20 lg:py-32 flex items-center justify-center">
+        {/* Mesh Gradient Background */}
+        <div className="absolute inset-0 z-0">
+          <MeshGradient
+            style={{ height: "100%", width: "100%" }}
+            distortion={0.8}
+            swirl={0.1}
+            offsetX={0}
+            offsetY={0}
+            scale={1}
+            rotation={0}
+            speed={1}
+            colors={["hsl(216, 90%, 27%)", "hsl(243, 68%, 36%)", "hsl(205, 91%, 64%)", "hsl(211, 61%, 57%)"]}
+          />
         </div>
 
         {/* Hero Content Centered */}
         <div className="w-full max-w-4xl mx-auto px-6 text-center z-[10] relative flex flex-col items-center justify-center">
           <div className="flex flex-col items-center text-center w-full">
-            <div className="inline-flex items-center px-3 py-1.5 rounded text-xs font-mono font-semibold tracking-wider text-coffee-bean-750 bg-coffee-bean-100/70 border border-coffee-bean-200/80 mb-6 uppercase">
-              Operations over software
+            <div className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-mono font-semibold tracking-widest bg-white/[0.04] bg-gradient-to-b from-white/15 to-transparent border-t border-t-white/35 border-x border-x-white/10 border-b border-b-white/5 backdrop-blur-md mb-6 uppercase shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.25),inset_0_-1.5px_2px_rgba(0,0,0,0.4),0_6px_16px_rgba(0,0,0,0.5)] hover:from-white/20 hover:border-t-white/45 hover:shadow-[inset_0_1.5px_1.5px_rgba(255,255,255,0.35),inset_0_-1.5px_2px_rgba(0,0,0,0.4),0_8px_20px_rgba(0,0,0,0.6)] active:translate-y-[1px] active:shadow-[inset_0_1.5px_2px_rgba(0,0,0,0.8)] transition-all duration-200 select-none cursor-default">
+              <span className="bg-gradient-to-r from-coffee-bean-300 to-glaucous-200 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+                Operations over software
+              </span>
             </div>
 
-            <div className="relative px-8 py-4 mb-6 w-full max-w-3xl">
-              {/* Corner Lines wrapping h1 */}
-              <div className="hidden lg:block absolute inset-0 z-[5] pointer-events-none">
-                <svg
-                  className="absolute top-0 left-0 w-[80px] h-[40px] animate-corner-line"
-                  viewBox="0 0 120 60"
-                  stroke="var(--color-coffee-bean-500)"
-                  strokeWidth="2.5"
-                  fill="none"
-                  strokeDasharray="50"
-                >
-                  <path d="M120 0 L20 0 Q0 0 0 20 L0 60" />
-                </svg>
-                <svg
-                  className="absolute bottom-0 right-0 w-[80px] h-[40px] transform scale-x-[-1] scale-y-[-1] animate-corner-line [animation-delay:3s]"
-                  viewBox="0 0 120 60"
-                  stroke="var(--color-vivid-royal-500)"
-                  strokeWidth="2.5"
-                  fill="none"
-                  strokeDasharray="50"
-                >
-                  <path d="M120 0 L20 0 Q0 0 0 20 L0 60" />
-                </svg>
-              </div>
-
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-vivid-royal-950 leading-tight max-w-3xl relative z-[10]">
+            <div className="relative px-4 sm:px-8 py-4 mb-6 w-full max-w-3xl">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white drop-shadow-lg leading-tight max-w-3xl relative z-[10]">
                 We help Indian businesses grow by fixing the{" "}
                 <span
-                  className="inline-block animate-gradient-shift"
+                  className="inline-block animate-gradient-shift text-transparent bg-clip-text"
                   style={{
-                    backgroundImage: 'linear-gradient(45deg, var(--color-coffee-bean-500), var(--color-coffee-bean-600), var(--color-vivid-royal-500))',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text',
+                    backgroundImage: 'linear-gradient(45deg, var(--color-coffee-bean-400), #ff8aba, var(--color-glaucous-300))',
                   }}
                 >
                   operations behind the revenue.
@@ -195,35 +163,35 @@ export default function Home() {
               </h1>
             </div>
 
-            <p className="text-lg text-glaucous-800 mb-8 max-w-2xl">
+            <p className="text-base sm:text-lg text-glaucous-100 mb-8 max-w-2xl drop-shadow-md">
               No marketing campaigns. No boilerplate AI. We audit your lead cycles, build custom software engines, and automate your workflows to recover lost revenue.
             </p>
             <div className="flex flex-wrap justify-center gap-4 mb-12">
               <Link
                 href="/book"
-                className="px-6 py-3.5 text-sm font-semibold rounded bg-coffee-bean-600 hover:bg-coffee-bean-700 text-ghost-white-50 border border-coffee-bean-500/20 shadow-[0_0_20px_rgba(237,18,109,0.15)] transition-all duration-300"
+                className="px-6 py-3.5 text-sm font-bold rounded-lg bg-coffee-bean-600 bg-gradient-to-b from-white/30 via-white/5 to-black/25 text-ghost-white-50 border-t border-t-white/45 border-x border-x-coffee-bean-700/60 border-b-[4px] border-b-coffee-bean-900 shadow-[inset_0_1.5px_0_rgba(255,255,255,0.4),inset_0_-1.5px_0_rgba(0,0,0,0.2),0_6px_12px_rgba(0,0,0,0.4)] hover:brightness-110 hover:border-b-coffee-bean-950 active:translate-y-[3px] active:border-b-[1px] active:shadow-[inset_0_3px_5px_rgba(0,0,0,0.6),0_1px_2px_rgba(0,0,0,0.2)] transition-all duration-100 ease-out select-none drop-shadow-[0_1px_1px_rgba(0,0,0,0.5)]"
               >
                 Book Discovery Call
               </Link>
               <Link
                 href="/platform"
-                className="px-6 py-3.5 text-sm font-semibold rounded bg-ghost-white-50 hover:bg-glaucous-100 text-glaucous-900 border border-glaucous-200 transition-all duration-300"
+                className="px-6 py-3.5 text-sm font-bold rounded-lg bg-glaucous-50 bg-gradient-to-b from-white/80 via-white/10 to-glaucous-200/40 text-glaucous-950 border-t border-t-white border-x border-x-glaucous-300/80 border-b-[4px] border-b-glaucous-400 shadow-[inset_0_1.5px_0_rgba(255,255,255,0.9),inset_0_-1.5px_0_rgba(0,0,0,0.08),0_6px_12px_rgba(0,0,0,0.2)] hover:brightness-105 hover:border-b-glaucous-500 active:translate-y-[3px] active:border-b-[1px] active:shadow-[inset_0_3px_5px_rgba(0,0,0,0.15),0_1px_2px_rgba(0,0,0,0.1)] transition-all duration-100 ease-out select-none drop-shadow-[0_1px_0_rgba(255,255,255,0.8)]"
               >
                 Explore Platform
               </Link>
             </div>
-            <div className="w-full max-w-2xl grid grid-cols-3 gap-6 pt-8 border-t border-glaucous-200/80">
+            <div className="w-full max-w-2xl grid grid-cols-3 gap-2 sm:gap-6 pt-8 border-t border-glaucous-300/30">
               <div className="flex flex-col items-center">
-                <span className="text-2xl font-bold font-mono text-vivid-royal-950">₹4.2Cr+</span>
-                <span className="text-xs text-glaucous-600 mt-1">Revenue Recovered</span>
+                <span className="text-lg sm:text-2xl font-bold font-mono text-white drop-shadow-sm">₹4.2Cr+</span>
+                <span className="text-[10px] sm:text-xs text-glaucous-200 mt-1 text-center">Revenue Recovered</span>
               </div>
               <div className="flex flex-col items-center">
-                <span className="text-2xl font-bold font-mono text-vivid-royal-950">80k+</span>
-                <span className="text-xs text-glaucous-600 mt-1">Hours Saved</span>
+                <span className="text-lg sm:text-2xl font-bold font-mono text-white drop-shadow-sm">80k+</span>
+                <span className="text-[10px] sm:text-xs text-glaucous-200 mt-1 text-center">Hours Saved</span>
               </div>
               <div className="flex flex-col items-center">
-                <span className="text-2xl font-bold font-mono text-vivid-royal-950">14 Days</span>
-                <span className="text-xs text-glaucous-600 mt-1">Average Pilot Deploy</span>
+                <span className="text-lg sm:text-2xl font-bold font-mono text-white drop-shadow-sm">14 Days</span>
+                <span className="text-[10px] sm:text-xs text-glaucous-200 mt-1 text-center">Avg Deployment</span>
               </div>
             </div>
           </div>
@@ -244,68 +212,68 @@ export default function Home() {
           <div className="flex flex-col gap-4">
             <button
               onClick={() => setActiveNode("intake")}
-              className={`w-full text-left p-5 rounded-md border transition-all duration-300 flex items-center justify-between cursor-pointer ${
+              className={`w-full text-left p-5 rounded-lg transition-all duration-200 flex items-center justify-between cursor-pointer select-none active:translate-y-[1px] ${
                 activeNode === "intake"
-                  ? "bg-vivid-royal-50 border-coffee-bean-500 shadow-[0_0_15px_rgba(237,18,109,0.08)]"
-                  : "bg-glaucous-50/50 border-glaucous-200/60 hover:border-glaucous-400 hover:translate-x-1"
+                  ? "bg-gradient-to-b from-vivid-royal-100 to-vivid-royal-50 border-t border-t-vivid-royal-300 border-x border-x-vivid-royal-200/80 border-b-[3px] border-b-vivid-royal-300/90 shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.75),0_4px_8px_rgba(66,47,208,0.08)]"
+                  : "bg-gradient-to-b from-white to-glaucous-50 border-t border-t-white border-x border-x-glaucous-200/60 border-b-2 border-b-glaucous-300/80 shadow-[0_2px_4px_rgba(0,0,0,0.02)] hover:from-white hover:to-glaucous-100/50 hover:border-glaucous-300 hover:shadow-[0_4px_8px_rgba(0,0,0,0.05)]"
               }`}
             >
               <div className="flex items-center gap-4">
                 <span className="text-2xl">📥</span>
                 <span className="font-semibold text-vivid-royal-950">1. Lead Intake Stage</span>
               </div>
-              <span className="font-mono text-xs text-glaucous-600 bg-glaucous-50 px-2.5 py-1 rounded">100% Volume</span>
+              <span className="font-mono text-xs text-glaucous-600 bg-glaucous-100/70 border border-glaucous-200/60 px-2.5 py-1 rounded">100% Volume</span>
             </button>
             <div className="h-6 w-0.5 bg-gradient-to-b from-glaucous-200 to-scarlet-fire-500/80 ml-8 relative">
               <span className="absolute left-4 top-1/2 -translate-y-1/2 font-mono text-[10px] text-scarlet-fire-600 whitespace-nowrap font-bold">-45% drop-off</span>
             </div>
             <button
               onClick={() => setActiveNode("followup")}
-              className={`w-full text-left p-5 rounded-md border transition-all duration-300 flex items-center justify-between cursor-pointer ${
+              className={`w-full text-left p-5 rounded-lg transition-all duration-200 flex items-center justify-between cursor-pointer select-none active:translate-y-[1px] ${
                 activeNode === "followup"
-                  ? "bg-vivid-royal-50 border-coffee-bean-500 shadow-[0_0_15px_rgba(237,18,109,0.08)]"
-                  : "bg-glaucous-50/50 border-glaucous-200/60 hover:border-glaucous-400 hover:translate-x-1"
+                  ? "bg-gradient-to-b from-vivid-royal-100 to-vivid-royal-50 border-t border-t-vivid-royal-300 border-x border-x-vivid-royal-200/80 border-b-[3px] border-b-vivid-royal-300/90 shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.75),0_4px_8px_rgba(66,47,208,0.08)]"
+                  : "bg-gradient-to-b from-white to-glaucous-50 border-t border-t-white border-x border-x-glaucous-200/60 border-b-2 border-b-glaucous-300/80 shadow-[0_2px_4px_rgba(0,0,0,0.02)] hover:from-white hover:to-glaucous-100/50 hover:border-glaucous-300 hover:shadow-[0_4px_8px_rgba(0,0,0,0.05)]"
               }`}
             >
               <div className="flex items-center gap-4">
                 <span className="text-2xl">📞</span>
                 <span className="font-semibold text-vivid-royal-950">2. First Follow-up Stage</span>
               </div>
-              <span className="font-mono text-xs text-glaucous-600 bg-glaucous-50 px-2.5 py-1 rounded">55% Retained</span>
+              <span className="font-mono text-xs text-glaucous-600 bg-glaucous-100/70 border border-glaucous-200/60 px-2.5 py-1 rounded">55% Retained</span>
             </button>
             <div className="h-6 w-0.5 bg-gradient-to-b from-glaucous-200 to-scarlet-fire-500/80 ml-8 relative">
               <span className="absolute left-4 top-1/2 -translate-y-1/2 font-mono text-[10px] text-scarlet-fire-600 whitespace-nowrap font-bold">-30% drop-off</span>
             </div>
             <button
               onClick={() => setActiveNode("booking")}
-              className={`w-full text-left p-5 rounded-md border transition-all duration-300 flex items-center justify-between cursor-pointer ${
+              className={`w-full text-left p-5 rounded-lg transition-all duration-200 flex items-center justify-between cursor-pointer select-none active:translate-y-[1px] ${
                 activeNode === "booking"
-                  ? "bg-vivid-royal-50 border-coffee-bean-500 shadow-[0_0_15px_rgba(237,18,109,0.08)]"
-                  : "bg-glaucous-50/50 border-glaucous-200/60 hover:border-glaucous-400 hover:translate-x-1"
+                  ? "bg-gradient-to-b from-vivid-royal-100 to-vivid-royal-50 border-t border-t-vivid-royal-300 border-x border-x-vivid-royal-200/80 border-b-[3px] border-b-vivid-royal-300/90 shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.75),0_4px_8px_rgba(66,47,208,0.08)]"
+                  : "bg-gradient-to-b from-white to-glaucous-50 border-t border-t-white border-x border-x-glaucous-200/60 border-b-2 border-b-glaucous-300/80 shadow-[0_2px_4px_rgba(0,0,0,0.02)] hover:from-white hover:to-glaucous-100/50 hover:border-glaucous-300 hover:shadow-[0_4px_8px_rgba(0,0,0,0.05)]"
               }`}
             >
               <div className="flex items-center gap-4">
                 <span className="text-2xl">🗓️</span>
                 <span className="font-semibold text-vivid-royal-950">3. Booking / Visit Stage</span>
               </div>
-              <span className="font-mono text-xs text-glaucous-600 bg-glaucous-50 px-2.5 py-1 rounded">25% Retained</span>
+              <span className="font-mono text-xs text-glaucous-600 bg-glaucous-100/70 border border-glaucous-200/60 px-2.5 py-1 rounded">25% Retained</span>
             </button>
             <div className="h-6 w-0.5 bg-gradient-to-b from-glaucous-200 to-scarlet-fire-500/80 ml-8 relative">
               <span className="absolute left-4 top-1/2 -translate-y-1/2 font-mono text-[10px] text-scarlet-fire-600 whitespace-nowrap font-bold">-15% drop-off</span>
             </div>
             <button
               onClick={() => setActiveNode("payment")}
-              className={`w-full text-left p-5 rounded-md border transition-all duration-300 flex items-center justify-between cursor-pointer ${
+              className={`w-full text-left p-5 rounded-lg transition-all duration-200 flex items-center justify-between cursor-pointer select-none active:translate-y-[1px] ${
                 activeNode === "payment"
-                  ? "bg-vivid-royal-50 border-coffee-bean-500 shadow-[0_0_15px_rgba(237,18,109,0.08)]"
-                  : "bg-glaucous-50/50 border-glaucous-200/60 hover:border-glaucous-400 hover:translate-x-1"
+                  ? "bg-gradient-to-b from-vivid-royal-100 to-vivid-royal-50 border-t border-t-vivid-royal-300 border-x border-x-vivid-royal-200/80 border-b-[3px] border-b-vivid-royal-300/90 shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.75),0_4px_8px_rgba(66,47,208,0.08)]"
+                  : "bg-gradient-to-b from-white to-glaucous-50 border-t border-t-white border-x border-x-glaucous-200/60 border-b-2 border-b-glaucous-300/80 shadow-[0_2px_4px_rgba(0,0,0,0.02)] hover:from-white hover:to-glaucous-100/50 hover:border-glaucous-300 hover:shadow-[0_4px_8px_rgba(0,0,0,0.05)]"
               }`}
             >
               <div className="flex items-center gap-4">
                 <span className="text-2xl">💳</span>
                 <span className="font-semibold text-vivid-royal-950">4. Payment Collection Stage</span>
               </div>
-              <span className="font-mono text-xs text-glaucous-600 bg-glaucous-50 px-2.5 py-1 rounded font-bold">10% Yield</span>
+              <span className="font-mono text-xs text-glaucous-600 bg-glaucous-100/70 border border-glaucous-200/60 px-2.5 py-1 rounded font-bold font-bold font-bold">10% Yield</span>
             </button>
           </div>
 
@@ -453,15 +421,15 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="flex justify-center gap-3 overflow-x-auto pb-4 mb-12">
+        <div className="flex justify-center gap-3 overflow-x-auto pb-4 mb-12 select-none">
           {(Object.keys(industryData) as IndustryKey[]).map((key) => (
             <button
               key={key}
               onClick={() => setActiveInd(key)}
-              className={`px-5 py-2.5 rounded-full text-sm font-medium border whitespace-nowrap cursor-pointer transition-all duration-300 ${
+              className={`px-5 py-2.5 rounded-full text-sm font-medium whitespace-nowrap cursor-pointer transition-all duration-150 active:translate-y-[1px] ${
                 activeInd === key
-                  ? "bg-coffee-bean-50 border-coffee-bean-500 text-coffee-bean-750 shadow-[0_0_10px_rgba(237,18,109,0.1)]"
-                  : "bg-transparent border-glaucous-200 text-glaucous-700 hover:border-glaucous-400 hover:text-vivid-royal-950"
+                  ? "bg-gradient-to-b from-coffee-bean-100 to-coffee-bean-50 border-t border-t-coffee-bean-300 border-x border-x-coffee-bean-200/80 border-b border-b-white/80 text-coffee-bean-800 shadow-[inset_0_2px_4px_rgba(95,7,44,0.12),0_1px_1.5px_rgba(255,255,255,0.7)] font-semibold"
+                  : "bg-gradient-to-b from-white to-glaucous-50/50 border-t border-t-white border-x border-x-glaucous-200/60 border-b-2 border-b-glaucous-300/80 text-glaucous-700 hover:from-white hover:to-glaucous-100 hover:border-glaucous-300 hover:text-vivid-royal-950 shadow-[0_2px_4px_rgba(0,0,0,0.02)]"
               }`}
             >
               {industryData[key].title}

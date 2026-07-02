@@ -52,7 +52,7 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           <Link
             href="/book"
-            className="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs font-medium rounded bg-vivid-royal-600 hover:bg-vivid-royal-700 text-ghost-white-50 border border-vivid-royal-500/20 hover:border-vivid-royal-650 shadow-[0_0_15px_rgba(66,47,208,0.15)] hover:shadow-[0_0_20px_rgba(66,47,208,0.3)] transition-all duration-300"
+            className="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs font-bold rounded-md bg-vivid-royal-600 bg-gradient-to-b from-white/30 via-white/5 to-black/25 text-ghost-white-50 border-t border-t-white/40 border-x border-x-vivid-royal-700/60 border-b-[4px] border-b-vivid-royal-900 shadow-[inset_0_1.5px_0_rgba(255,255,255,0.4),inset_0_-1.5px_0_rgba(0,0,0,0.2),0_4px_8px_rgba(0,0,0,0.35)] hover:brightness-110 hover:border-b-vivid-royal-950 active:translate-y-[3px] active:border-b-[1px] active:shadow-[inset_0_3px_5px_rgba(0,0,0,0.6),0_1px_2px_rgba(0,0,0,0.2)] transition-all duration-100 ease-out select-none drop-shadow-[0_1px_1px_rgba(0,0,0,0.5)]"
           >
             Book Discovery Call
           </Link>
@@ -91,7 +91,7 @@ export default function Navbar() {
         })}
         <Link
           href="/book"
-          className="mt-4 flex items-center justify-center w-full py-3 rounded bg-coffee-bean-600 hover:bg-coffee-bean-700 text-ghost-white-50 font-semibold transition-all duration-300"
+          className="mt-4 flex items-center justify-center w-full py-3 text-sm font-bold rounded-lg bg-coffee-bean-600 bg-gradient-to-b from-white/30 via-white/5 to-black/25 text-ghost-white-50 border-t border-t-white/45 border-x border-x-coffee-bean-700/60 border-b-[4px] border-b-coffee-bean-900 shadow-[inset_0_1.5px_0_rgba(255,255,255,0.4),inset_0_-1.5px_0_rgba(0,0,0,0.2),0_6px_12px_rgba(0,0,0,0.4)] hover:brightness-110 hover:border-b-coffee-bean-950 active:translate-y-[3px] active:border-b-[1px] active:shadow-[inset_0_3px_5px_rgba(0,0,0,0.6),0_1px_2px_rgba(0,0,0,0.2)] transition-all duration-100 ease-out select-none drop-shadow-[0_1px_1px_rgba(0,0,0,0.5)]"
         >
           Book Discovery Call
         </Link>
