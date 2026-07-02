@@ -90,6 +90,32 @@
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
+  --font-heading: var(--font-share-tech);
+
+  --animate-grid-move: gridMove 20s linear infinite;
+  --animate-line-move: lineMove 6s linear infinite;
+  --animate-corner-line: cornerLineAnimation 6s linear infinite;
+  --animate-gradient-shift: gradientShift 4s ease-in-out infinite alternate;
+
+  @keyframes gridMove {
+    0% { background-position: 0 0; }
+    100% { background-position: 50px 50px; }
+  }
+  @keyframes lineMove {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  @keyframes cornerLineAnimation {
+    0% { stroke-dashoffset: 0; }
+    25% { stroke-dashoffset: 100; }
+    50% { stroke-dashoffset: 200; }
+    75% { stroke-dashoffset: 300; }
+    100% { stroke-dashoffset: 400; }
+  }
+  @keyframes gradientShift {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(30deg); }
+  }
 }
 
 @layer base {
@@ -123,3 +149,8 @@ body {
   color: var(--color-vivid-royal-950);
   font-family: var(--font-sans), sans-serif;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading), sans-serif;
+}
+
