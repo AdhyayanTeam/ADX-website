@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Share_Tech } from "next/font/google";
 import "./global-new.css";
-import Navbar from "./components/Navbar";
+import Navbar from "@/components/Navbar";
 import Link from "next/link";
+import Logo from "@/components/Logo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,9 +40,9 @@ export default function RootLayout({
         <footer className="w-full bg-ghost-white-50 border-t border-glaucous-200/80 py-12 px-6">
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
             <div className="flex flex-col items-start gap-3">
-              <Link href="/" className="flex items-center gap-2">
-                <span className="text-lg font-bold tracking-tight text-vivid-royal-950">ADX</span>
-                <span className="font-mono text-[10px] text-glaucous-600 border-l border-glaucous-200 pl-2">AdhyayanX</span>
+              <Link href="/" className="flex items-center gap-2.5">
+                <Logo className="h-24 w-auto text-vivid-royal-950" />
+                <span className="font-mono text-[24px] text-glaucous-600 border-l border-glaucous-200 pl-2.5">AdhyayanX</span>
               </Link>
               <p className="text-xs text-glaucous-700 leading-relaxed max-w-xs">
                 Building the future operating system for Indian SMBs. Operational automation, custom databases, and WhatsApp engines.

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
+import Logo from "./Logo";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -25,9 +26,8 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 w-full h-18 bg-glaucous-50/85 backdrop-blur-md border-b border-glaucous-200/80 z-50 flex items-center transition-all duration-300">
       <div className="w-full max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="text-xl font-bold tracking-tight text-vivid-royal-950">ADX</span>
-          <span className="font-mono text-xs text-glaucous-600 border-l border-glaucous-200 pl-2">AdhyayanX</span>
+        <Link href="/" className="flex items-center">
+          <Logo className="h-24 w-auto" />
         </Link>
         
         <nav className={`hidden md:flex gap-8 items-center`}>
