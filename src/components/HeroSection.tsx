@@ -15,7 +15,7 @@ export default function HeroSection() {
           scale={1}
           rotation={0}
           speed={1}
-          colors={["hsl(216, 90%, 27%)", "hsl(243, 68%, 36%)", "hsl(205, 91%, 64%)", "hsl(211, 61%, 57%)"]}
+          colors={["#242423", "#333333", "#CFDBD5", "#F5CB5C"]}
         />
       </div>
 
@@ -31,7 +31,7 @@ export default function HeroSection() {
           <div className="relative px-4 sm:px-8 py-4 mb-6 w-full max-w-3xl">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white drop-shadow-lg leading-tight max-w-3xl relative z-[10]">
               We help Indian businesses grow by fixing the{" "}
-              <span className="text-coffee-bean-950">
+              <span className="text-coffee-bean-400">
                 operations behind the revenue.
               </span>
             </h1>
