@@ -24,7 +24,7 @@ const shareTech = Share_Tech({
 export const metadata: Metadata = {
   title: "ADX (AdhyayanX) | The Operating System for Indian SMBs",
   description: "ADX helps Indian coaching institutes, clinics, salons, gyms, and professional services automate operations, recover lost revenue, and streamline workflows with WhatsApp automation.",
-  metadataBase: new URL("https://adhyayanx.com"),
+  metadataBase: new URL("https://adhyayanx.in"),
 };
 
 export default function RootLayout({
