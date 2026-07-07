@@ -23,7 +23,7 @@ export default function HeroSection() {
       <div className="w-full max-w-4xl mx-auto px-6 text-center z-[10] relative flex flex-col items-center justify-center">
         <div className="flex flex-col items-center text-center w-full">
           <div className="inline-flex items-center px-4 py-1.5 rounded-full text-xs font-mono font-semibold tracking-widest bg-white/[0.04] bg-gradient-to-b from-white/15 to-transparent border-t border-t-white/35 border-x border-x-white/10 border-b border-b-white/5 backdrop-blur-md mb-6 uppercase shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.25),inset_0_-1.5px_2px_rgba(0,0,0,0.4),0_6px_16px_rgba(0,0,0,0.5)] hover:from-white/20 hover:border-t-white/45 hover:shadow-[inset_0_1.5px_1.5px_rgba(255,255,255,0.35),inset_0_-1.5px_2px_rgba(0,0,0,0.4),0_8px_20px_rgba(0,0,0,0.6)] active:translate-y-[1px] active:shadow-[inset_0_1.5px_2px_rgba(0,0,0,0.8)] transition-all duration-200 select-none cursor-default">
-            <span className="bg-gradient-to-r from-coffee-bean-300 to-glaucous-200 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+            <span className="text-coffee-bean-950 font-bold">
               Operations over software
             </span>
           </div>
@@ -31,12 +31,7 @@ export default function HeroSection() {
           <div className="relative px-4 sm:px-8 py-4 mb-6 w-full max-w-3xl">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white drop-shadow-lg leading-tight max-w-3xl relative z-[10]">
               We help Indian businesses grow by fixing the{" "}
-              <span
-                className="inline-block animate-gradient-shift text-transparent bg-clip-text"
-                style={{
-                  backgroundImage: 'linear-gradient(45deg, var(--color-coffee-bean-400), #ff8aba, var(--color-glaucous-300))',
-                }}
-              >
+              <span className="text-coffee-bean-950">
                 operations behind the revenue.
               </span>
             </h1>
