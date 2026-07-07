@@ -154,3 +154,87 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading), sans-serif;
 }
 
+/* Methodology Section Typography System */
+.methodology-badge {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.875rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.075em;
+}
+
+.methodology-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+@media (min-width: 640px) {
+  .methodology-title {
+    font-size: 1.875rem;
+  }
+}
+
+.methodology-desc {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+@media (min-width: 640px) {
+  .methodology-desc {
+    font-size: 1.0625rem;
+  }
+}
+
+.methodology-path-title {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+@media (min-width: 640px) {
+  .methodology-path-title {
+    font-size: 0.875rem;
+  }
+}
+
+.methodology-path-body {
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+@media (min-width: 640px) {
+  .methodology-path-body {
+    font-size: 0.975rem;
+  }
+}
+
+.methodology-metric-label {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+@media (min-width: 640px) {
+  .methodology-metric-label {
+    font-size: 0.875rem;
+  }
+}
+
+.methodology-metric-val {
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+@media (min-width: 640px) {
+  .methodology-metric-val {
+    font-size: 1.0625rem;
+  }
+}
+
+.methodology-metric-impact {
+  font-family: var(--font-mono), monospace;
+  font-size: 1rem;
+  font-weight: 700;
+}
+@media (min-width: 640px) {
+  .methodology-metric-impact {
+    font-size: 1.125rem;
+  }
+}
+

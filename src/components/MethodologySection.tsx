@@ -160,21 +160,21 @@ export default function MethodologySection() {
       case 4: // Build (DB schemas & tables)
         return (
           <div className={`${visualizerBg} p-3 flex gap-2 items-center justify-center`}>
-            <div className="w-[48%] bg-glaucous-900 border border-glaucous-800 rounded-lg p-2 font-mono text-[9px] text-glaucous-300 flex flex-col justify-between h-[85%]">
+            <div className="w-[48%] bg-glaucous-900 border border-glaucous-800 rounded-lg p-2 font-mono text-[11px] text-glaucous-300 flex flex-col justify-between h-[85%]">
               <div>
-                <div className="border-b border-glaucous-800 pb-0.5 mb-1.5 text-vivid-royal-300 font-bold text-[10px]">TABLE: LEADS</div>
+                <div className="border-b border-glaucous-800 pb-0.5 mb-1.5 text-vivid-royal-300 font-bold text-xs">TABLE: LEADS</div>
                 <div>id : SERIAL PK</div>
                 <div>whatsapp : VARCHAR</div>
               </div>
-              <div className="text-coffee-bean-450 font-bold text-[8px]">trigger_webhook()</div>
+              <div className="text-coffee-bean-450 font-bold text-[10px]">trigger_webhook()</div>
             </div>
-            <div className="text-glaucous-600 text-xs font-bold shrink-0">→</div>
-            <div className="w-[42%] bg-glaucous-900 border border-glaucous-800 rounded-lg p-2 font-mono text-[9px] text-glaucous-300 flex flex-col justify-between h-[85%]">
+            <div className="text-glaucous-600 text-sm font-bold shrink-0">→</div>
+            <div className="w-[42%] bg-glaucous-900 border border-glaucous-800 rounded-lg p-2 font-mono text-[11px] text-glaucous-300 flex flex-col justify-between h-[85%]">
               <div>
-                <div className="border-b border-glaucous-800 pb-0.5 text-coffee-bean-450 font-bold text-[10px]">WEBHOOK</div>
-                <div className="text-[8px] text-glaucous-400 mt-0.5">payload: lead_data</div>
+                <div className="border-b border-glaucous-800 pb-0.5 text-coffee-bean-450 font-bold text-xs">WEBHOOK</div>
+                <div className="text-[10px] text-glaucous-400 mt-0.5">payload: lead_data</div>
               </div>
-              <div className="bg-glaucous-950 p-0.5 rounded text-[8px] text-emerald-400 animate-pulse border border-glaucous-800 text-center font-bold">
+              <div className="bg-glaucous-950 p-0.5 rounded text-[10px] text-emerald-400 animate-pulse border border-glaucous-800 text-center font-bold">
                 200 OK
               </div>
             </div>
@@ -259,18 +259,18 @@ export default function MethodologySection() {
                   <div>
                     {/* Badge / Step No */}
                     <div className="mb-4">
-                      <span className="font-mono text-xs font-extrabold uppercase px-2 py-0.5 rounded bg-glaucous-50 border border-glaucous-200 text-glaucous-600 tracking-wider">
+                      <span className="methodology-badge px-2 py-0.5 rounded bg-glaucous-50 border border-glaucous-200 text-glaucous-600">
                         PHASE {step.num}
                       </span>
                     </div>
 
                     {/* Header */}
-                    <h3 className="text-xl sm:text-2xl font-extrabold text-vivid-royal-950 mb-2">
+                    <h3 className="methodology-title text-vivid-royal-950 mb-2">
                       {step.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-xs sm:text-sm text-glaucous-800 leading-relaxed">
+                    <p className="methodology-desc text-glaucous-800">
                       {step.desc}
                     </p>
                   </div>
@@ -287,10 +287,10 @@ export default function MethodologySection() {
                       {/* Traditional */}
                       <div className="bg-scarlet-fire-50/30 border border-scarlet-fire-100/50 p-4 rounded-xl flex flex-col justify-between">
                         <div>
-                          <span className="font-mono text-[9px] sm:text-xs text-scarlet-fire-600 uppercase tracking-wider block mb-1.5 font-bold">
+                          <span className="methodology-path-title text-scarlet-fire-600 block mb-1.5">
                             Traditional Path
                           </span>
-                          <p className="text-xs sm:text-sm text-glaucous-850 leading-relaxed">
+                          <p className="methodology-path-body text-glaucous-850">
                             {step.before}
                           </p>
                         </div>
@@ -299,10 +299,10 @@ export default function MethodologySection() {
                       {/* Optimized */}
                       <div className="bg-emerald-50/30 border border-emerald-100/40 p-4 rounded-xl flex flex-col justify-between">
                         <div>
-                          <span className="font-mono text-[9px] sm:text-xs text-emerald-600 uppercase tracking-wider block mb-1.5 font-bold">
+                          <span className="methodology-path-title text-emerald-600 block mb-1.5">
                             ADX Optimized Path
                           </span>
-                          <p className="text-xs sm:text-sm text-vivid-royal-950 leading-relaxed">
+                          <p className="methodology-path-body text-vivid-royal-950">
                             {step.after}
                           </p>
                         </div>
@@ -311,18 +311,18 @@ export default function MethodologySection() {
 
                     {/* Right: Target Metric block */}
                     <div className="bg-glaucous-50 border border-glaucous-200/80 p-4 rounded-xl flex flex-col justify-center">
-                      <span className="font-mono text-[9px] sm:text-xs text-glaucous-500 uppercase block mb-1">
+                      <span className="methodology-metric-label text-glaucous-500 block mb-1">
                         Target Metric
                       </span>
-                      <span className="text-xs sm:text-sm font-bold text-vivid-royal-950 block mb-1">
+                      <span className="methodology-metric-val text-vivid-royal-950 block mb-1">
                         {step.metricName}
                       </span>
                       <div className="border-t border-glaucous-200/60 my-1.5" />
                       <div>
-                        <span className="font-mono text-[9px] sm:text-xs text-glaucous-500 uppercase block">
+                        <span className="methodology-metric-label text-glaucous-500 block">
                           Est. Impact
                         </span>
-                        <span className="text-sm sm:text-base font-mono font-bold text-coffee-bean-600">
+                        <span className="methodology-metric-impact text-coffee-bean-600">
                           {step.metricVal}
                         </span>
                       </div>
@@ -335,18 +335,18 @@ export default function MethodologySection() {
                   <div>
                     {/* Badge / Step No */}
                     <div className="mb-4">
-                      <span className="font-mono text-xs font-extrabold uppercase px-2 py-0.5 rounded bg-glaucous-50 border border-glaucous-200 text-glaucous-600 tracking-wider">
+                      <span className="methodology-badge px-2 py-0.5 rounded bg-glaucous-50 border border-glaucous-200 text-glaucous-600">
                         PHASE {step.num}
                       </span>
                     </div>
 
                     {/* Header */}
-                    <h3 className="text-xl sm:text-2xl font-extrabold text-vivid-royal-950 mb-2">
+                    <h3 className="methodology-title text-vivid-royal-950 mb-2">
                       {step.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-xs sm:text-sm text-glaucous-800 leading-relaxed">
+                    <p className="methodology-desc text-glaucous-800">
                       {step.desc}
                     </p>
                   </div>
@@ -358,20 +358,20 @@ export default function MethodologySection() {
                   <div className="flex flex-col gap-3">
                     {/* Traditional */}
                     <div className="bg-scarlet-fire-50/30 border border-scarlet-fire-100/50 p-4 rounded-xl">
-                      <span className="font-mono text-[9px] sm:text-xs text-scarlet-fire-600 uppercase tracking-wider block mb-0.5 font-bold">
+                      <span className="methodology-path-title text-scarlet-fire-600 block mb-0.5">
                         Traditional Path
                       </span>
-                      <p className="text-xs sm:text-sm text-glaucous-850 leading-relaxed">
+                      <p className="methodology-path-body text-glaucous-850">
                         {step.before}
                       </p>
                     </div>
 
                     {/* Optimized */}
                     <div className="bg-emerald-50/30 border border-emerald-100/40 p-4 rounded-xl">
-                      <span className="font-mono text-[9px] sm:text-xs text-emerald-600 uppercase tracking-wider block mb-0.5 font-bold">
+                      <span className="methodology-path-title text-emerald-600 block mb-0.5">
                         ADX Optimized Path
                       </span>
-                      <p className="text-xs sm:text-sm text-vivid-royal-950 leading-relaxed">
+                      <p className="methodology-path-body text-vivid-royal-950">
                         {step.after}
                       </p>
                     </div>
@@ -380,18 +380,18 @@ export default function MethodologySection() {
                   {/* Target Metric */}
                   <div className="bg-glaucous-50 border border-glaucous-200/80 p-4 rounded-xl flex justify-between items-center mt-auto">
                     <div>
-                      <span className="font-mono text-[9px] sm:text-xs text-glaucous-500 uppercase block mb-0.5">
+                      <span className="methodology-metric-label text-glaucous-500 block mb-0.5">
                         Target Metric
                       </span>
-                      <span className="text-xs sm:text-sm font-bold text-vivid-royal-950">
+                      <span className="methodology-metric-val text-vivid-royal-950">
                         {step.metricName}
                       </span>
                     </div>
                     <div className="text-right">
-                      <span className="font-mono text-[9px] sm:text-xs text-glaucous-500 uppercase block mb-0.5">
+                      <span className="methodology-metric-label text-glaucous-500 block mb-0.5">
                         Est. Impact
                       </span>
-                      <span className="text-sm sm:text-base font-mono font-bold text-coffee-bean-600">
+                      <span className="methodology-metric-impact text-coffee-bean-600">
                         {step.metricVal}
                       </span>
                     </div>
