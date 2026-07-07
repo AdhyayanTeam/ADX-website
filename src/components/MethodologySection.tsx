@@ -81,97 +81,99 @@ export default function MethodologySection() {
   ];
 
   return (
-    <section className="w-[90vw] mx-auto min-h-screen lg:min-h-0 lg:h-screen flex flex-col justify-between py-6 lg:py-8 border-t border-glaucous-200/80 overflow-y-auto lg:overflow-hidden">
-      {/* Header Area */}
-      <div className="flex-shrink-0 flex flex-col md:flex-row md:items-end md:justify-between border-b border-glaucous-200/50 pb-4 mb-4 gap-2">
-        <div>
-          <span className="text-xs font-mono font-semibold tracking-widest text-glaucous-600 uppercase">Methodology</span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-vivid-royal-950 mt-0.5">The Operational Blueprint.</h2>
+    <section className="w-full bg-scarlet-fire-50/50 border-t border-scarlet-fire-200/60">
+      <div className="w-[90vw] mx-auto min-h-screen lg:min-h-0 lg:h-screen flex flex-col justify-between py-6 lg:py-8 overflow-y-auto lg:overflow-hidden">
+        {/* Header Area */}
+        <div className="flex-shrink-0 flex flex-col md:flex-row md:items-end md:justify-between border-b border-scarlet-fire-200/40 pb-4 mb-4 gap-2">
+          <div>
+            <span className="text-xs font-mono font-semibold tracking-widest text-scarlet-fire-600 uppercase">Methodology</span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-scarlet-fire-950 mt-0.5">The Operational Blueprint.</h2>
+          </div>
+          <p className="text-xs sm:text-sm text-scarlet-fire-900 max-w-md md:text-right leading-relaxed">
+            Six continuous phases designed to optimize systems first, and only write code that moves numbers.
+          </p>
         </div>
-        <p className="text-xs sm:text-sm text-glaucous-800 max-w-md md:text-right leading-relaxed">
-          Six continuous phases designed to optimize systems first, and only write code that moves numbers.
-        </p>
-      </div>
 
-      {/* Bento Grid */}
-      <div className="flex-grow lg:h-0 lg:min-h-0">
-        <BentoGrid className="h-full max-w-none gap-4 grid-rows-6 lg:grid-rows-3 lg:grid-cols-3">
-          {steps.map((step, idx) => {
-            const isWide = gridSpans[idx].includes("col-span-2");
+        {/* Bento Grid */}
+        <div className="flex-grow lg:h-0 lg:min-h-0">
+          <BentoGrid className="h-full max-w-none gap-4 grid-rows-6 lg:grid-rows-3 lg:grid-cols-3">
+            {steps.map((step, idx) => {
+              const isWide = gridSpans[idx].includes("col-span-2");
 
-            return (
-              <BentoGridItem
-                key={step.num}
-                className={gridSpans[idx]}
-                header={
-                  <div className="w-full pb-2 border-b border-glaucous-100/50 flex-shrink-0">
-                    <h3 className="methodology-title">
-                      {step.title}
-                    </h3>
-                  </div>
-                }
-                title={null}
-                description={
-                  <div className="flex flex-col justify-between flex-grow h-full gap-3 mt-1">
-                    <p className="methodology-desc">
-                      {step.desc}
-                    </p>
+              return (
+                <BentoGridItem
+                  key={step.num}
+                  className={gridSpans[idx]}
+                  header={
+                    <div className="w-full pb-2 border-b border-scarlet-fire-100/60 flex-shrink-0">
+                      <h3 className="methodology-title">
+                        {step.title}
+                      </h3>
+                    </div>
+                  }
+                  title={null}
+                  description={
+                    <div className="flex flex-col justify-between flex-grow h-full gap-3 mt-1">
+                      <p className="methodology-desc">
+                        {step.desc}
+                      </p>
 
-                    {isWide ? (
-                      /* WIDE LAYOUT (Horizontal bottom layout) */
-                      <div className="flex justify-between items-center mt-auto pt-2 gap-4">
-                        {/* Path Transition */}
-                        <div className="flex items-center gap-1.5 flex-wrap">
-                          <span className="methodology-path-old">
-                            {step.traditional}
-                          </span>
-                          <span className="text-xs text-glaucous-400 font-mono">→</span>
-                          <span className="methodology-path-new">
-                            {step.optimized}
-                          </span>
+                      {isWide ? (
+                        /* WIDE LAYOUT (Horizontal bottom layout) */
+                        <div className="flex justify-between items-center mt-auto pt-2 gap-4">
+                          {/* Path Transition */}
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            <span className="methodology-path-old">
+                              {step.traditional}
+                            </span>
+                            <span className="text-xs text-scarlet-fire-400 font-mono">→</span>
+                            <span className="methodology-path-new">
+                              {step.optimized}
+                            </span>
+                          </div>
+
+                          {/* Metric block */}
+                          <div className="flex items-baseline gap-1.5 flex-shrink-0">
+                            <span className="methodology-metric-label">
+                              {step.metricName}:
+                            </span>
+                            <span className="methodology-metric-val">
+                              {step.metricVal}
+                            </span>
+                          </div>
                         </div>
+                      ) : (
+                        /* NARROW LAYOUT (Stacked bottom layout) */
+                        <div className="flex flex-col gap-2 mt-auto pt-2">
+                          {/* Path Transition */}
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            <span className="methodology-path-old">
+                              {step.traditional}
+                            </span>
+                            <span className="text-xs text-scarlet-fire-400 font-mono">→</span>
+                            <span className="methodology-path-new">
+                              {step.optimized}
+                            </span>
+                          </div>
 
-                        {/* Metric block */}
-                        <div className="flex items-baseline gap-1.5 flex-shrink-0">
-                          <span className="methodology-metric-label">
-                            {step.metricName}:
-                          </span>
-                          <span className="methodology-metric-val">
-                            {step.metricVal}
-                          </span>
+                          {/* Metric Row */}
+                          <div className="flex justify-between items-center border-t border-scarlet-fire-100/40 pt-2">
+                            <span className="methodology-metric-label">
+                              {step.metricName}
+                            </span>
+                            <span className="methodology-metric-val">
+                              {step.metricVal}
+                            </span>
+                          </div>
                         </div>
-                      </div>
-                    ) : (
-                      /* NARROW LAYOUT (Stacked bottom layout) */
-                      <div className="flex flex-col gap-2 mt-auto pt-2">
-                        {/* Path Transition */}
-                        <div className="flex items-center gap-1.5 flex-wrap">
-                          <span className="methodology-path-old">
-                            {step.traditional}
-                          </span>
-                          <span className="text-xs text-glaucous-400 font-mono">→</span>
-                          <span className="methodology-path-new">
-                            {step.optimized}
-                          </span>
-                        </div>
-
-                        {/* Metric Row */}
-                        <div className="flex justify-between items-center border-t border-glaucous-100/30 pt-2">
-                          <span className="methodology-metric-label">
-                            {step.metricName}
-                          </span>
-                          <span className="methodology-metric-val">
-                            {step.metricVal}
-                          </span>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                }
-              />
-            );
-          })}
-        </BentoGrid>
+                      )}
+                    </div>
+                  }
+                />
+              );
+            })}
+          </BentoGrid>
+        </div>
       </div>
     </section>
   );
