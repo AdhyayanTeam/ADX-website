@@ -8,32 +8,11 @@ import Logo from "./Logo";
 export default function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  const [show, setShow] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
 
   // Close menu when route changes
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
-
-  // Hide Navbar on scroll down, show on scroll up
-  useEffect(() => {
-    const controlNavbar = () => {
-      if (typeof window !== "undefined") {
-        if (window.scrollY > lastScrollY && window.scrollY > 80) {
-          setShow(false);
-        } else {
-          setShow(true);
-        }
-        setLastScrollY(window.scrollY);
-      }
-    };
-
-    window.addEventListener("scroll", controlNavbar);
-    return () => {
-      window.removeEventListener("scroll", controlNavbar);
-    };
-  }, [lastScrollY]);
 
   const navLinks = [
     { name: "Home", href: "/" },
@@ -45,9 +24,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className={`fixed top-0 left-0 w-full h-18 bg-glaucous-50/85 backdrop-blur-md border-b border-glaucous-200/80 z-50 flex items-center transition-all duration-300 ${
-      show ? "translate-y-0" : "-translate-y-full"
-    }`}>
+    <header className="fixed top-0 left-0 w-full h-18 bg-glaucous-50/85 backdrop-blur-md border-b border-glaucous-200/80 z-50 flex items-center transition-all duration-300 translate-y-0">
       <div className="w-full max-w-7xl mx-auto px-6 flex justify-between items-center">
         <Link href="/" className="flex items-center">
           <Logo className="h-24 w-auto" />
