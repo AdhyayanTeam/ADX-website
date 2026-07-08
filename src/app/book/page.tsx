@@ -1,8 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { track } from "@/lib/track";
+import { usePageAnalytics } from "@/lib/usePageAnalytics";
 
 export default function Book() {
+  usePageAnalytics("/book");
+
   const [formData, setFormData] = useState({
     companyName: "",
     industry: "coaching",
@@ -13,50 +17,57 @@ export default function Book() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
+  const [leadId, setLeadId] = useState<number | null>(null);
+  const [hasStarted, setHasStarted] = useState(false);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate API request
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const res = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) {
+        const err = await res.json();
+        console.error("Lead submission failed:", err);
+        alert("Something went wrong. Please try again or reach out on WhatsApp.");
+        setIsSubmitting(false);
+        return;
+      }
+
+      const data = await res.json();
+      setLeadId(data.id);
       setIsSuccess(true);
-    }, 1200);
+      track("form_complete", "/book", { lead_id: data.id });
+    } catch (err) {
+      console.error("Network error:", err);
+      alert("Could not reach the server. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <main className="min-h-screen bg-glaucous-50 text-vivid-royal-950 pt-24 pb-20 flex items-center justify-center">
-      {/* Resilient styling overrides for client-side bundle mismatches */}
-      <style>{`
-        .text-ghost-white-50 { color: #09071d !important; }
-        .bg-vivid-royal-950 { background-color: #ebeef9 !important; }
-        .text-glaucous-200 { color: #223677 !important; }
-        .bg-coffee-bean-950 { background-color: #d7def4 !important; }
-        .text-coffee-bean-400 { color: #2d489f !important; }
-      `}</style>
-
       <div className="w-full max-w-xl mx-auto px-6">
-        {isSuccess && isMounted ? (
-          <div className="bg-ghost-white-50 border border-coffee-bean-500 rounded-lg p-8 sm:p-12 text-center shadow-[0_0_30px_rgba(237,18,109,0.08)] backdrop-blur-sm">
+        {isSuccess ? (
+          <div className="bg-ghost-white-50 border border-coffee-bean-500 rounded-lg p-8 sm:p-12 text-center shadow-lg">
             <span className="text-4xl block mb-6">✅</span>
-            <h1 className="text-2xl sm:text-3xl font-extrabold mb-4" style={{ color: "#09071d" }}>
-              Diagnostic Scheduled.
+            <h1 className="text-2xl sm:text-3xl font-extrabold mb-4 text-vivid-royal-950">
+              Profile Received.
             </h1>
-            <p className="text-sm leading-relaxed mb-8" style={{ color: "#223677" }}>
-              We have received your business profile. An automated pre-visit diagnostic pipeline has been created. Check your WhatsApp (<strong>{formData.whatsapp}</strong>) for your scheduling confirmation link.
+            <p className="text-sm text-glaucous-800 leading-relaxed mb-6">
+              We have your details. We&apos;ll reach out on{" "}
+              <strong>{formData.whatsapp}</strong> within 24 hours to schedule
+              the discovery call.
             </p>
-            <div 
-              className="p-4 rounded font-mono text-[10px] border" 
-              style={{ backgroundColor: "#d7def4", borderColor: "#afbde9", color: "#2d489f" }}
-            >
-              PIPELINE ID: ADX-{(Math.random() * 100000).toFixed(0)} // STATE: QUEUED
-            </div>
+            <p className="text-xs text-glaucous-600 font-mono">
+              Reference: ADX-{leadId}
+            </p>
           </div>
         ) : (
           <div className="bg-ghost-white-50 border border-glaucous-200 rounded-lg overflow-hidden shadow-xl">
@@ -79,7 +90,13 @@ export default function Book() {
                   required
                   placeholder="e.g. Acme Classes Delhi"
                   value={formData.companyName}
-                  onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
+                  onChange={(e) => {
+                    if (!hasStarted) {
+                      setHasStarted(true);
+                      track("form_start", "/book");
+                    }
+                    setFormData({ ...formData, companyName: e.target.value });
+                  }}
                   className="w-full bg-glaucous-50 border border-glaucous-200 rounded p-3 text-sm text-vivid-royal-950 placeholder:text-glaucous-600 focus:outline-none focus:border-coffee-bean-500 transition-all duration-300"
                 />
               </div>
@@ -166,6 +183,7 @@ export default function Book() {
 
               <button
                 type="submit"
+                data-track-cta="book"
                 disabled={isSubmitting}
                 className="w-full text-center py-3.5 rounded text-xs font-semibold uppercase tracking-wider text-ghost-white-50 bg-coffee-bean-600 hover:bg-coffee-bean-700 disabled:bg-coffee-bean-800 disabled:cursor-not-allowed transition-all duration-300 shadow-[0_0_15px_rgba(237,18,109,0.2)] mt-4 cursor-pointer"
               >

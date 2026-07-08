@@ -8,73 +8,73 @@ export default function IndustriesSection() {
   const industryData = {
     coaching: {
       title: "Coaching Institutes",
-      intro: "Managing hundreds of students across multiple batches while chasing outstanding fees is an operational nightmare.",
+      intro: "300 students across 8 batches. Parents call to ask about fees. Counselors search through WhatsApp chats for old messages. Enrollment numbers live in someone's head.",
       bottlenecks: [
-        "Inquiries lost in paper logs and personal WhatsApp of counselors.",
-        "Manual Excel sheets causing mismatched scheduling and double-booking.",
-        "Outstanding fees require manual phone chase, leading to awkward client friction.",
+        "A parent asks about a batch. The counselor checks three different WhatsApp chats before finding the answer.",
+        "Two students get booked for the same slot because the schedule is in an Excel file nobody updated.",
+        "Fees are due next week. Someone needs to call each parent individually. Nobody has time.",
       ],
       solTitle: "Automated Batch & Fee Management",
-      before: "Counselors copy-paste registration links, parents send manual bank transfer screenshots, admin manually enters data in Tally.",
-      after: "Lead registers → Webhook creates profile → WhatsApp sends automated onboarding details → Razorpay reconciles fees → Tally ledger updates via API.",
+      before: "Counselors copy registration links manually. Parents send bank screenshots. The admin types everything into Tally after class.",
+      after: "A parent registers. The system creates their profile automatically. WhatsApp sends batch details. Payment is reconciled. Tally updates itself.",
     },
     healthcare: {
       title: "Clinics & Healthcare",
-      intro: "Patient no-shows and chaotic telephone schedules waste high-value practitioner hours.",
+      intro: "50 patients a day. The receptionist calls each one to confirm. Half don't pick up. The other half show up at the wrong time.",
       bottlenecks: [
-        "Receptionist spends hours calling patients to confirm slots, half of whom don't pick up.",
-        "Chronic patients fail to book follow-up visits due to lack of systematic recall systems.",
-        "Prescriptions and treatment guidelines get lost, leading to poor care compliance.",
+        "The receptionist spends two hours every morning calling patients. Most calls go unanswered.",
+        "A patient who visited three months ago needs a follow-up. Nobody remembers to call them.",
+        "A prescription is written on paper. The patient loses it. The next doctor has no record of what was prescribed.",
       ],
-      solTitle: "Stateful Patient Scheduling Engine",
-      before: "Patients call desk → Secretary records slot in physical logbook → Staff attempts manually calling to confirm → Slots remain empty on short-notice cancel.",
-      after: "Patient checks slots on WhatsApp → Selects time → Automated WhatsApp reminder sent 2 hours before with quick Confirm/Reschedule button → Dynamic calendar updates.",
+      solTitle: "Patient Scheduling That Works",
+      before: "A patient calls the desk. The receptionist writes the appointment in a physical book. Someone tries to call and confirm. The patient doesn't pick up. The slot stays empty.",
+      after: "A patient checks available slots on WhatsApp and picks a time. The system sends a reminder two hours before. The patient confirms or reschedules with one tap. The calendar updates automatically.",
     },
     salon: {
       title: "Salons & Spas",
-      intro: "Idle technicians during weekdays and zero systematic customer retention programs.",
+      intro: "Empty chairs on Tuesday. A waitlist on Saturday. First-time customers come once and never return because nobody remembers to call them back.",
       bottlenecks: [
-        "No way to drive traffic to specific empty weekday slots dynamically.",
-        "High customer drop-off after the first treatment, as staff fails to follow up.",
-        "Owner has zero visibility into individual technician performance and tips.",
+        "Technicians sit idle on slow days. There's no way to offer discounts and fill those empty slots.",
+        "A customer visits for the first time, gets a great treatment, and never hears from the salon again.",
+        "The owner doesn't know which technicians bring in the most repeat business.",
       ],
-      solTitle: "Slot Optimization & Recall System",
-      before: "Client receives treatment → Pays cash → Details written in ledger → Customer never contacted again unless they walk in organically.",
-      after: "Customer details logged → Post-visit WhatsApp thank you sent with feedback rating → System schedules auto-grooming recall reminder exactly 28 days later.",
+      solTitle: "Slot Management & Customer Recall",
+      before: "A customer finishes their treatment, pays in cash, and leaves. Their details are written in a ledger book. Nobody contacts them again unless they walk in.",
+      after: "The customer's details are saved. WhatsApp sends a thank you message with a feedback request. Exactly 28 days later, the system reminds them to book their next appointment.",
     },
     gym: {
       title: "Gyms & Fitness",
-      intro: "Lapsed memberships and manual ID gatekeeping leak recurring subscription revenues.",
+      intro: "Memberships expire but members keep walking in. There's no way to check who has paid and who hasn't.",
       bottlenecks: [
-        "Expired members check in without front desk noticing, consuming trainer time.",
-        "No system for notifying members of upcoming renewals except verbal warnings at the desk.",
-        "Class scheduling for batches is managed on noticeboards, causing over-crowding.",
+        "An expired member walks past the front desk. Nobody checks. They use the equipment without paying.",
+        "Members don't know their renewal date. The staff mentions it verbally. Most members forget.",
+        "Class schedules are posted on a noticeboard. Members show up and find the class is full.",
       ],
       solTitle: "Membership Lifecycle Automation",
-      before: "Members walk past front desk → Staff doesn't check database status → Membership expires silently → Gym owner loses recurring fee collection.",
-      after: "Digital check-in validates database status instantly → Automated reminder sent via WhatsApp 7 days before expiry with Razorpay renewal link.",
+      before: "A member walks in. The staff doesn't check their status. Their membership expired last month. The gym loses revenue every visit.",
+      after: "The member checks in digitally. The system validates their status instantly. Seven days before expiry, WhatsApp sends a renewal link. The member pays and continues without interruption.",
     },
     professional: {
       title: "Professional Services",
-      intro: "Drawn-out proposal cycles, milestone confusion, and late payment reconciliation stall agency cash flow.",
+      intro: "Every project starts with a custom proposal. Staff spends hours writing them. Clients take weeks to approve.",
       bottlenecks: [
-        "Staff spends hours drafting custom proposals for basic recurring packages.",
-        "Project deliverables slip because approval threads are scattered across emails.",
-        "Late payment collections cause vendor delays and strain business liquidity.",
+        "Staff rewrites proposals from scratch for services they offer every single month.",
+        "Project approvals are spread across email threads. Nobody knows if the client has seen the latest version.",
+        "Invoices go out late. Clients pay late. The agency struggles with cash flow every quarter.",
       ],
       solTitle: "Structured Milestone Engine",
-      before: "Milestone finished → Staff emails client → Client misses email → Project halts for 5 days → Delayed invoice creation and collection.",
-      after: "Milestone complete → System triggers WhatsApp approval check to client → Client clicks approve → Automated GST invoice issued → Auto-reconciliation.",
+      before: "A milestone is completed. Someone emails the client. The client misses the email. Work stops for five days. The invoice goes out late.",
+      after: "A milestone is completed. WhatsApp sends an approval request. The client taps approve. An invoice is generated automatically. Payment follows.",
     },
   };
 
   return (
     <section className="w-full max-w-7xl mx-auto px-6 py-20 border-t border-glaucous-200/80" id="industries">
       <div className="text-center mb-16">
-        <span className="text-xs font-mono font-semibold tracking-widest text-glaucous-600 uppercase">Verticals</span>
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-vivid-royal-950 mt-2 mb-4">Built for Indian SMB operations.</h2>
+        <span className="text-xs font-mono font-semibold tracking-widest text-glaucous-600 uppercase">Industries</span>
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-vivid-royal-950 mt-2 mb-4">We work with Indian service businesses.</h2>
         <p className="text-glaucous-800 max-w-xl mx-auto">
-          Every industry has distinct operational structures. We specialize in five core business verticals.
+          Every industry has different problems. We build different systems for each one.
         </p>
       </div>
 
@@ -100,7 +100,7 @@ export default function IndustriesSection() {
           <p className="text-base text-glaucous-900 mb-8 leading-relaxed">{industryData[activeInd].intro}</p>
           
           <div>
-            <h4 className="font-mono text-xs text-glaucous-600 uppercase tracking-widest mb-4">Core Bottlenecks</h4>
+            <h4 className="font-mono text-xs text-glaucous-600 uppercase tracking-widest mb-4">Where it breaks</h4>
             <ul className="flex flex-col gap-3">
               {industryData[activeInd].bottlenecks.map((item, idx) => (
                 <li key={idx} className="flex gap-3 items-start text-sm text-glaucous-800 leading-relaxed">
@@ -114,7 +114,7 @@ export default function IndustriesSection() {
         
         <div>
           <div className="bg-glaucous-50 border border-glaucous-200 p-8 rounded-lg shadow-inner">
-            <span className="font-mono text-[9px] text-coffee-bean-600 uppercase tracking-widest font-bold block mb-4">The ADX Engine</span>
+            <span className="font-mono text-[9px] text-coffee-bean-600 uppercase tracking-widest font-bold block mb-4">What ADX Builds</span>
             <h4 className="text-lg font-bold text-vivid-royal-950 mb-6">{industryData[activeInd].solTitle}</h4>
             <div className="flex flex-col gap-6">
               <div className="border-l-2 border-scarlet-fire-600 pl-4">

@@ -64,8 +64,7 @@ export default function RootLayout({
               <h5 className="font-mono text-[10px] text-glaucous-600 uppercase tracking-widest mb-4">Platform</h5>
               <ul className="flex flex-col gap-2.5 text-xs text-glaucous-700">
                 <li><Link href="/platform" className="hover:text-coffee-bean-600 transition-colors">Capabilities</Link></li>
-                <li><Link href="/discovery" className="hover:text-coffee-bean-600 transition-colors">Discovery Process</Link></li>
-                <li><Link href="/book" className="hover:text-coffee-bean-600 transition-colors">Book Diagnostic Call</Link></li>
+                <li><Link href="/book" data-track-cta="footer" className="hover:text-coffee-bean-600 transition-colors">Book Diagnostic Call</Link></li>
               </ul>
             </div>
 
@@ -73,7 +72,6 @@ export default function RootLayout({
               <h5 className="font-mono text-[10px] text-glaucous-600 uppercase tracking-widest mb-4">Company</h5>
               <ul className="flex flex-col gap-2.5 text-xs text-glaucous-700">
                 <li><Link href="/about" className="hover:text-coffee-bean-600 transition-colors">Manifesto</Link></li>
-                <li><Link href="/insights" className="hover:text-coffee-bean-600 transition-colors">Insights & Case Studies</Link></li>
               </ul>
             </div>
           </div>
