@@ -40,21 +40,21 @@ export default function RootLayout({
         <MotionProvider>
           <div className="flex-grow">{children}</div>
         </MotionProvider>
-        <footer className="w-full bg-ghost-white-50 border-t border-glaucous-200/80 py-12 px-6">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
-            <div className="flex flex-col items-start gap-3">
+        <footer className="w-full bg-ghost-white-50 border-t border-glaucous-200/80 py-16 px-6">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div className="flex flex-col items-start gap-4">
               <Link href="/" className="flex items-center gap-2.5">
                 <Logo className="h-24 w-auto text-vivid-royal-950" />
-                <span className="font-mono text-[24px] text-glaucous-600 border-l border-glaucous-200 pl-2.5">AdhyayanX</span>
+                <span className="font-mono text-2xl text-glaucous-600 border-l border-glaucous-200 pl-2.5">AdhyayanX</span>
               </Link>
-              <p className="text-xs text-glaucous-700 leading-relaxed max-w-xs">
+              <p className="text-base text-glaucous-700 leading-relaxed max-w-xs">
                 Building the future operating system for Indian SMBs. Operational automation, custom databases, and WhatsApp engines.
               </p>
             </div>
             
             <div>
-              <h5 className="font-mono text-[10px] text-glaucous-600 uppercase tracking-widest mb-4">Verticals</h5>
-              <ul className="flex flex-col gap-2.5 text-xs text-glaucous-700">
+              <h5 className="font-mono text-base text-glaucous-600 uppercase tracking-widest mb-6 font-bold">Verticals</h5>
+              <ul className="flex flex-col gap-3.5 text-base text-glaucous-700">
                 <li><Link href="/industries#ind-coaching-block" className="hover:text-coffee-bean-600 transition-colors">Coaching Institutes</Link></li>
                 <li><Link href="/industries#ind-healthcare-block" className="hover:text-coffee-bean-600 transition-colors">Clinics & Practices</Link></li>
                 <li><Link href="/industries#ind-salon-block" className="hover:text-coffee-bean-600 transition-colors">Salons & Spas</Link></li>
@@ -64,26 +64,26 @@ export default function RootLayout({
             </div>
 
             <div>
-              <h5 className="font-mono text-[10px] text-glaucous-600 uppercase tracking-widest mb-4">Platform</h5>
-              <ul className="flex flex-col gap-2.5 text-xs text-glaucous-700">
+              <h5 className="font-mono text-base text-glaucous-600 uppercase tracking-widest mb-6 font-bold">Platform</h5>
+              <ul className="flex flex-col gap-3.5 text-base text-glaucous-700">
                 <li><Link href="/platform" className="hover:text-coffee-bean-600 transition-colors">Capabilities</Link></li>
                 <li><Link href="/book" data-track-cta="footer" className="hover:text-coffee-bean-600 transition-colors">Book Diagnostic Call</Link></li>
               </ul>
             </div>
 
             <div>
-              <h5 className="font-mono text-[10px] text-glaucous-600 uppercase tracking-widest mb-4">Company</h5>
-              <ul className="flex flex-col gap-2.5 text-xs text-glaucous-700">
+              <h5 className="font-mono text-base text-glaucous-600 uppercase tracking-widest mb-6 font-bold">Company</h5>
+              <ul className="flex flex-col gap-3.5 text-base text-glaucous-700">
                 <li><Link href="/about" className="hover:text-coffee-bean-600 transition-colors">Manifesto</Link></li>
               </ul>
             </div>
           </div>
 
-          <div className="max-w-7xl mx-auto mt-12 pt-6 border-t border-glaucous-200/60 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <span className="font-mono text-[9px] text-glaucous-500">
+          <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-glaucous-200/60 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <span className="font-mono text-base text-glaucous-500">
               © {new Date().getFullYear()} ADX (AdhyayanX). All rights reserved.
             </span>
-            <span className="font-mono text-[9px] text-glaucous-500">
+            <span className="font-mono text-base text-glaucous-500">
               Operations-first software engineering.
             </span>
           </div>

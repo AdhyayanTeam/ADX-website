@@ -16,10 +16,10 @@ export default function LeakageSection() {
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className="max-w-7xl mx-auto text-center mb-20 relative z-10"
       >
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-vivid-royal-950 mt-2 mb-4 font-heading tracking-tight">
+        <h2 className="text-5xl sm:text-6xl font-extrabold text-vivid-royal-950 mt-2 mb-4 font-heading tracking-tight leading-tight">
           Where does your business lose customers?
         </h2>
-        <p className="text-sm sm:text-base text-glaucous-800 max-w-2xl mx-auto font-sans leading-relaxed">
+        <p className="text-lg sm:text-xl text-glaucous-800 max-w-2xl mx-auto font-sans leading-relaxed">
           Every forgotten follow-up, every unanswered message, every late payment: small misses add up.
         </p>
       </m.div>
@@ -35,25 +35,25 @@ export default function LeakageSection() {
           className="lg:col-span-3 space-y-8"
         >
           <div className="relative group p-5 border border-transparent hover:border-glaucous-200/60 hover:bg-glaucous-50/50 hover:shadow-[0_8px_30px_rgba(36,36,35,0.02)] transition-all duration-300 rounded-xl">
-            <span className="font-mono text-xs font-bold text-glaucous-600 bg-glaucous-100/60 px-2 py-0.5 rounded-md tracking-wider inline-block mb-3">
+            <span className="font-mono text-base font-bold text-glaucous-600 bg-glaucous-100/60 px-2 py-0.5 rounded-md tracking-wider inline-block mb-3">
               STAGE 01
             </span>
-            <h3 className="text-base font-extrabold text-vivid-royal-950 font-heading tracking-tight mb-2 group-hover:text-vivid-royal-600 transition-colors duration-200">
+            <h3 className="text-2xl font-extrabold text-vivid-royal-950 font-heading tracking-tight mb-2 group-hover:text-vivid-royal-600 transition-colors duration-200">
               New Enquiry
             </h3>
-            <p className="text-xs sm:text-sm text-glaucous-800 leading-relaxed font-sans">
+            <p className="text-base text-glaucous-800 leading-relaxed font-sans">
               A customer sends a message. Nobody replies for hours. By evening, they&apos;ve already chosen someone else.
             </p>
           </div>
 
           <div className="relative group p-5 border border-transparent hover:border-glaucous-200/60 hover:bg-glaucous-50/50 hover:shadow-[0_8px_30px_rgba(36,36,35,0.02)] transition-all duration-300 rounded-xl">
-            <span className="font-mono text-xs font-bold text-glaucous-600 bg-glaucous-100/60 px-2 py-0.5 rounded-md tracking-wider inline-block mb-3">
+            <span className="font-mono text-base font-bold text-glaucous-600 bg-glaucous-100/60 px-2 py-0.5 rounded-md tracking-wider inline-block mb-3">
               STAGE 02
             </span>
-            <h3 className="text-base font-extrabold text-vivid-royal-950 font-heading tracking-tight mb-2 group-hover:text-vivid-royal-600 transition-colors duration-200">
+            <h3 className="text-2xl font-extrabold text-vivid-royal-950 font-heading tracking-tight mb-2 group-hover:text-vivid-royal-600 transition-colors duration-200">
               Follow-up
             </h3>
-            <p className="text-xs sm:text-sm text-glaucous-800 leading-relaxed font-sans">
+            <p className="text-base text-glaucous-800 leading-relaxed font-sans">
               Someone writes the enquiry in a personal chat. Later, another staff member needs that information. They can&apos;t find it.
             </p>
           </div>
@@ -88,25 +88,25 @@ export default function LeakageSection() {
           className="lg:col-span-3 space-y-8"
         >
           <div className="relative group p-5 border border-transparent hover:border-glaucous-200/60 hover:bg-glaucous-50/50 hover:shadow-[0_8px_30px_rgba(36,36,35,0.02)] transition-all duration-300 rounded-xl">
-            <span className="font-mono text-xs font-bold text-glaucous-600 bg-glaucous-100/60 px-2 py-0.5 rounded-md tracking-wider inline-block mb-3">
+            <span className="font-mono text-base font-bold text-glaucous-600 bg-glaucous-100/60 px-2 py-0.5 rounded-md tracking-wider inline-block mb-3">
               STAGE 03
             </span>
-            <h3 className="text-base font-extrabold text-vivid-royal-950 font-heading tracking-tight mb-2 group-hover:text-vivid-royal-600 transition-colors duration-200">
+            <h3 className="text-2xl font-extrabold text-vivid-royal-950 font-heading tracking-tight mb-2 group-hover:text-vivid-royal-600 transition-colors duration-200">
               Booking
             </h3>
-            <p className="text-xs sm:text-sm text-glaucous-800 leading-relaxed font-sans">
+            <p className="text-base text-glaucous-800 leading-relaxed font-sans">
               A customer wants to book. The person who manages the schedule is busy. The customer waits. Then they forget to call back.
             </p>
           </div>
 
           <div className="relative group p-5 border border-transparent hover:border-glaucous-200/60 hover:bg-glaucous-50/50 hover:shadow-[0_8px_30px_rgba(36,36,35,0.02)] transition-all duration-300 rounded-xl">
-            <span className="font-mono text-xs font-bold text-glaucous-600 bg-glaucous-100/60 px-2 py-0.5 rounded-md tracking-wider inline-block mb-3">
+            <span className="font-mono text-base font-bold text-glaucous-600 bg-glaucous-100/60 px-2 py-0.5 rounded-md tracking-wider inline-block mb-3">
               STAGE 04
             </span>
-            <h3 className="text-base font-extrabold text-vivid-royal-950 font-heading tracking-tight mb-2 group-hover:text-vivid-royal-600 transition-colors duration-200">
+            <h3 className="text-2xl font-extrabold text-vivid-royal-950 font-heading tracking-tight mb-2 group-hover:text-vivid-royal-600 transition-colors duration-200">
               Payment
             </h3>
-            <p className="text-xs sm:text-sm text-glaucous-800 leading-relaxed font-sans">
+            <p className="text-base text-glaucous-800 leading-relaxed font-sans">
               A payment was due last week. Nobody sent a reminder. The customer didn&apos;t notice. The money doesn&apos;t come in.
             </p>
           </div>

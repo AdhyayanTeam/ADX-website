@@ -92,9 +92,17 @@
   --radius-sm: calc(var(--radius) - 4px);
   --font-heading: var(--font-share-tech);
 
-  /* Global typography overrides to prevent too-small text size */
-  --font-size-xs: 0.875rem;
-  --font-size-sm: 1rem;
+
+  --font-size-xs: 1.15rem;
+  --font-size-sm: 1.35rem;
+  --font-size-base: 1.5rem;
+  --font-size-lg: 1.75rem;
+  --font-size-xl: 2.1rem;
+  --font-size-2xl: 2.6rem;
+  --font-size-3xl: 3.3rem;
+  --font-size-4xl: 4.2rem;
+  --font-size-5xl: 5.2rem;
+  --font-size-6xl: 6.5rem;
 
   --animate-grid-move: gridMove 20s linear infinite;
   --animate-line-move: lineMove 6s linear infinite;
@@ -152,6 +160,7 @@ body {
   background-color: var(--color-glaucous-50);
   color: var(--color-vivid-royal-950);
   font-family: var(--font-sans), sans-serif;
+  font-size: var(--font-size-base);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -161,7 +170,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Methodology Section Typography System */
 .methodology-step-num {
   font-family: var(--font-mono), monospace;
-  font-size: 0.6875rem;
+  font-size: var(--font-size-xs);
   font-weight: 700;
   color: var(--color-glaucous-500);
   letter-spacing: 0.1em;
@@ -169,48 +178,48 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .methodology-title {
-  font-size: 1.125rem;
+  font-size: var(--font-size-xl);
   font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--color-scarlet-fire-950);
 }
 @media (min-width: 640px) {
   .methodology-title {
-    font-size: 1.25rem;
+    font-size: var(--font-size-2xl);
   }
 }
 
 .methodology-desc {
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-sm);
   line-height: 1.5;
   color: var(--color-scarlet-fire-800);
 }
 @media (min-width: 640px) {
   .methodology-desc {
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base);
   }
 }
 
 .methodology-path-old {
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-sm);
   color: var(--color-scarlet-fire-400);
   text-decoration: line-through;
 }
 
 .methodology-path-new {
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-sm);
   font-weight: 600;
   color: #059669; /* Emerald 600 for positive optimization */
 }
 
 .methodology-metric-label {
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-sm);
   color: var(--color-scarlet-fire-500);
 }
 
 .methodology-metric-val {
   font-family: var(--font-mono), monospace;
-  font-size: var(--font-size-xs);
+  font-size: var(--font-size-sm);
   font-weight: 700;
   color: var(--color-scarlet-fire-950);
 }

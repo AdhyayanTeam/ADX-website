@@ -205,10 +205,10 @@ export default function Industries() {
     <main className="min-h-screen bg-glaucous-50 text-vivid-royal-950 pt-24 pb-20">
       <div className="max-w-7xl mx-auto px-6">
         <div className="border-b border-glaucous-200 pb-12 mb-16">
-          <span className="text-xs font-mono font-semibold tracking-widest text-glaucous-600 uppercase">
+          <span className="text-sm font-mono font-semibold tracking-widest text-glaucous-600 uppercase">
             Industries
           </span>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-vivid-royal-950 mt-2 mb-4">
+          <h1 className="text-5xl lg:text-6xl font-extrabold text-vivid-royal-950 mt-2 mb-4">
             How we work with different businesses.
           </h1>
           <p className="text-lg text-glaucous-800 max-w-2xl">
@@ -225,23 +225,23 @@ export default function Industries() {
             >
               <div className="grid lg:grid-cols-2 gap-12 items-start">
                 <div>
-                  <span className="font-mono text-[10px] text-coffee-bean-600 font-bold tracking-widest block mb-2 uppercase">
+                  <span className="font-mono text-sm text-coffee-bean-600 font-bold tracking-widest block mb-2 uppercase">
                     {v.tagline}
                   </span>
-                  <h2 className="text-2xl sm:text-3xl font-extrabold text-vivid-royal-950 mb-4">
+                  <h2 className="text-3xl sm:text-4xl font-extrabold text-vivid-royal-950 mb-4">
                     {v.title}
                   </h2>
-                  <p className="text-sm text-glaucous-800 leading-relaxed mb-8 max-w-xl">
+                  <p className="text-base text-glaucous-800 leading-relaxed mb-8 max-w-xl">
                     {v.description}
                   </p>
 
                   <div className="mb-8">
-                    <h3 className="font-mono text-xs text-glaucous-600 uppercase tracking-widest mb-4">
+                    <h3 className="font-mono text-sm text-glaucous-600 uppercase tracking-widest mb-4">
                       What we keep seeing
                     </h3>
                     <ul className="flex flex-col gap-3">
                       {v.observations.map((item, idx) => (
-                        <li key={idx} className="flex gap-3 items-start text-sm text-glaucous-800 leading-relaxed">
+                        <li key={idx} className="flex gap-3 items-start text-base text-glaucous-800 leading-relaxed">
                           <span className="text-scarlet-fire-600 font-bold mt-0.5">→</span>
                           <span>{item}</span>
                         </li>
@@ -250,13 +250,13 @@ export default function Industries() {
                   </div>
 
                   <div className="bg-scarlet-fire-50/30 border border-scarlet-fire-200/40 rounded-lg p-5">
-                    <h4 className="font-mono text-[10px] text-scarlet-fire-600 uppercase tracking-widest font-bold mb-3">
+                    <h4 className="font-mono text-sm text-scarlet-fire-600 uppercase tracking-widest font-bold mb-3">
                       A typical day — Before ADX
                     </h4>
                     <div className="flex flex-col gap-2">
                       {v.typicalDayBefore.map((item, idx) => (
-                        <div key={idx} className="flex gap-3 text-xs text-glaucous-800 leading-relaxed">
-                          <span className="font-mono font-bold text-scarlet-fire-600 whitespace-nowrap w-14 flex-shrink-0">
+                        <div key={idx} className="flex gap-3 text-sm text-glaucous-800 leading-relaxed">
+                          <span className="font-mono font-bold text-scarlet-fire-600 whitespace-nowrap w-18 flex-shrink-0">
                             {item.time}
                           </span>
                           <span>{item.text}</span>
@@ -267,26 +267,26 @@ export default function Industries() {
                 </div>
 
                 <div>
-                  <h3 className="font-mono text-xs text-coffee-bean-600 uppercase tracking-widest mb-4">
+                  <h3 className="font-mono text-sm text-coffee-bean-600 uppercase tracking-widest mb-4">
                     How we help
                   </h3>
                   <div className="flex flex-col gap-4 mb-8">
                     {v.howWeHelp.map((item, idx) => (
                       <div key={idx} className="border-l-2 border-coffee-bean-500 pl-4">
-                        <h4 className="text-sm font-bold text-vivid-royal-950">{item.title}</h4>
-                        <p className="text-xs text-glaucous-800 leading-relaxed mt-1">{item.desc}</p>
+                        <h4 className="text-base font-bold text-vivid-royal-950">{item.title}</h4>
+                        <p className="text-sm text-glaucous-800 leading-relaxed mt-1">{item.desc}</p>
                       </div>
                     ))}
                   </div>
 
                   <div className="bg-coffee-bean-50/30 border border-coffee-bean-200/40 rounded-lg p-5 mb-8">
-                    <h4 className="font-mono text-[10px] text-coffee-bean-600 uppercase tracking-widest font-bold mb-3">
+                    <h4 className="font-mono text-sm text-coffee-bean-600 uppercase tracking-widest font-bold mb-3">
                       A typical day — With ADX
                     </h4>
                     <div className="flex flex-col gap-2">
                       {v.typicalDayAfter.map((item, idx) => (
-                        <div key={idx} className="flex gap-3 text-xs text-glaucous-800 leading-relaxed">
-                          <span className="font-mono font-bold text-coffee-bean-600 whitespace-nowrap w-14 flex-shrink-0">
+                        <div key={idx} className="flex gap-3 text-sm text-glaucous-800 leading-relaxed">
+                          <span className="font-mono font-bold text-coffee-bean-600 whitespace-nowrap w-18 flex-shrink-0">
                             {item.time}
                           </span>
                           <span>{item.text}</span>
@@ -297,7 +297,7 @@ export default function Industries() {
 
                   <Link
                     href={`/book?vertical=${v.title}`}
-                    className="inline-flex items-center gap-2 text-sm font-semibold text-coffee-bean-600 hover:text-coffee-bean-700 transition-all duration-300"
+                    className="inline-flex items-center gap-2 text-base font-semibold text-coffee-bean-600 hover:text-coffee-bean-700 transition-all duration-300"
                   >
                     {v.cta} <span className="font-sans">→</span>
                   </Link>

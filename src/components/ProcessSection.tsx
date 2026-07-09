@@ -2,9 +2,9 @@ export default function ProcessSection() {
   return (
     <section className="w-full max-w-7xl mx-auto px-6 py-20 border-t border-glaucous-200/80">
       <div className="text-center mb-16">
-        <span className="text-xs font-mono font-semibold tracking-widest text-glaucous-600 uppercase">Process</span>
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-vivid-royal-950 mt-2 mb-4">How we work with you.</h2>
-        <p className="text-glaucous-800 max-w-xl mx-auto">
+        <span className="text-sm font-mono font-semibold tracking-widest text-glaucous-600 uppercase">Process</span>
+        <h2 className="text-5xl sm:text-6xl font-extrabold text-vivid-royal-950 mt-2 mb-4 tracking-tight leading-tight">How we work with you.</h2>
+        <p className="text-glaucous-800 text-lg max-w-2xl mx-auto">
           From the first conversation to a system your team uses every day.
         </p>
       </div>
@@ -21,8 +21,8 @@ export default function ProcessSection() {
             <div className="w-12 h-12 rounded-full bg-ghost-white-50 border border-glaucous-200 text-vivid-royal-950 hover:border-coffee-bean-500 hover:text-coffee-bean-600 flex items-center justify-center font-mono font-bold text-sm shadow-[0_0_15px_rgba(66,47,208,0.05)] transition-all duration-300 z-10 mb-6">
               {item.step}
             </div>
-            <h3 className="text-md font-bold text-vivid-royal-950 mb-2">{item.title}</h3>
-            <p className="text-xs text-glaucous-800 leading-relaxed md:max-w-[180px]">{item.desc}</p>
+            <h3 className="text-lg font-bold text-vivid-royal-950 mb-2">{item.title}</h3>
+            <p className="text-base text-glaucous-800 leading-relaxed md:max-w-[200px]">{item.desc}</p>
           </div>
         ))}
       </div>

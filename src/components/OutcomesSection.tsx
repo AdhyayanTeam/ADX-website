@@ -103,11 +103,11 @@ export default function OutcomesSection() {
   return (
     <section className="w-full max-w-7xl mx-auto px-6 py-20 border-t border-glaucous-200/80">
       <div className="text-center mb-12">
-        <span className="text-xs font-mono font-semibold tracking-widest text-glaucous-600 uppercase">Deliverables</span>
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-vivid-royal-950 mt-2 mb-4">
+        <span className="text-sm font-mono font-semibold tracking-widest text-glaucous-600 uppercase">Deliverables</span>
+        <h2 className="text-5xl sm:text-6xl font-extrabold text-vivid-royal-950 mt-2 mb-4 tracking-tight leading-tight">
           Measurable Outcomes. Not Story Points.
         </h2>
-        <p className="text-glaucous-800 max-w-xl mx-auto">
+        <p className="text-lg sm:text-xl text-glaucous-800 max-w-xl mx-auto">
           We measure success in hours reclaimed and revenue recovered, not arbitrary software tasks.
         </p>
       </div>
@@ -117,7 +117,7 @@ export default function OutcomesSection() {
         <div className="bg-glaucous-100/70 border border-glaucous-200/80 rounded-full p-1.5 flex items-center justify-between shadow-inner max-w-md w-full relative">
           <button
             onClick={() => setIsOptimized(false)}
-            className={`flex-1 py-2.5 px-5 rounded-full font-mono text-xs font-bold uppercase transition-all duration-300 cursor-pointer select-none active:scale-95 ${
+            className={`flex-1 py-2.5 px-5 rounded-full font-mono text-base font-bold uppercase transition-all duration-300 cursor-pointer select-none active:scale-95 ${
               !isOptimized
                 ? "bg-scarlet-fire-600 text-ghost-white-50 shadow-[0_4px_12px_rgba(204,17,0,0.35)]"
                 : "text-glaucous-800 hover:text-glaucous-950"
@@ -127,7 +127,7 @@ export default function OutcomesSection() {
           </button>
           <button
             onClick={() => setIsOptimized(true)}
-            className={`flex-1 py-2.5 px-5 rounded-full font-mono text-xs font-bold uppercase transition-all duration-300 cursor-pointer select-none active:scale-95 ${
+            className={`flex-1 py-2.5 px-5 rounded-full font-mono text-base font-bold uppercase transition-all duration-300 cursor-pointer select-none active:scale-95 ${
               isOptimized
                 ? "bg-vivid-royal-600 text-ghost-white-50 shadow-[0_4px_12px_rgba(66,47,208,0.35)]"
                 : "text-glaucous-800 hover:text-glaucous-950"
@@ -160,31 +160,31 @@ export default function OutcomesSection() {
 
               <div>
                 <div className="mb-6 flex justify-between items-center border-b border-glaucous-200/40 pb-3">
-                  <span className="font-mono text-xs uppercase tracking-widest text-glaucous-500 font-bold">
+                  <span className="font-mono text-base uppercase tracking-widest text-glaucous-500 font-bold">
                     Diagnostic Score
                   </span>
                 </div>
 
                 <div className="mb-4 flex justify-between items-center border-b border-glaucous-200/40 pb-3">
-                  <span className={`font-mono text-xs font-extrabold tracking-wider ${isOptimized ? "text-vivid-royal-600" : "text-scarlet-fire-600"}`}>
+                  <span className={`font-mono text-base font-extrabold tracking-wider ${isOptimized ? "text-vivid-royal-600" : "text-scarlet-fire-600"}`}>
                     EFFICIENCY: {current.progress}% {isOptimized && `(+${item.system.progress - item.traditional.progress}%)`}
                   </span>
                 </div>
 
-                <h3 className="text-md font-mono font-bold text-glaucous-600 uppercase tracking-wider">
+                <h3 className="text-xl font-mono font-bold text-glaucous-600 uppercase tracking-wider">
                   {item.title}
                 </h3>
                 
                 {/* Metric Display */}
                 <h4
-                  className={`text-xl font-extrabold mt-2 mb-3 font-mono tracking-tight transition-colors duration-300 ${
+                  className={`text-3xl font-extrabold mt-2 mb-3 font-mono tracking-tight transition-colors duration-300 ${
                     isOptimized ? "text-vivid-royal-950" : "text-scarlet-fire-600"
                   }`}
                 >
                   {current.stat}
                 </h4>
 
-                <p className="text-sm text-glaucous-800 leading-relaxed">
+                <p className="text-base text-glaucous-800 leading-relaxed">
                   {current.desc}
                 </p>
               </div>

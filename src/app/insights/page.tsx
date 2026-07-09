@@ -28,10 +28,10 @@ export default function Insights() {
     <main className="min-h-screen bg-glaucous-50 text-vivid-royal-950 pt-24 pb-20">
       <div className="max-w-7xl mx-auto px-6">
         <div className="border-b border-glaucous-200 pb-12 mb-16">
-          <span className="text-xs font-mono font-semibold tracking-widest text-glaucous-600 uppercase">
+          <span className="text-sm font-mono font-semibold tracking-widest text-glaucous-600 uppercase">
             Operational Insights
           </span>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-vivid-royal-950 mt-2 mb-4">
+          <h1 className="text-5xl sm:text-6xl font-extrabold text-vivid-royal-950 mt-2 mb-4 tracking-tight leading-tight">
             ADX Essays & Case Studies.
           </h1>
           <p className="text-lg text-glaucous-800 max-w-2xl">
@@ -46,16 +46,16 @@ export default function Insights() {
               className="bg-ghost-white-50 border border-glaucous-200 p-8 rounded-lg flex flex-col justify-between hover:border-glaucous-400 transition-all duration-300 shadow-sm"
             >
               <div>
-                <span className="font-mono text-[9px] text-glaucous-600 tracking-widest block mb-4 uppercase">
+                <span className="font-mono text-sm text-glaucous-600 tracking-widest block mb-4 uppercase">
                   {art.date} // {art.readTime}
                 </span>
-                <h3 className="text-md font-bold text-vivid-royal-950 mb-3 leading-snug">{art.title}</h3>
-                <p className="text-xs text-glaucous-800 leading-relaxed mb-6">{art.desc}</p>
+                <h3 className="text-xl font-bold text-vivid-royal-950 mb-3 leading-snug">{art.title}</h3>
+                <p className="text-base text-glaucous-800 leading-relaxed mb-6">{art.desc}</p>
               </div>
               <div>
                 <Link
                   href="/book"
-                  className="text-xs font-semibold text-coffee-bean-600 hover:text-coffee-bean-700 transition-all duration-300 inline-flex items-center gap-1.5"
+                  className="text-sm font-semibold text-coffee-bean-600 hover:text-coffee-bean-700 transition-all duration-300 inline-flex items-center gap-1.5"
                 >
                   Discuss operations <span className="font-sans">→</span>
                 </Link>

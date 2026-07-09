@@ -35,14 +35,14 @@ export default function HeroSection() {
 
       <div className="w-full max-w-4xl mx-auto px-6 text-center z-[10] relative flex flex-col items-center justify-center">
         <div className="flex flex-col items-center text-center w-full">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white drop-shadow-md leading-tight max-w-3xl relative z-[10] mb-6">
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white drop-shadow-md leading-tight max-w-3xl relative z-[10] mb-6">
             Your business isn&apos;t slowing down because you need more customers.{" "}
             <span className="text-coffee-bean-300">
               It&apos;s slowing down because your team is trying to remember everything.
             </span>
           </h1>
 
-          <p className="text-base sm:text-lg text-glaucous-100 mb-8 max-w-2xl drop-shadow-sm leading-relaxed">
+          <p className="text-lg sm:text-xl text-glaucous-100 mb-8 max-w-2xl drop-shadow-sm leading-relaxed">
             Follow-ups get missed and customer details get lost. ADX builds simple systems so your business runs smoothly as it grows.
           </p>
 
@@ -50,14 +50,14 @@ export default function HeroSection() {
             <Link
               href="/book"
               data-track-cta="hero"
-              className="px-6 py-3.5 text-sm font-bold rounded-lg bg-coffee-bean-400 bg-gradient-to-b from-white/35 via-white/5 to-black/20 text-coffee-bean-950 border-t border-t-white/50 border-x border-x-coffee-bean-500/60 border-b-[4px] border-b-coffee-bean-700 shadow-[inset_0_1.5px_0_rgba(255,255,255,0.45),inset_0_-1.5px_0_rgba(0,0,0,0.15),0_6px_12px_rgba(0,0,0,0.4)] hover:brightness-110 hover:border-b-coffee-bean-800 active:translate-y-[3px] active:border-b-[1px] active:shadow-[inset_0_3px_5px_rgba(0,0,0,0.4),0_1px_2px_rgba(0,0,0,0.2)] transition-all duration-100 ease-out select-none"
+              className="px-6 py-3.5 text-base font-bold rounded-lg bg-coffee-bean-400 bg-gradient-to-b from-white/35 via-white/5 to-black/20 text-coffee-bean-950 border-t border-t-white/50 border-x border-x-coffee-bean-500/60 border-b-[4px] border-b-coffee-bean-700 shadow-[inset_0_1.5px_0_rgba(255,255,255,0.45),inset_0_-1.5px_0_rgba(0,0,0,0.15),0_6px_12px_rgba(0,0,0,0.4)] hover:brightness-110 hover:border-b-coffee-bean-800 active:translate-y-[3px] active:border-b-[1px] active:shadow-[inset_0_3px_5px_rgba(0,0,0,0.4),0_1px_2px_rgba(0,0,0,0.2)] transition-all duration-100 ease-out select-none"
             >
               Book an Operational Discovery
             </Link>
             <Link
               href="/platform"
               data-track-cta="hero"
-              className="px-6 py-3.5 text-sm font-bold rounded-lg bg-glaucous-50 bg-gradient-to-b from-white/80 via-white/10 to-glaucous-200/40 text-glaucous-950 border-t border-t-white border-x border-x-glaucous-300/80 border-b-[4px] border-b-glaucous-400 shadow-[inset_0_1.5px_0_rgba(255,255,255,0.9),inset_0_-1.5px_0_rgba(0,0,0,0.08),0_6px_12px_rgba(0,0,0,0.2)] hover:brightness-105 hover:border-b-glaucous-500 active:translate-y-[3px] active:border-b-[1px] active:shadow-[inset_0_3px_5px_rgba(0,0,0,0.15),0_1px_2px_rgba(0,0,0,0.1)] transition-all duration-100 ease-out select-none"
+              className="px-6 py-3.5 text-base font-bold rounded-lg bg-glaucous-50 bg-gradient-to-b from-white/80 via-white/10 to-glaucous-200/40 text-glaucous-950 border-t border-t-white border-x border-x-glaucous-300/80 border-b-[4px] border-b-glaucous-400 shadow-[inset_0_1.5px_0_rgba(255,255,255,0.9),inset_0_-1.5px_0_rgba(0,0,0,0.08),0_6px_12px_rgba(0,0,0,0.2)] hover:brightness-105 hover:border-b-glaucous-500 active:translate-y-[3px] active:border-b-[1px] active:shadow-[inset_0_3px_5px_rgba(0,0,0,0.15),0_1px_2px_rgba(0,0,0,0.1)] transition-all duration-100 ease-out select-none"
             >
               See What We Build
             </Link>
@@ -69,13 +69,13 @@ export default function HeroSection() {
                 key={item.title}
                 className="flex flex-col items-start text-left p-5 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.05] hover:border-white/[0.1] hover:shadow-[0_8px_30px_rgb(0,0,0,0.2)] transition-all duration-300 group"
               >
-                <span className="text-xs font-mono font-bold text-coffee-bean-400 mb-2.5 tracking-wider block">
+                <span className="text-base font-mono font-bold text-coffee-bean-400 mb-2.5 tracking-wider block">
                   0{idx + 1}
                 </span>
-                <h3 className="text-sm font-bold text-white mb-2 leading-snug group-hover:text-coffee-bean-200 transition-colors duration-200">
+                <h3 className="text-lg font-bold text-white mb-2 leading-snug group-hover:text-coffee-bean-200 transition-colors duration-200">
                   {item.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-glaucous-200 leading-relaxed">
+                <p className="text-base text-glaucous-200 leading-relaxed">
                   {item.desc}
                 </p>
               </div>

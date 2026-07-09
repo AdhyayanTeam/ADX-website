@@ -58,10 +58,10 @@ export default function Platform() {
     <main className="min-h-screen bg-glaucous-50 text-vivid-royal-950 pt-24 pb-20">
       <div className="max-w-7xl mx-auto px-6">
         <div className="border-b border-glaucous-200 pb-12 mb-16">
-          <span className="text-xs font-mono font-semibold tracking-widest text-glaucous-600 uppercase">
+          <span className="text-sm font-mono font-semibold tracking-widest text-glaucous-600 uppercase">
             What We Do
           </span>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-vivid-royal-950 mt-2 mb-4">
+          <h1 className="text-5xl sm:text-6xl font-extrabold text-vivid-royal-950 mt-2 mb-4 tracking-tight leading-tight">
             Everything your business needs to run smoothly — in one place.
           </h1>
           <p className="text-lg text-glaucous-800 max-w-2xl">
@@ -78,14 +78,14 @@ export default function Platform() {
               }`}
             >
               <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                <span className="font-mono text-[10px] text-coffee-bean-600 font-bold tracking-widest block mb-2 uppercase">
+                <span className="font-mono text-sm text-coffee-bean-600 font-bold tracking-widest block mb-2 uppercase">
                   Capability 0{index + 1}
                 </span>
-                <h3 className="text-2xl font-bold text-vivid-royal-950 mb-4">{c.title}</h3>
-                <p className="text-sm text-glaucous-800 leading-relaxed mb-6">{c.desc}</p>
+                <h3 className="text-3xl font-bold text-vivid-royal-950 mb-4">{c.title}</h3>
+                <p className="text-base text-glaucous-800 leading-relaxed mb-6">{c.desc}</p>
                 <ul className="flex flex-col gap-3">
                   {c.bullets.map((b, idx) => (
-                    <li key={idx} className="flex gap-3 items-start text-xs text-glaucous-800">
+                    <li key={idx} className="flex gap-3 items-start text-sm text-glaucous-800">
                       <span className="text-coffee-bean-600 font-bold mt-0.5">✓</span>
                       <span>{b}</span>
                     </li>
@@ -102,7 +102,7 @@ export default function Platform() {
                       <div className="flex-1 bg-coffee-bean-500 rounded-sm shadow-[0_0_10px_rgba(237,18,109,0.15)]" style={{ height: "90%" }}></div>
                       <div className="flex-1 bg-glaucous-200 rounded-sm" style={{ height: "50%" }}></div>
                     </div>
-                    <span className="font-mono text-[9px] text-glaucous-600 block text-center uppercase">
+                    <span className="font-mono text-sm text-glaucous-600 block text-center uppercase">
                       Enquiries // This Week
                     </span>
                   </div>
@@ -110,19 +110,19 @@ export default function Platform() {
 
                 {c.type === "communication" && (
                   <div className="w-full max-w-sm bg-ghost-white-50 border border-glaucous-200 rounded-lg p-6 shadow-md flex flex-col gap-2">
-                    <div className="bg-glaucous-50 border border-glaucous-200 p-2.5 rounded text-[10px] font-mono text-center text-vivid-royal-950 leading-snug">
+                    <div className="bg-glaucous-50 border border-glaucous-200 p-2.5 rounded text-sm font-mono text-center text-vivid-royal-950 leading-snug">
                       Customer sends a message
                     </div>
-                    <div className="text-center text-glaucous-400 text-xs font-mono">↓</div>
-                    <div className="bg-coffee-bean-50 border border-coffee-bean-200 p-2.5 rounded text-[10px] font-mono text-center text-coffee-bean-600 font-semibold leading-snug">
+                    <div className="text-center text-glaucous-400 text-sm font-mono">↓</div>
+                    <div className="bg-coffee-bean-50 border border-coffee-bean-200 p-2.5 rounded text-sm font-mono text-center text-coffee-bean-600 font-semibold leading-snug">
                       Gets available times. Books instantly.
                     </div>
-                    <div className="text-center text-glaucous-400 text-xs font-mono">↓</div>
-                    <div className="bg-glaucous-50 border border-glaucous-200 p-2.5 rounded text-[10px] font-mono text-center text-vivid-royal-950 leading-snug">
+                    <div className="text-center text-glaucous-400 text-sm font-mono">↓</div>
+                    <div className="bg-glaucous-50 border border-glaucous-200 p-2.5 rounded text-sm font-mono text-center text-vivid-royal-950 leading-snug">
                       Receives reminder. Shows up on time.
                     </div>
-                    <div className="text-center text-glaucous-400 text-xs font-mono">↓</div>
-                    <div className="bg-coffee-bean-50 border border-coffee-bean-200 p-2.5 rounded text-[10px] font-mono text-center text-coffee-bean-600 font-semibold leading-snug">
+                    <div className="text-center text-glaucous-400 text-sm font-mono">↓</div>
+                    <div className="bg-coffee-bean-50 border border-coffee-bean-200 p-2.5 rounded text-sm font-mono text-center text-coffee-bean-600 font-semibold leading-snug">
                       Pays. Gets a follow-up.
                     </div>
                   </div>
@@ -130,7 +130,7 @@ export default function Platform() {
 
                 {c.type === "memory" && (
                   <div className="w-full max-w-md bg-ghost-white-50 border border-glaucous-200 rounded-lg overflow-hidden shadow-md">
-                    <table className="w-full text-left font-mono text-[10px] text-glaucous-950">
+                    <table className="w-full text-left font-mono text-sm text-glaucous-950">
                       <thead>
                         <tr className="bg-glaucous-100 border-b border-glaucous-200">
                           <th className="p-3 text-glaucous-600">PATIENT</th>
@@ -174,14 +174,14 @@ export default function Platform() {
                         { label: "Follow-up sent", done: false },
                       ].map((step, i) => (
                         <div key={i} className="flex items-center gap-3">
-                          <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[9px] font-bold font-mono ${
+                          <div className={`w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold font-mono ${
                             step.done
                               ? "bg-coffee-bean-100 text-coffee-bean-600 border border-coffee-bean-300"
                               : "bg-glaucous-100 text-glaucous-500 border border-glaucous-300"
                           }`}>
                             {step.done ? "✓" : (i + 1)}
                           </div>
-                          <span className={`text-xs font-mono ${step.done ? "text-glaucous-950" : "text-glaucous-500"}`}>
+                          <span className={`text-sm font-mono ${step.done ? "text-glaucous-950" : "text-glaucous-500"}`}>
                             {step.label}
                           </span>
                         </div>
@@ -194,21 +194,21 @@ export default function Platform() {
                   <div className="w-full max-w-sm bg-ghost-white-50 border border-glaucous-200 rounded-lg p-6 shadow-md">
                     <div className="flex justify-between mb-4 pb-4 border-b border-glaucous-200">
                       <div>
-                        <span className="font-mono text-[9px] text-glaucous-600 uppercase block">Collected today</span>
-                        <span className="text-xl font-bold text-vivid-royal-950">₹12,500</span>
+                        <span className="font-mono text-sm text-glaucous-600 uppercase block">Collected today</span>
+                        <span className="text-2xl font-bold text-vivid-royal-950">₹12,500</span>
                       </div>
                       <div className="text-right">
-                        <span className="font-mono text-[9px] text-scarlet-fire-600 uppercase block">Pending</span>
-                        <span className="text-xl font-bold text-scarlet-fire-600">₹3,200</span>
+                        <span className="font-mono text-sm text-scarlet-fire-600 uppercase block">Pending</span>
+                        <span className="text-2xl font-bold text-scarlet-fire-600">₹3,200</span>
                       </div>
                     </div>
                     <div className="flex flex-col gap-2">
-                      <div className="flex justify-between text-[10px] font-mono">
+                      <div className="flex justify-between text-sm font-mono">
                         <span className="text-glaucous-900">R Sharma</span>
                         <span className="text-scarlet-fire-600">₹2,500</span>
                         <span className="text-glaucous-500">Due 15 Jul</span>
                       </div>
-                      <div className="flex justify-between text-[10px] font-mono">
+                      <div className="flex justify-between text-sm font-mono">
                         <span className="text-glaucous-900">S Iyer</span>
                         <span className="text-scarlet-fire-600">₹700</span>
                         <span className="text-scarlet-fire-600">Overdue</span>
