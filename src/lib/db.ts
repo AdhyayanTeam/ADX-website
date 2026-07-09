@@ -1,5 +1,6 @@
 import { DatabaseSync } from "node:sqlite";
 import path from "node:path";
+import fs from "node:fs";
 
 const DB_PATH = path.join(process.cwd(), "data", "adx.db");
 
@@ -7,6 +8,10 @@ let db: DatabaseSync | null = null;
 
 export function getDb(): DatabaseSync {
   if (!db) {
+    const dbDir = path.dirname(DB_PATH);
+    if (!fs.existsSync(dbDir)) {
+      fs.mkdirSync(dbDir, { recursive: true });
+    }
     db = new DatabaseSync(DB_PATH);
     db.exec("PRAGMA journal_mode = WAL");
     db.exec("PRAGMA foreign_keys = ON");
