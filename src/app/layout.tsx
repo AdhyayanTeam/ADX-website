@@ -4,6 +4,7 @@ import "./global-new.css";
 import Navbar from "@/components/Navbar";
 import Link from "next/link";
 import Logo from "@/components/Logo";
+import MotionProvider from "@/components/MotionProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +37,9 @@ export default function RootLayout({
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} ${shareTech.variable}`}>
       <body className="antialiased min-h-screen flex flex-col bg-glaucous-50 text-vivid-royal-950">
         <Navbar />
-        <div className="flex-grow">{children}</div>
+        <MotionProvider>
+          <div className="flex-grow">{children}</div>
+        </MotionProvider>
         <footer className="w-full bg-ghost-white-50 border-t border-glaucous-200/80 py-12 px-6">
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
             <div className="flex flex-col items-start gap-3">
