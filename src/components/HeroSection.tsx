@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { MeshGradient } from "@paper-design/shaders-react";
 
@@ -17,8 +18,19 @@ const reasons = [
 ];
 
 export default function HeroSection() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <section className="relative w-full border-b border-glaucous-200/80 bg-glaucous-950 overflow-hidden py-20 lg:py-32 flex items-center justify-center min-h-[90dvh]">
+    <section className="relative w-full border-b border-glaucous-200/80 bg-glaucous-50 overflow-hidden py-20 lg:py-32 flex items-center justify-center min-h-[90dvh]">
       <div className="absolute inset-0 z-0">
         <MeshGradient
           style={{ height: "100%", width: "100%" }}
@@ -29,20 +41,28 @@ export default function HeroSection() {
           scale={1}
           rotation={0}
           speed={1}
-          colors={["#242423", "#333333", "#4a5551", "#bf9525"]}
+          colors={["#e8eddf", "#f5f5f5", "#cfdbd5", "#f5cb5c"]}
         />
       </div>
 
       <div className="w-full max-w-4xl mx-auto px-6 text-center z-[10] relative flex flex-col items-center justify-center">
         <div className="flex flex-col items-center text-center w-full">
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white drop-shadow-md leading-tight max-w-3xl relative z-[10] mb-6">
-            Your business isn&apos;t slowing down because you need more customers.{" "}
-            <span className="text-coffee-bean-300">
-              It&apos;s slowing down because your team is trying to remember everything.
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-vivid-royal-950 drop-shadow-sm leading-tight max-w-4xl relative z-[10] mb-6">
+            <span 
+              id="hero-logo-placeholder" 
+              className={`inline-block align-middle transition-all duration-600 ease-out ${
+                isScrolled 
+                  ? "w-0 h-0 mr-0 opacity-0 pointer-events-none" 
+                  : "h-20 w-20 sm:h-28 sm:w-28 lg:h-36 lg:w-36 mr-4 lg:mr-6 opacity-100"
+              }`}
+            />
+            Scale your business operations{" "}
+            <span className="text-coffee-bean-600">
+              by replacing manual memory with systems.
             </span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-glaucous-100 mb-8 max-w-2xl drop-shadow-sm leading-relaxed">
+          <p className="text-lg sm:text-xl text-glaucous-800 mb-8 max-w-2xl drop-shadow-sm leading-relaxed">
             Follow-ups get missed and customer details get lost. ADX builds simple systems so your business runs smoothly as it grows.
           </p>
 
@@ -62,25 +82,25 @@ export default function HeroSection() {
               See What We Build
             </Link>
           </div>
+        </div>
 
-          <div className="w-full max-w-4xl grid grid-cols-1 sm:grid-cols-3 gap-6 pt-10 border-t border-glaucous-300/10 mt-4">
-            {reasons.map((item, idx) => (
-              <div
-                key={item.title}
-                className="flex flex-col items-start text-left p-5 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:bg-white/[0.05] hover:border-white/[0.1] hover:shadow-[0_8px_30px_rgb(0,0,0,0.2)] transition-all duration-300 group"
-              >
-                <span className="text-base font-mono font-bold text-coffee-bean-400 mb-2.5 tracking-wider block">
-                  0{idx + 1}
-                </span>
-                <h3 className="text-lg font-bold text-white mb-2 leading-snug group-hover:text-coffee-bean-200 transition-colors duration-200">
-                  {item.title}
-                </h3>
-                <p className="text-base text-glaucous-200 leading-relaxed">
-                  {item.desc}
-                </p>
-              </div>
-            ))}
-          </div>
+        <div className="w-full max-w-4xl grid grid-cols-1 sm:grid-cols-3 gap-6 pt-10 border-t border-glaucous-300/60 mt-4 text-left">
+          {reasons.map((item, idx) => (
+            <div
+              key={item.title}
+              className="flex flex-col items-start p-5 rounded-xl bg-white/40 border border-white/60 hover:bg-white/60 hover:border-white/80 hover:shadow-[0_8px_30px_rgba(0,0,0,0.05)] transition-all duration-300 group"
+            >
+              <span className="text-base font-mono font-bold text-coffee-bean-600 mb-2.5 tracking-wider block">
+                0{idx + 1}
+              </span>
+              <h3 className="text-lg font-bold text-vivid-royal-950 mb-2 leading-snug group-hover:text-coffee-bean-600 transition-colors duration-200">
+                {item.title}
+              </h3>
+              <p className="text-base text-glaucous-800 leading-relaxed">
+                {item.desc}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
