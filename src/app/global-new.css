@@ -92,6 +92,10 @@
   --radius-sm: calc(var(--radius) - 4px);
   --font-heading: var(--font-share-tech);
 
+  /* Global typography overrides to prevent too-small text size */
+  --font-size-xs: 0.875rem;
+  --font-size-sm: 1rem;
+
   --animate-grid-move: gridMove 20s linear infinite;
   --animate-line-move: lineMove 6s linear infinite;
   --animate-corner-line: cornerLineAnimation 6s linear infinite;
@@ -177,36 +181,36 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .methodology-desc {
-  font-size: 0.8125rem;
+  font-size: var(--font-size-xs);
   line-height: 1.5;
   color: var(--color-scarlet-fire-800);
 }
 @media (min-width: 640px) {
   .methodology-desc {
-    font-size: 0.875rem;
+    font-size: var(--font-size-sm);
   }
 }
 
 .methodology-path-old {
-  font-size: 0.75rem;
+  font-size: var(--font-size-xs);
   color: var(--color-scarlet-fire-400);
   text-decoration: line-through;
 }
 
 .methodology-path-new {
-  font-size: 0.75rem;
+  font-size: var(--font-size-xs);
   font-weight: 600;
   color: #059669; /* Emerald 600 for positive optimization */
 }
 
 .methodology-metric-label {
-  font-size: 0.75rem;
+  font-size: var(--font-size-xs);
   color: var(--color-scarlet-fire-500);
 }
 
 .methodology-metric-val {
   font-family: var(--font-mono), monospace;
-  font-size: 0.75rem;
+  font-size: var(--font-size-xs);
   font-weight: 700;
   color: var(--color-scarlet-fire-950);
 }

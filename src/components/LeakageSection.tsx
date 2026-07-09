@@ -35,7 +35,7 @@ export default function LeakageSection() {
           className="lg:col-span-3 space-y-8"
         >
           <div className="relative group p-5 border border-transparent hover:border-glaucous-200/60 hover:bg-glaucous-50/50 hover:shadow-[0_8px_30px_rgba(36,36,35,0.02)] transition-all duration-300 rounded-xl">
-            <span className="font-mono text-[9px] font-bold text-glaucous-600 bg-glaucous-100/60 px-2 py-0.5 rounded-md tracking-wider inline-block mb-3">
+            <span className="font-mono text-xs font-bold text-glaucous-600 bg-glaucous-100/60 px-2 py-0.5 rounded-md tracking-wider inline-block mb-3">
               STAGE 01
             </span>
             <h3 className="text-base font-extrabold text-vivid-royal-950 font-heading tracking-tight mb-2 group-hover:text-vivid-royal-600 transition-colors duration-200">
@@ -47,7 +47,7 @@ export default function LeakageSection() {
           </div>
 
           <div className="relative group p-5 border border-transparent hover:border-glaucous-200/60 hover:bg-glaucous-50/50 hover:shadow-[0_8px_30px_rgba(36,36,35,0.02)] transition-all duration-300 rounded-xl">
-            <span className="font-mono text-[9px] font-bold text-glaucous-600 bg-glaucous-100/60 px-2 py-0.5 rounded-md tracking-wider inline-block mb-3">
+            <span className="font-mono text-xs font-bold text-glaucous-600 bg-glaucous-100/60 px-2 py-0.5 rounded-md tracking-wider inline-block mb-3">
               STAGE 02
             </span>
             <h3 className="text-base font-extrabold text-vivid-royal-950 font-heading tracking-tight mb-2 group-hover:text-vivid-royal-600 transition-colors duration-200">
@@ -88,7 +88,7 @@ export default function LeakageSection() {
           className="lg:col-span-3 space-y-8"
         >
           <div className="relative group p-5 border border-transparent hover:border-glaucous-200/60 hover:bg-glaucous-50/50 hover:shadow-[0_8px_30px_rgba(36,36,35,0.02)] transition-all duration-300 rounded-xl">
-            <span className="font-mono text-[9px] font-bold text-glaucous-600 bg-glaucous-100/60 px-2 py-0.5 rounded-md tracking-wider inline-block mb-3">
+            <span className="font-mono text-xs font-bold text-glaucous-600 bg-glaucous-100/60 px-2 py-0.5 rounded-md tracking-wider inline-block mb-3">
               STAGE 03
             </span>
             <h3 className="text-base font-extrabold text-vivid-royal-950 font-heading tracking-tight mb-2 group-hover:text-vivid-royal-600 transition-colors duration-200">
@@ -100,7 +100,7 @@ export default function LeakageSection() {
           </div>
 
           <div className="relative group p-5 border border-transparent hover:border-glaucous-200/60 hover:bg-glaucous-50/50 hover:shadow-[0_8px_30px_rgba(36,36,35,0.02)] transition-all duration-300 rounded-xl">
-            <span className="font-mono text-[9px] font-bold text-glaucous-600 bg-glaucous-100/60 px-2 py-0.5 rounded-md tracking-wider inline-block mb-3">
+            <span className="font-mono text-xs font-bold text-glaucous-600 bg-glaucous-100/60 px-2 py-0.5 rounded-md tracking-wider inline-block mb-3">
               STAGE 04
             </span>
             <h3 className="text-base font-extrabold text-vivid-royal-950 font-heading tracking-tight mb-2 group-hover:text-vivid-royal-600 transition-colors duration-200">

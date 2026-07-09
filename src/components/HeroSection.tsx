@@ -75,7 +75,7 @@ export default function HeroSection() {
                 <h3 className="text-sm font-bold text-white mb-2 leading-snug group-hover:text-coffee-bean-200 transition-colors duration-200">
                   {item.title}
                 </h3>
-                <p className="text-[11px] sm:text-xs text-glaucous-200 leading-relaxed">
+                <p className="text-xs sm:text-sm text-glaucous-200 leading-relaxed">
                   {item.desc}
                 </p>
               </div>

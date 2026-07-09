@@ -34,7 +34,7 @@ export default function MethodologySection() {
         "Identify the questions your team answers over and over",
       ],
       customElement: (
-        <div className="mt-3 p-2.5 bg-scarlet-fire-100/20 border border-scarlet-fire-200/50 rounded-lg flex items-center justify-between gap-2 font-mono text-[9px]">
+        <div className="mt-3 p-2.5 bg-scarlet-fire-100/20 border border-scarlet-fire-200/50 rounded-lg flex items-center justify-between gap-2 font-mono text-xs">
           <div className="px-2 py-0.5 bg-white border border-scarlet-fire-200 rounded text-scarlet-fire-950 shadow-sm">Inquiry</div>
           <span className="text-scarlet-fire-400">→</span>
           <div className="px-2 py-0.5 bg-scarlet-fire-100/60 border border-scarlet-fire-300/60 rounded text-scarlet-fire-950 font-medium">ADX Router</div>
@@ -64,10 +64,10 @@ export default function MethodologySection() {
       ],
       customElement: (
         <div className="mt-3 p-3 bg-neutral-50 border border-neutral-200 rounded-lg space-y-2 text-left font-sans text-xs">
-          <div className="max-w-[85%] p-2 bg-[#d9fdd3] text-neutral-800 rounded-lg rounded-tl-none shadow-sm ml-auto text-[11px] leading-tight border border-[#c2f3ba]">
+          <div className="max-w-[85%] p-2 bg-[#d9fdd3] text-neutral-800 rounded-lg rounded-tl-none shadow-sm ml-auto text-sm leading-tight border border-[#c2f3ba]">
             Hi! I'd like to book an appointment for tomorrow.
           </div>
-          <div className="max-w-[85%] p-2 bg-white text-neutral-800 rounded-lg rounded-tr-none shadow-sm border border-neutral-100 mr-auto text-[11px] leading-tight">
+          <div className="max-w-[85%] p-2 bg-white text-neutral-800 rounded-lg rounded-tr-none shadow-sm border border-neutral-100 mr-auto text-sm leading-tight">
             Sure! We have slots open at 10 AM and 2 PM. Please tap to choose.
           </div>
         </div>

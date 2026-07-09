@@ -160,10 +160,13 @@ export default function OutcomesSection() {
 
               <div>
                 <div className="mb-6 flex justify-between items-center border-b border-glaucous-200/40 pb-3">
-                  <span className="font-mono text-[8px] uppercase tracking-widest text-glaucous-500 font-bold">
+                  <span className="font-mono text-xs uppercase tracking-widest text-glaucous-500 font-bold">
                     Diagnostic Score
                   </span>
-                  <span className={`font-mono text-[10px] font-extrabold tracking-wider ${isOptimized ? "text-vivid-royal-600" : "text-scarlet-fire-600"}`}>
+                </div>
+
+                <div className="mb-4 flex justify-between items-center border-b border-glaucous-200/40 pb-3">
+                  <span className={`font-mono text-xs font-extrabold tracking-wider ${isOptimized ? "text-vivid-royal-600" : "text-scarlet-fire-600"}`}>
                     EFFICIENCY: {current.progress}% {isOptimized && `(+${item.system.progress - item.traditional.progress}%)`}
                   </span>
                 </div>
