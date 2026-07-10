@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { getDb } from "@/lib/db";
 
 export async function POST(request: Request) {
   try {
@@ -10,11 +9,12 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "event and page are required" }, { status: 400 });
     }
 
-    const db = getDb();
-    const stmt = db.prepare(
-      "INSERT INTO analytics_events (event, page, metadata) VALUES (?, ?, ?)",
-    );
-    stmt.run(event, page, metadata ? JSON.stringify(metadata) : null);
+    console.log("Analytics event tracked (No Database):", {
+      event,
+      page,
+      metadata,
+      timestamp: new Date().toISOString()
+    });
 
     return NextResponse.json({ ok: true });
   } catch {
