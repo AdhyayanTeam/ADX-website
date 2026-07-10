@@ -30,7 +30,7 @@
   --color-vivid-royal-900: #141413;
   --color-vivid-royal-950: #0f0f0e;
 
-  --color-glaucous-50: #e8eddf;
+  --color-glaucous-50: #ffffff;
   --color-glaucous-100: #cfdbd5;
   --color-glaucous-200: #b8c5bf;
   --color-glaucous-300: #a2b0aa;
@@ -67,7 +67,7 @@
   --color-ghost-white-950: #212121;
 
   /* Shadcn variables mapping - BRIGHT theme configuration */
-  --color-background: #e8eddf;
+  --color-background: #ffffff;
   --color-foreground: #242423;
   --color-card: #ffffff;
   --color-card-foreground: #242423;
@@ -91,6 +91,8 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
   --font-heading: var(--font-share-tech);
+  --font-sans: var(--font-geist-sans), sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
 
 
   --font-size-xs: 0.75rem;
@@ -132,7 +134,7 @@
 
 @layer base {
   :root {
-    --background: 81 22% 90%; /* #E8EDDF */
+    --background: 0 0% 100%; /* #ffffff */
     --foreground: 60 1% 14%; /* #242423 */
     --card: 0 0% 100%; /* #ffffff */
     --card-foreground: 60 1% 14%; /* #242423 */

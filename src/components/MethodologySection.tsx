@@ -92,7 +92,6 @@ export default function MethodologySection() {
         "Adjust automations based on real usage data",
         "Add new workflows as your business grows",
       ],
-      dark: true,
     },
   ];
 
