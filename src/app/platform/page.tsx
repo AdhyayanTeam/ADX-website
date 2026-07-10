@@ -99,7 +99,7 @@ export default function Platform() {
                     <div className="h-40 flex items-end gap-4 pb-4 border-b border-glaucous-200 mb-4">
                       <div className="flex-1 bg-glaucous-200 rounded-sm" style={{ height: "40%" }}></div>
                       <div className="flex-1 bg-glaucous-200 rounded-sm" style={{ height: "60%" }}></div>
-                      <div className="flex-1 bg-coffee-bean-500 rounded-sm shadow-[0_0_10px_rgba(237,18,109,0.15)]" style={{ height: "90%" }}></div>
+                      <div className="flex-1 bg-coffee-bean-500 rounded-sm shadow-[0_0_10px_rgba(191,149,37,0.2)]" style={{ height: "90%" }}></div>
                       <div className="flex-1 bg-glaucous-200 rounded-sm" style={{ height: "50%" }}></div>
                     </div>
                     <span className="font-mono text-sm text-glaucous-600 block text-center uppercase">
@@ -110,19 +110,19 @@ export default function Platform() {
 
                 {c.type === "communication" && (
                   <div className="w-full max-w-sm bg-ghost-white-50 border border-glaucous-200 rounded-lg p-6 shadow-md flex flex-col gap-2">
-                    <div className="bg-glaucous-50 border border-glaucous-200 p-2.5 rounded text-sm font-mono text-center text-vivid-royal-950 leading-snug">
+                    <div className="bg-glaucous-50 border border-glaucous-200 p-2.5 rounded-lg text-sm font-mono text-center text-vivid-royal-950 leading-snug">
                       Customer sends a message
                     </div>
                     <div className="text-center text-glaucous-400 text-sm font-mono">↓</div>
-                    <div className="bg-coffee-bean-50 border border-coffee-bean-200 p-2.5 rounded text-sm font-mono text-center text-coffee-bean-600 font-semibold leading-snug">
+                    <div className="bg-coffee-bean-50 border border-coffee-bean-200 p-2.5 rounded-lg text-sm font-mono text-center text-coffee-bean-600 font-semibold leading-snug">
                       Gets available times. Books instantly.
                     </div>
                     <div className="text-center text-glaucous-400 text-sm font-mono">↓</div>
-                    <div className="bg-glaucous-50 border border-glaucous-200 p-2.5 rounded text-sm font-mono text-center text-vivid-royal-950 leading-snug">
+                    <div className="bg-glaucous-50 border border-glaucous-200 p-2.5 rounded-lg text-sm font-mono text-center text-vivid-royal-950 leading-snug">
                       Receives reminder. Shows up on time.
                     </div>
                     <div className="text-center text-glaucous-400 text-sm font-mono">↓</div>
-                    <div className="bg-coffee-bean-50 border border-coffee-bean-200 p-2.5 rounded text-sm font-mono text-center text-coffee-bean-600 font-semibold leading-snug">
+                    <div className="bg-coffee-bean-50 border border-coffee-bean-200 p-2.5 rounded-lg text-sm font-mono text-center text-coffee-bean-600 font-semibold leading-snug">
                       Pays. Gets a follow-up.
                     </div>
                   </div>

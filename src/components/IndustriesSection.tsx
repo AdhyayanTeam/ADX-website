@@ -110,7 +110,7 @@ export default function IndustriesSection() {
             ) : (
               <button
                 onClick={() => setInteractiveState({ ...interactiveState, coaching: "sent" })}
-                className="px-2.5 py-1 bg-coffee-bean-500 hover:bg-coffee-bean-600 text-coffee-bean-950 font-bold rounded text-sm transition-colors cursor-pointer"
+                className="px-2.5 py-1 bg-coffee-bean-500 hover:bg-coffee-bean-600 text-coffee-bean-950 font-bold rounded-lg text-sm transition-colors cursor-pointer"
               >
                 Remind on WhatsApp
               </button>
@@ -164,7 +164,7 @@ export default function IndustriesSection() {
             <p className="text-base text-neutral-800 leading-snug">Hi Rahul! Please confirm your appointment with Dr. Mehta today at 11:30 AM.</p>
             <button
               onClick={() => setInteractiveState({ ...interactiveState, healthcare: "confirmed" })}
-              className="w-full py-1.5 bg-vivid-royal-600 hover:bg-vivid-royal-700 text-white font-bold rounded text-sm transition-colors cursor-pointer"
+              className="w-full py-1.5 bg-vivid-royal-600 hover:bg-vivid-royal-700 text-white font-bold rounded-lg text-sm transition-colors cursor-pointer"
             >
               Confirm Patient Booking (Simulate Reply)
             </button>
@@ -216,7 +216,7 @@ export default function IndustriesSection() {
               {!isSent ? (
                 <button
                   onClick={() => setInteractiveState({ ...interactiveState, salon: "sent" })}
-                  className="px-2.5 py-1 bg-coffee-bean-500 hover:bg-coffee-bean-600 text-coffee-bean-950 font-bold rounded text-sm transition-colors cursor-pointer"
+                  className="px-2.5 py-1 bg-coffee-bean-500 hover:bg-coffee-bean-600 text-coffee-bean-950 font-bold rounded-lg text-sm transition-colors cursor-pointer"
                 >
                   Send 28-Day Recall WhatsApp
                 </button>
@@ -263,7 +263,7 @@ export default function IndustriesSection() {
             <p className="text-sm text-red-900 leading-snug">Membership expired 5 days ago. Click below to simulate WhatsApp renewal link payment.</p>
             <button
               onClick={() => setInteractiveState({ ...interactiveState, gym: "active" })}
-              className="w-full py-1.5 bg-coffee-bean-500 hover:bg-coffee-bean-600 text-coffee-bean-950 font-bold rounded text-sm transition-colors cursor-pointer"
+              className="w-full py-1.5 bg-coffee-bean-500 hover:bg-coffee-bean-600 text-coffee-bean-950 font-bold rounded-lg text-sm transition-colors cursor-pointer"
             >
               Simulate Member Payment (₹2,000)
             </button>
@@ -314,7 +314,7 @@ export default function IndustriesSection() {
             <p className="text-sm text-neutral-800 leading-snug">Client gets a WhatsApp message to tap and approve the milestone.</p>
             <button
               onClick={() => setInteractiveState({ ...interactiveState, professional: "approved" })}
-              className="w-full py-1.5 bg-vivid-royal-600 hover:bg-vivid-royal-700 text-white font-bold rounded text-sm transition-colors cursor-pointer"
+              className="w-full py-1.5 bg-vivid-royal-600 hover:bg-vivid-royal-700 text-white font-bold rounded-lg text-sm transition-colors cursor-pointer"
             >
               Click to Approve Milestone as Client
             </button>

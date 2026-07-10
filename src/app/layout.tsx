@@ -67,7 +67,7 @@ export default function RootLayout({
               <h5 className="font-mono text-base text-glaucous-600 uppercase tracking-widest mb-6 font-bold">Platform</h5>
               <ul className="flex flex-col gap-3.5 text-base text-glaucous-700">
                 <li><Link href="/platform" className="hover:text-coffee-bean-600 transition-colors">Capabilities</Link></li>
-                <li><Link href="/book" data-track-cta="footer" className="hover:text-coffee-bean-600 transition-colors">Book Diagnostic Call</Link></li>
+                <li><Link href="/book" data-track-cta="footer" className="hover:text-coffee-bean-600 transition-colors">Book a Discovery Call</Link></li>
               </ul>
             </div>
 

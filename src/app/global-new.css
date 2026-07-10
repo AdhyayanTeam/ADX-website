@@ -42,17 +42,17 @@
   --color-glaucous-900: #242423;
   --color-glaucous-950: #1a1a19;
 
-  --color-scarlet-fire-50: #fdfbf7;
-  --color-scarlet-fire-100: #e8eddf;
-  --color-scarlet-fire-200: #cfdbd5;
-  --color-scarlet-fire-300: #a2b0aa;
-  --color-scarlet-fire-400: #8b9a94;
-  --color-scarlet-fire-500: #f5cb5c;
-  --color-scarlet-fire-600: #e3b53c;
-  --color-scarlet-fire-700: #333333;
-  --color-scarlet-fire-800: #242423;
-  --color-scarlet-fire-900: #1a1a19;
-  --color-scarlet-fire-950: #121211;
+  --color-scarlet-fire-50: #fff5f5;
+  --color-scarlet-fire-100: #ffe3e3;
+  --color-scarlet-fire-200: #ffd0d0;
+  --color-scarlet-fire-300: #ffb3b3;
+  --color-scarlet-fire-400: #f87171;
+  --color-scarlet-fire-500: #dc2626;
+  --color-scarlet-fire-600: #b91c1c;
+  --color-scarlet-fire-700: #991b1b;
+  --color-scarlet-fire-800: #7f1d1d;
+  --color-scarlet-fire-900: #450a0a;
+  --color-scarlet-fire-950: #2a0808;
 
   --color-ghost-white-50: #ffffff;
   --color-ghost-white-100: #fafafa;
@@ -93,16 +93,16 @@
   --font-heading: var(--font-share-tech);
 
 
-  --font-size-xs: 1.15rem;
-  --font-size-sm: 1.35rem;
-  --font-size-base: 1.5rem;
-  --font-size-lg: 1.75rem;
-  --font-size-xl: 2.1rem;
-  --font-size-2xl: 2.6rem;
-  --font-size-3xl: 3.3rem;
-  --font-size-4xl: 4.2rem;
-  --font-size-5xl: 5.2rem;
-  --font-size-6xl: 6.5rem;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  --font-size-6xl: 3.75rem;
 
   --animate-grid-move: gridMove 20s linear infinite;
   --animate-line-move: lineMove 6s linear infinite;
@@ -159,8 +159,7 @@
 body {
   background-color: var(--color-glaucous-50);
   color: var(--color-vivid-royal-950);
-  font-family: var(--font-sans), sans-serif;
-  font-size: var(--font-size-base);
+  font-family: var(--font-geist-sans), sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {

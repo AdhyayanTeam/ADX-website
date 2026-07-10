@@ -35,11 +35,11 @@ export default function MethodologySection() {
       ],
       customElement: (
         <div className="mt-3 p-2.5 bg-scarlet-fire-100/20 border border-scarlet-fire-200/50 rounded-lg flex items-center justify-between gap-2 font-mono text-base">
-          <div className="px-2 py-0.5 bg-white border border-scarlet-fire-200 rounded text-scarlet-fire-950 shadow-sm">Inquiry</div>
+          <div className="px-2 py-0.5 bg-white border border-scarlet-fire-200 rounded-lg text-scarlet-fire-950 shadow-sm">Inquiry</div>
           <span className="text-scarlet-fire-400">→</span>
-          <div className="px-2 py-0.5 bg-scarlet-fire-100/60 border border-scarlet-fire-300/60 rounded text-scarlet-fire-950 font-medium">ADX Router</div>
+          <div className="px-2 py-0.5 bg-scarlet-fire-100/60 border border-scarlet-fire-300/60 rounded-lg text-scarlet-fire-950 font-medium">ADX Router</div>
           <span className="text-scarlet-fire-400">→</span>
-          <div className="px-2 py-0.5 bg-scarlet-fire-500/20 border border-scarlet-fire-500/40 rounded text-scarlet-fire-950 font-bold">Action</div>
+          <div className="px-2 py-0.5 bg-scarlet-fire-500/20 border border-scarlet-fire-500/40 rounded-lg text-scarlet-fire-950 font-bold">Action</div>
         </div>
       ),
     },
