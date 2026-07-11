@@ -19,19 +19,32 @@ const reasons = [
 
 export default function HeroSection() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
+
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+
     handleScroll();
+    checkMobile();
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", checkMobile);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", checkMobile);
+    };
   }, []);
 
   return (
     <>
-      <section className="relative w-full bg-glaucous-50 overflow-hidden py-20 lg:py-32 flex items-center justify-center min-h-[85dvh]">
+      <section className="relative w-full bg-glaucous-50 overflow-hidden py-12 lg:py-32 flex items-center justify-center min-h-[75dvh] lg:min-h-[85dvh]">
         <div className="absolute inset-0 z-0">
           <MeshGradient
             style={{ height: "100%", width: "100%" }}
@@ -48,15 +61,17 @@ export default function HeroSection() {
 
         <div className="w-full max-w-4xl mx-auto px-6 text-center z-[10] relative flex flex-col items-center justify-center">
           <div className="flex flex-col items-center text-center w-full">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-vivid-royal-950 drop-shadow-sm leading-tight max-w-4xl relative z-[10] mb-6">
-              <span 
-                id="hero-logo-placeholder" 
-                className={`inline-block align-middle transition-all duration-600 ease-out ${
-                  isScrolled 
-                    ? "w-0 h-0 mr-0 opacity-0 pointer-events-none" 
-                    : "h-20 w-20 sm:h-28 sm:w-28 lg:h-36 lg:w-36 mr-4 lg:mr-6 opacity-100"
-                }`}
-              />
+            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-vivid-royal-950 drop-shadow-sm leading-tight max-w-4xl relative z-[10] mb-6">
+              {!isMobile && (
+                <span 
+                  id="hero-logo-placeholder" 
+                  className={`inline-block align-middle transition-all duration-600 ease-out ${
+                    isScrolled 
+                      ? "w-0 h-0 mr-0 opacity-0 pointer-events-none" 
+                      : "h-20 w-20 sm:h-28 sm:w-28 lg:h-36 lg:w-36 mr-4 lg:mr-6 opacity-100"
+                  }`}
+                />
+              )}
               Scale your business operations{" "}
               <span className="text-coffee-bean-600">
                 by replacing manual memory with systems.
@@ -87,12 +102,15 @@ export default function HeroSection() {
         </div>
       </section>
 
-      <section className="w-full bg-white border-b border-glaucous-200/80 py-16 px-6 relative z-10">
-        <div className="w-full max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-6 text-left">
+      <section className="w-full bg-white border-b border-glaucous-200/80 py-12 lg:py-16 px-6 relative z-10 overflow-hidden">
+        <div 
+          className="w-full max-w-7xl mx-auto flex lg:grid overflow-x-auto lg:overflow-x-visible snap-x snap-mandatory lg:snap-none gap-6 text-left pb-4 lg:pb-0 scrollbar-none"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
           {reasons.map((item, idx) => (
             <div
               key={item.title}
-              className="flex flex-col items-start p-5 rounded-xl bg-glaucous-50/20 border border-glaucous-100 hover:bg-glaucous-50/40 hover:border-glaucous-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.02)] transition-all duration-300 group"
+              className="min-w-[80vw] sm:min-w-[50vw] lg:min-w-0 snap-center flex flex-col items-start p-5 rounded-xl bg-glaucous-50/20 border border-glaucous-100 hover:bg-glaucous-50/40 hover:border-glaucous-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.02)] transition-all duration-300 group"
             >
               <span className="text-base font-mono font-bold text-coffee-bean-600 mb-2.5 tracking-wider block">
                 0{idx + 1}

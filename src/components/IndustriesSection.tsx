@@ -334,17 +334,20 @@ export default function IndustriesSection() {
   };
 
   return (
-    <section className="w-full bg-white border-t border-glaucous-200/80 py-20 px-6" id="industries">
-      <div className="max-w-7xl mx-auto text-center mb-16">
-        <h2 className="text-5xl sm:text-6xl font-extrabold text-vivid-royal-950 mt-2 mb-4 tracking-tight leading-tight">
+    <section className="w-full bg-white border-t border-glaucous-200/80 py-16 lg:py-20 px-6" id="industries">
+      <div className="max-w-7xl mx-auto text-center mb-10 lg:mb-16">
+        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-vivid-royal-950 mt-2 mb-4 tracking-tight leading-tight">
           We work with Indian service businesses.
         </h2>
-        <p className="text-lg sm:text-xl text-glaucous-800 max-w-xl mx-auto leading-relaxed">
+        <p className="text-base sm:text-lg lg:text-xl text-glaucous-800 max-w-xl mx-auto leading-relaxed">
           Every industry has different problems. We build different systems for each one.
         </p>
       </div>
 
-      <div className="max-w-7xl mx-auto flex justify-center gap-3 overflow-x-auto pb-4 mb-12 select-none">
+      <div 
+        className="max-w-7xl mx-auto flex justify-start lg:justify-center gap-3 overflow-x-auto pb-4 mb-8 lg:mb-12 select-none px-4 lg:px-0 scrollbar-none"
+        style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+      >
         {(Object.keys(industryData) as IndustryKey[]).map((key) => (
           <button
             key={key}

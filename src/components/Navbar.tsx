@@ -7,6 +7,7 @@ import Logo from "./Logo";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [isMobile, setIsMobile] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [heroCoords, setHeroCoords] = useState<{
@@ -24,6 +25,8 @@ export default function Navbar() {
   } | null>(null);
 
   const updateCoordinates = () => {
+    setIsMobile(window.innerWidth < 1024);
+
     // 1. Measure navbar placeholder
     const navEl = document.getElementById("nav-logo-placeholder");
     if (navEl) {
@@ -82,7 +85,7 @@ export default function Navbar() {
     };
   }, [pathname]);
 
-  const activeCoords = (isScrolled || pathname !== "/") ? navCoords : (heroCoords || navCoords);
+  const activeCoords = (isMobile || isScrolled || pathname !== "/") ? navCoords : (heroCoords || navCoords);
 
   const logoStyle = activeCoords
     ? {
@@ -92,7 +95,7 @@ export default function Navbar() {
         width: `${activeCoords.width}px`,
         height: `${activeCoords.height}px`,
         zIndex: 100,
-        transition: "all 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
+        transition: isMobile ? "none" : "all 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
       }
     : {
         opacity: 0,
@@ -152,16 +155,16 @@ export default function Navbar() {
             </button>
           </div>
         </div>
-
+ 
         {mobileOpen && <MobileMenu key={pathname} navLinks={navLinks} />}
       </header>
-
+ 
       {/* Floating Logo rendered outside header to avoid backdrop-filter coordinate containment issues in Chrome/Safari */}
       <Link
         href="/"
         style={logoStyle}
         className={`flex items-center justify-center select-none rounded-2xl transition-all duration-500 ease-out z-[100] ${
-          !isScrolled && pathname === "/"
+          !isMobile && !isScrolled && pathname === "/"
             ? "p-2.5 bg-white/5 backdrop-blur-md border border-white/15 border-t-white/30 border-b-black/10 shadow-[0_8px_24px_rgba(0,0,0,0.15),inset_0_1px_1px_rgba(255,255,255,0.15)]"
             : "p-0 bg-transparent backdrop-blur-none border-none shadow-none"
         }`}

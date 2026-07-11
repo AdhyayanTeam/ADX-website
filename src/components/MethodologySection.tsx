@@ -109,7 +109,7 @@ export default function MethodologySection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-8">
         <div className="flex-shrink-0 flex flex-col md:flex-row md:items-end md:justify-between border-b border-scarlet-fire-200/40 pb-4 gap-4">
           <div>
-            <h2 className="text-5xl sm:text-6xl font-extrabold text-scarlet-fire-950 tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-scarlet-fire-950 tracking-tight leading-tight">
               Observe. Build. Improve.
             </h2>
           </div>

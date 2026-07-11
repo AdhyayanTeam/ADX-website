@@ -43,14 +43,19 @@ To capture high-intent traffic from Indian business owners searching for operati
 *   **Current Placeholder**: Abstract descriptions of lead intake delays (-45% drop-off), manual follow-ups (-30%), phone scheduling (-15%), and late payments.
 *   **Real Content Needed**:
     *   *Intake*: State the average lead decay rate in Indian consumer businesses (e.g., "A lead cold for 15 minutes is 7x less likely to convert. In India, 64% of Facebook/Google ad leads decay because staff doesn't reply instantly.").
-    *   *Follow-up*: Contrast personal WhatsApp messaging (unmonitored) with structured CRM workflows.
+    *   *Follow-up*: Contrast personal WhatsApp messaging (unmonitored) with CRM workflows.
     *   *Payment*: Detail the cost of late payments (e.g., "The average Indian coaching class has 15-20% outstanding fees at any given time, tying up working capital.").
 *   **SEO Target**: Terms like "lead response latency", "accounts receivable leakage", "sales pipeline drop-off".
 
-#### 3. Case Studies Section
+#### 3. Live Simulation Widgets (Industries Section)
+*   **Zero-Dependency Interactive Panels**: Replaced visual PNG images with interactive simulators representing fee reminders, patient calendars, client recall timelines, member check-ins, and milestone approvals.
+*   **Real Content Needed**: Keep simulation copy grounded in real Indian business scenarios (e.g., UPI link generation `adx.pay/kabir-sharma`, Dr. Mehta appointment confirmations, 28-day salon recall offers, gym access checkers, and Tally-integrated invoices).
+*   **SEO Target**: "Live pipeline simulation", "interactive workflow builder".
+
+#### 4. Case Studies Section
 *   **Current Placeholder**: "Delhi Coaching Academy (+22% Admissions, 45s Response Speed)" and "Dr. Mehta Ortho Clinics (-30% No-Shows, 18 hrs/wk Saved Labor)".
 *   **Real Content Needed**:
-    *   *Real Business Case Study 1*: A real, named coaching institute (e.g., "Gravity Classes, Janakpuri, Delhi"). Explain their initial mess: 3 counselors writing student names in notebooks, manual phone reminders for installment fees. Explain the ADX fix: a custom WhatsApp intake bot linking directly to a centralized SQL dashboard and auto-triggering Razorpay links. Present verified numbers (+22% enrollment increase, 80% collection efficiency).
+    *   *Real Business Case Study 1*: A real, named coaching institute (e.g., "Gravity Classes, Janakpuri, Delhi"). Explain their initial state: counselors writing student names in notebooks, manual phone reminders for installment fees. Explain the ADX fix: a custom WhatsApp intake bot linking directly to a centralized SQL dashboard and auto-triggering Razorpay links. Present verified numbers (+22% enrollment increase, 80% collection efficiency).
     *   *Real Business Case Study 2*: A real healthcare clinic (e.g., "Vikas Dental & Maxillofacial Centre"). Detail how patients now book slots directly from a WhatsApp menu, checking live dentist calendars in real-time, reducing receptionist calls by 70%.
 *   **SEO Target**: "Case study: WhatsApp automation coaching class Delhi", "dentist appointment scheduling case study India".
 
@@ -58,10 +63,10 @@ To capture high-intent traffic from Indian business owners searching for operati
 
 ### B. Vertical-Specific Pages (`/industries`)
 
-This page needs to be highly detailed to establish search authority for niche business terms.
+This page is structured using a tabbed vertical navigation layout to present detailed vertical-specific workflows cleanly. All vertical content is rendered with CSS-based visibility tags to ensure search engines index all targeted keywords.
 
 #### 1. Coaching & Test Prep
-*   **Real Content Needed**: Mention specific Indian entrance exams (IIT-JEE, NEET, CLAT, UPSC) and batch scheduling terms (e.g., "Morning Batch A, Weekend Dropper Batch"). Write about the friction of fee collections in India (e.g., collection via post-dated checks, UPI transfers, monthly cash handling) and how automated Razorpay links on WhatsApp settle these instantly.
+*   **Real Content Needed**: Mention specific Indian entrance exams (IIT-JEE, NEET, UPSC) and batch scheduling terms (e.g., "Morning Batch A, Weekend Dropper Batch"). Write about the friction of fee collections in India (e.g., collection via post-dated checks, UPI transfers, monthly cash handling) and how automated Razorpay links on WhatsApp settle these instantly.
 *   **SEO Target**: "coaching institute batch scheduler", "JEE NEET coaching fee automation", "student registration portal".
 
 #### 2. Clinics & Healthcare
@@ -69,7 +74,7 @@ This page needs to be highly detailed to establish search authority for niche bu
 *   **SEO Target**: "doctor appointment booking system whatsapp API", "clinic triage automation", "patient follow up software".
 
 #### 3. Salons & Wellness
-*   **Real Content Needed**: Explain how empty Tuesday and Wednesday afternoons are targeted with automated WhatsApp discounts sent to customers who haven't visited in 30 days. Detail how commissions are automatically logged for technicians (hairdressers, therapists) based on check-out data.
+*   **Real Content Needed**: Explain how empty Tuesday and Wednesday afternoons are targeted with automated WhatsApp discounts sent to customers who haven't visited in 30 days. Detail how commissions are automatically logged for technicians based on check-out data.
 *   **SEO Target**: "salon client retention tools", "empty slot booking automation", "therapist commission tracker".
 
 #### 4. Gyms & Fitness
@@ -83,8 +88,6 @@ This page needs to be highly detailed to establish search authority for niche bu
 ---
 
 ### C. Platform Capabilities (`/platform`)
-
-This page should provide technical details to build confidence with tech-savvy decision-makers.
 
 *   **Real Content Needed**:
     *   *Database*: Name the actual databases used (e.g., PostgreSQL, SQLite, Supabase) and the security standards (encryption at rest, regular backups).
@@ -115,8 +118,6 @@ This page should provide technical details to build confidence with tech-savvy d
 
 ## 3. SEO Technical & Metadata Checklist
 
-To ensure all pages rank effectively on search engines, implement the following configuration rules:
-
 ### 1. Title and Meta Tags (Current vs. Target)
 
 | Route | Target Meta Title | Target Meta Description |
@@ -133,10 +134,32 @@ To ensure all pages rank effectively on search engines, implement the following 
 Embed the following structured data schemas in the root layout to help search crawlers index the business:
 *   **LocalBusiness / ProfessionalService Schema**: Defines ADX as an operations consulting/engineering service based in India.
 *   **SoftwareApplication Schema**: For target landing pages like `/platform` to describe the custom integration engine.
-*   **FAQPage Schema**: For the homepage `/` and `/discovery` to index FAQs directly in search results snippets.
+*   **FAQPage Schema**: FAQ markup to index FAQs directly in search results snippets.
 
 ### 3. Structural Semantics
 *   Ensure exactly **one `<h1>` tag** is present on every page, containing the primary search target.
 *   Use `<h2>` for primary sections and `<h3>` for individual features or pain points.
-*   Add descriptive `alt` tags to all images and illustrations (e.g., `alt="ADX custom dashboard displaying monthly sales conversion metrics"` instead of `alt="dashboard"`).
-*   Utilize clean, SEO-friendly link texts (e.g., "Explore ADX Platform Capabilities" instead of "Click Here").
+*   Add descriptive `alt` tags to all images and illustrations.
+*   Utilize clean, SEO-friendly link texts.
+
+---
+
+## 4. Global Skill & Shortcut Inheritance (AGENTS.md)
+The project inherits the following foundational execution skills from the root `AGENTS.md` guidelines. Any future development or modification must strictly adhere to these:
+
+1.  **`!taste` / `design-taste-frontend`**:
+    *   **Aesthetics First**: Focus on custom display typography (Share Tech, Geist Mono) and off-white/dark contrasting palettes instead of default slate-900 or generic SaaS "AI-purple/blue" gradients (strictly avoiding the "Lila Rule" slop).
+    *   **Tactile Materiality**: Active states must simulate micro-physical pushes (e.g., `active:translate-y-[2px] active:scale-[0.98]`) with high-contrast, robust borders.
+    *   **Corner Radius Consistency**: Uniform shape locks (e.g., inputs and cards locked to clean scale).
+    
+2.  **`!impeccable` / `impeccable`**:
+    *   **No Placeholders**: Deprecate fake assets, mock URLs, and raw file dependencies. All content must utilize verified structural data or interactive live components.
+    *   **Contrast & Legibility**: Ensure strict WCAG AA contrast compliance across all text layers (e.g., buttons, form fields, and placeholders) and prevent text wrapping bugs on CTAs.
+    *   **Structural Quality**: Keep HTML semantic (single H1, clean H2/H3 hierarchy, clean grid layouts over flex math).
+
+3.  **`!uiuxpromax` / `ui-ux-pro-max`**:
+    *   **Interactive Autonomy**: Leverage motion values and hardware-accelerated animations rather than CPU-blocking script loops.
+    *   **Full UI States**: Build out robust loading, confirmation, and error states for all user transactions.
+
+4.  **`!huashu` / `huashu-design`**:
+    *   **Direct Positioning**: Focus copywriting on outcome-selling (recovered revenue, time saved, manual stress removed) rather than generic custom software jargon.
