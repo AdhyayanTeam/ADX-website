@@ -5,8 +5,8 @@ export default function WhatWeObservedSection() {
       <div className="absolute bottom-0 left-1/3 w-[600px] h-[600px] bg-coffee-bean-100/10 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-3xl mx-auto relative z-10 text-center">
-        <span className="text-sm font-mono font-bold tracking-widest text-glaucous-600 uppercase block mb-4">
-          What We&apos;ve Observed
+        <span className="text-sm font-mono font-bold tracking-wide text-glaucous-600 block mb-4">
+          What we&apos;ve observed
         </span>
 
         <p className="text-xl lg:text-2xl text-glaucous-900 leading-relaxed mb-6 font-sans">

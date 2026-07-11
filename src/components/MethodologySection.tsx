@@ -207,7 +207,7 @@ export default function MethodologySection() {
 
             {/* Instruction and Indicators - Hidden on mobile, shown on desktop */}
             <div className="hidden lg:block pt-6 border-t border-scarlet-fire-200/60 space-y-4">
-              <p className="text-xs font-semibold text-scarlet-fire-500 uppercase tracking-widest animate-pulse">
+              <p className="text-xs font-semibold text-scarlet-fire-500 tracking-widest animate-pulse">
                 Swipe or click cards to flip methodology
               </p>
               
@@ -245,7 +245,7 @@ export default function MethodologySection() {
 
           {/* Mobile Pagination Dots & Instruction - Visible only on mobile (rendered at the bottom of the section) */}
           <div className="w-full flex flex-col items-center gap-3 mt-6 lg:hidden">
-            <p className="text-xs font-semibold text-scarlet-fire-500 uppercase tracking-widest animate-pulse">
+            <p className="text-xs font-semibold text-scarlet-fire-500 tracking-widest animate-pulse">
               Swipe or click cards to flip methodology
             </p>
             <div className="flex gap-2">

@@ -6,7 +6,7 @@ import { m } from "framer-motion";
 const stages = [
   {
     num: "STAGE 01",
-    title: "New Enquiry",
+    title: "New enquiry",
     desc: "A customer sends a message. Nobody replies for hours. By evening, they've already chosen someone else."
   },
   {
@@ -95,7 +95,7 @@ export default function LeakageSection() {
               STAGE 01
             </span>
             <h3 className="text-2xl font-extrabold text-vivid-royal-950 font-heading tracking-tight mb-2 group-hover:text-vivid-royal-600 transition-colors duration-200">
-              New Enquiry
+              New enquiry
             </h3>
             <p className="text-base text-glaucous-800 leading-relaxed font-sans">
               A customer sends a message. Nobody replies for hours. By evening, they&apos;ve already chosen someone else.

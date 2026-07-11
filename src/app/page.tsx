@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import HeroSection from "@/components/HeroSection";
 import LeakageSection from "@/components/LeakageSection";
 import IndustriesSection from "@/components/IndustriesSection";
@@ -13,6 +14,14 @@ import { usePageAnalytics } from "@/lib/usePageAnalytics";
 
 export default function Home() {
   usePageAnalytics("/");
+
+  useEffect(() => {
+    // Disable native browser scroll restoration on refresh and scroll to the top
+    if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+      window.scrollTo(0, 0);
+    }
+  }, []);
 
   return (
     <main className="relative min-h-screen bg-glaucous-50 text-vivid-royal-950 selection:bg-coffee-bean-200 selection:text-coffee-bean-900 pt-16">

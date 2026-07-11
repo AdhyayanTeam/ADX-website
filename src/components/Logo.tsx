@@ -9,7 +9,8 @@ export default function Logo({ className = "h-20 w-auto" }: LogoProps) {
     <img
       src="/logo-removebg-preview.png"
       alt="ADX Logo"
-      className={className}
+      // Added scale-[1.35] to trim the transparent whitespace around the PNG graphic programmatically
+      className={`${className} scale-[1.35]`}
     />
   );
 }
