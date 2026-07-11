@@ -760,3 +760,48 @@ These are very different brand identities. The first one wins skepticism. The se
 | **Booking form** | Add: expectation-setting (what happens after), trust signals (NDA, data privacy), pricing context, simplified fields. |
 | **Every CTA** | Vary by context. Not every button says "Book Discovery Call." Use: "Check Your Savings", "Get Your Free Diagnostic", "See How It Works For [Industry]", "Fix Your Operations". |
 | **Footer** | Add social proof (logos if available), trust badges, clear contact info, location. |
+
+---
+
+## 16. Audit Outcomes & Operational Alignment (Sprints 2.0 - 2.5)
+
+To execute on the recommendations from this strategic audit and align with the ADX operational value proposition, the following engineering and content updates have been implemented:
+
+### 1. Zero-Dependency High-Fidelity Simulations (Replacing Placeholders)
+- **Action**: Deprecated legacy static PNG files and the `/api/assets` endpoint.
+- **Alignment**: Replaced them with high-fidelity, interactive, state-driven CSS/Tailwind simulation panels within `src/components/IndustriesSection.tsx` and the homepage. The coaching fee collections, clinic calendars, salon recalls, gym access checks, and project sign-offs are now simulated natively on the client.
+- **Why**: Eliminates mock image assets and visual "slop," demonstrating technical capabilities directly.
+
+### 2. Tabbed Navigation & SEO Visibility Lock
+- **Action**: Re-engineered `/industries` page into a unified tabbed layout.
+- **Alignment**: Implemented CSS-based visibility styling to keep all vertical-specific copy in the DOM for search crawler indexation while presenting a clean tabbed UI to users. Added a "Day in the Life" comparative timeline contrasting traditional manual chaos with ADX-automated systems.
+
+### 3. Flying Brand Logo Animation Optimization
+- **Action**: Refactored the scroll-driven flying logo transition between Hero and Navbar.
+- **Alignment**: Cached coordinates statically and utilized hardware-accelerated CSS transforms (`translate3d`), resolving scroll frame drops and page layout shifts across browsers.
+
+### 4. Active API Route Infrastructure
+- **Action**: Developed functional `/api/leads` and `/api/track` endpoints.
+- **Alignment**: Connected client booking forms and page scroll tracking hooks to live server routes. Resolved local SQLite pathing issues by verifying directory structures dynamically, ensuring robust event monitoring and lead capture logging.
+
+---
+
+## 17. Global Skill & Shortcut Inheritance (AGENTS.md)
+This project strictly enforces the design, development, and copywriting shortcuts defined in `AGENTS.md`:
+
+1.  **`!taste` / `design-taste-frontend`**:
+    - **Aesthetics First**: Focus on custom display typography (Share Tech, Geist Mono) and off-white/dark contrasting palettes instead of default slate-900 or generic SaaS "AI-purple/blue" gradients (strictly avoiding the "Lila Rule" slop).
+    - **Tactile Materiality**: Active states must simulate micro-physical pushes (e.g., `active:translate-y-[2px] active:scale-[0.98]`) with high-contrast, robust borders.
+    - **Corner Radius Consistency**: Uniform shape locks (e.g., inputs and cards locked to clean scale).
+    
+2.  **`!impeccable` / `impeccable`**:
+    - **No Placeholders**: Deprecate fake assets, mock URLs, and raw file dependencies. All content must utilize verified structural data or interactive live components.
+    - **Contrast & Legibility**: Ensure strict WCAG AA contrast compliance across all text layers (e.g., buttons, form fields, and placeholders) and prevent text wrapping bugs on CTAs.
+    - **Structural Quality**: Keep HTML semantic (single H1, clean H2/H3 hierarchy, clean grid layouts over flex math).
+
+3.  **`!uiuxpromax` / `ui-ux-pro-max`**:
+    - **Interactive Autonomy**: Leverage motion values and hardware-accelerated animations rather than CPU-blocking script loops.
+    - **Full UI States**: Build out robust loading, confirmation, and error states for all user transactions.
+
+4.  **`!huashu` / `huashu-design`**:
+    - **Direct Positioning**: Focus copywriting on outcome-selling (recovered revenue, time saved, manual stress removed) rather than generic custom software jargon.

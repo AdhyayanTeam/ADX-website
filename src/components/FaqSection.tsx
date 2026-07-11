@@ -33,7 +33,7 @@ export default function FaqSection() {
         {faqData.map((item, idx) => {
           const isOpen = activeFaq === idx;
           return (
-            <div key={idx} className="bg-ghost-white-50 border border-glaucous-200 rounded-lg overflow-hidden transition-all duration-300">
+            <div key={idx} className="bg-ghost-white-50 border border-glaucous-200 rounded-xl overflow-hidden transition-all duration-300">
               <button
                 onClick={() => setActiveFaq(isOpen ? null : idx)}
                 className="w-full text-left px-6 py-5 flex justify-between items-center text-vivid-royal-950 hover:text-coffee-bean-600 transition-all duration-300 font-semibold cursor-pointer text-lg sm:text-xl"

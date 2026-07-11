@@ -70,12 +70,12 @@ export default function Book() {
             </p>
           </div>
         ) : (
-          <div className="bg-ghost-white-50 border border-glaucous-200 rounded-lg overflow-hidden shadow-xl">
+          <div className="bg-ghost-white-50 border border-glaucous-200 rounded-xl overflow-hidden shadow-xl">
             <div className="bg-glaucous-100 px-6 py-4 border-b border-glaucous-200 flex items-center justify-between">
               <span className="font-mono text-base text-glaucous-600 uppercase tracking-widest font-bold">
                 Discovery Call Registration
               </span>
-              <span className="font-mono text-base px-2 py-0.5 rounded bg-coffee-bean-50 text-coffee-bean-600 border border-coffee-bean-200 uppercase font-bold">
+              <span className="font-mono text-base px-2 py-0.5 rounded-lg bg-coffee-bean-50 text-coffee-bean-600 border border-coffee-bean-200 uppercase font-bold">
                 Operations
               </span>
             </div>
@@ -97,7 +97,7 @@ export default function Book() {
                     }
                     setFormData({ ...formData, companyName: e.target.value });
                   }}
-                  className="w-full bg-glaucous-50 border border-glaucous-200 rounded p-3 text-base text-vivid-royal-950 placeholder:text-glaucous-600 focus:outline-none focus:border-coffee-bean-500 transition-all duration-300"
+                  className="w-full bg-glaucous-50 border border-glaucous-200 rounded-lg p-3 text-base text-vivid-royal-950 placeholder:text-glaucous-600 focus:outline-none focus:border-coffee-bean-500 transition-all duration-300"
                 />
               </div>
 
@@ -109,7 +109,7 @@ export default function Book() {
                   <select
                     value={formData.industry}
                     onChange={(e) => setFormData({ ...formData, industry: e.target.value })}
-                    className="w-full bg-glaucous-50 border border-glaucous-200 rounded p-3 text-base text-vivid-royal-950 focus:outline-none focus:border-coffee-bean-500 transition-all duration-300"
+                    className="w-full bg-glaucous-50 border border-glaucous-200 rounded-lg p-3 text-base text-vivid-royal-950 focus:outline-none focus:border-coffee-bean-500 transition-all duration-300"
                   >
                     <option value="coaching">Coaching Institutes</option>
                     <option value="healthcare">Clinics & Healthcare</option>
@@ -127,7 +127,7 @@ export default function Book() {
                   <select
                     value={formData.volume}
                     onChange={(e) => setFormData({ ...formData, volume: e.target.value })}
-                    className="w-full bg-glaucous-50 border border-glaucous-200 rounded p-3 text-base text-vivid-royal-950 focus:outline-none focus:border-coffee-bean-500 transition-all duration-300"
+                    className="w-full bg-glaucous-50 border border-glaucous-200 rounded-lg p-3 text-base text-vivid-royal-950 focus:outline-none focus:border-coffee-bean-500 transition-all duration-300"
                   >
                     <option value="under-100">Under 100 leads / month</option>
                     <option value="100-500">100 to 500 leads / month</option>
@@ -147,7 +147,7 @@ export default function Book() {
                   placeholder="e.g. Lead follow-up is slow, staff forgets manual ledger logs, late payments from parents."
                   value={formData.bottleneck}
                   onChange={(e) => setFormData({ ...formData, bottleneck: e.target.value })}
-                  className="w-full bg-glaucous-50 border border-glaucous-200 rounded p-3 text-base text-vivid-royal-950 placeholder:text-glaucous-600 focus:outline-none focus:border-coffee-bean-500 transition-all duration-300 resize-none"
+                  className="w-full bg-glaucous-50 border border-glaucous-200 rounded-lg p-3 text-base text-vivid-royal-950 placeholder:text-glaucous-600 focus:outline-none focus:border-coffee-bean-500 transition-all duration-300 resize-none"
                 />
               </div>
 
@@ -162,7 +162,7 @@ export default function Book() {
                     placeholder="e.g. +91 98765 43210"
                     value={formData.whatsapp}
                     onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
-                    className="w-full bg-glaucous-50 border border-glaucous-200 rounded p-3 text-base text-vivid-royal-950 placeholder:text-glaucous-600 focus:outline-none focus:border-coffee-bean-500 transition-all duration-300"
+                    className="w-full bg-glaucous-50 border border-glaucous-200 rounded-lg p-3 text-base text-vivid-royal-950 placeholder:text-glaucous-600 focus:outline-none focus:border-coffee-bean-500 transition-all duration-300"
                   />
                 </div>
 
@@ -176,7 +176,7 @@ export default function Book() {
                     placeholder="e.g. founder@company.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full bg-glaucous-50 border border-glaucous-200 rounded p-3 text-base text-vivid-royal-950 placeholder:text-glaucous-600 focus:outline-none focus:border-coffee-bean-500 transition-all duration-300"
+                    className="w-full bg-glaucous-50 border border-glaucous-200 rounded-lg p-3 text-base text-vivid-royal-950 placeholder:text-glaucous-600 focus:outline-none focus:border-coffee-bean-500 transition-all duration-300"
                   />
                 </div>
               </div>
@@ -185,7 +185,7 @@ export default function Book() {
                 type="submit"
                 data-track-cta="book"
                 disabled={isSubmitting}
-                className="w-full text-center py-3.5 rounded text-base font-semibold uppercase tracking-wider text-ghost-white-50 bg-coffee-bean-600 hover:bg-coffee-bean-700 disabled:bg-coffee-bean-800 disabled:cursor-not-allowed transition-all duration-300 shadow-[0_0_15px_rgba(237,18,109,0.2)] mt-4 cursor-pointer"
+                className="w-full text-center py-3.5 rounded-lg text-base font-bold uppercase tracking-wider text-coffee-bean-950 bg-coffee-bean-400 hover:bg-coffee-bean-500 disabled:bg-glaucous-200 disabled:text-glaucous-500 disabled:cursor-not-allowed transition-all duration-300 shadow-md mt-4 cursor-pointer select-none active:translate-y-[2px] active:scale-[0.98]"
               >
                 {isSubmitting ? "Submitting business profile..." : "Initiate Operational Diagnostic"}
               </button>

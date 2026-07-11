@@ -7,8 +7,10 @@ import Logo from "./Logo";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [isMobile, setIsMobile] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [hasCoords, setHasCoords] = useState(false);
   const [heroCoords, setHeroCoords] = useState<{
     left: number;
     top: number;
@@ -24,6 +26,10 @@ export default function Navbar() {
   } | null>(null);
 
   const updateCoordinates = () => {
+    setIsMobile(window.innerWidth < 1024);
+
+    let measured = false;
+
     // 1. Measure navbar placeholder
     const navEl = document.getElementById("nav-logo-placeholder");
     if (navEl) {
@@ -35,6 +41,7 @@ export default function Navbar() {
           width: rect.width,
           height: rect.height,
         });
+        measured = true;
       }
     }
 
@@ -49,7 +56,13 @@ export default function Navbar() {
           width: rect.width,
           height: rect.height,
         });
+        measured = true;
       }
+    }
+
+    if (measured) {
+      // Set to true after first successful coordinate capture
+      setHasCoords(true);
     }
   };
 
@@ -82,7 +95,7 @@ export default function Navbar() {
     };
   }, [pathname]);
 
-  const activeCoords = (isScrolled || pathname !== "/") ? navCoords : (heroCoords || navCoords);
+  const activeCoords = (isMobile || isScrolled || pathname !== "/") ? navCoords : (heroCoords || navCoords);
 
   const logoStyle = activeCoords
     ? {
@@ -91,8 +104,14 @@ export default function Navbar() {
         top: `${activeCoords.top}px`,
         width: `${activeCoords.width}px`,
         height: `${activeCoords.height}px`,
+        opacity: 1, // Explicitly set opacity to 1 so the logo is visible
         zIndex: 100,
-        transition: "all 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
+        // Force hardware GPU acceleration to avoid Chrome main-thread reflow lag
+        willChange: "transform, left, top, width, height",
+        transform: "translate3d(0, 0, 0)",
+        WebkitTransform: "translate3d(0, 0, 0)",
+        // Disable transitions during the very first calculation to prevent flying in from (0,0)
+        transition: (isMobile || !hasCoords) ? "none" : "all 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
       }
     : {
         opacity: 0,
@@ -111,7 +130,7 @@ export default function Navbar() {
         isScrolled || pathname !== "/" ? "shadow-[0_4px_24px_rgba(36,36,35,0.06)] bg-glaucous-50/95" : "shadow-none bg-glaucous-50/75"
       }`}>
         <div className="w-full max-w-7xl mx-auto px-6 flex justify-between items-center relative">
-          <div id="nav-logo-placeholder" className="h-16 w-16 md:h-20 md:w-20 opacity-0 pointer-events-none" />
+          <div id="nav-logo-placeholder" className="h-12 w-28 md:h-16 md:w-36 opacity-0 pointer-events-none" />
           
           <nav className={`hidden md:flex gap-8 items-center`}>
             {navLinks.map((link) => {
@@ -138,7 +157,7 @@ export default function Navbar() {
               data-track-cta="navbar"
               className="hidden sm:inline-flex items-center justify-center px-4 py-2 text-base font-bold rounded-md bg-vivid-royal-600 bg-gradient-to-b from-white/30 via-white/5 to-black/25 text-ghost-white-50 border-t border-t-white/40 border-x border-x-vivid-royal-700/60 border-b-[4px] border-b-vivid-royal-900 shadow-[inset_0_1.5px_0_rgba(255,255,255,0.4),inset_0_-1.5px_0_rgba(0,0,0,0.2),0_4px_8px_rgba(0,0,0,0.35)] hover:brightness-110 hover:border-b-vivid-royal-950 active:translate-y-[3px] active:border-b-[1px] active:shadow-[inset_0_3px_5px_rgba(0,0,0,0.6),0_1px_2px_rgba(0,0,0,0.2)] transition-all duration-100 ease-out select-none drop-shadow-[0_1px_1px_rgba(0,0,0,0.5)]"
             >
-              Book Discovery Call
+              Book a Discovery Call
             </Link>
             
             <button
@@ -152,17 +171,17 @@ export default function Navbar() {
             </button>
           </div>
         </div>
-
+ 
         {mobileOpen && <MobileMenu key={pathname} navLinks={navLinks} />}
       </header>
-
+ 
       {/* Floating Logo rendered outside header to avoid backdrop-filter coordinate containment issues in Chrome/Safari */}
       <Link
         href="/"
         style={logoStyle}
         className={`flex items-center justify-center select-none rounded-2xl transition-all duration-500 ease-out z-[100] ${
-          !isScrolled && pathname === "/"
-            ? "p-2.5 bg-white/5 backdrop-blur-md border border-white/15 border-t-white/30 border-b-black/10 shadow-[0_8px_24px_rgba(0,0,0,0.15),inset_0_1px_1px_rgba(255,255,255,0.15)]"
+          !isMobile && !isScrolled && pathname === "/"
+            ? "p-1.5 bg-white/5 backdrop-blur-md border border-white/15 border-t-white/30 border-b-black/10 shadow-[0_8px_24px_rgba(0,0,0,0.15),inset_0_1px_1px_rgba(255,255,255,0.15)]"
             : "p-0 bg-transparent backdrop-blur-none border-none shadow-none"
         }`}
       >
@@ -189,7 +208,7 @@ function MobileMenu({ navLinks }: { navLinks: { name: string; href: string }[] }
         data-track-cta="mobile-nav"
         className="mt-4 flex items-center justify-center w-full py-3 text-base font-bold rounded-lg bg-coffee-bean-600 bg-gradient-to-b from-white/30 via-white/5 to-black/25 text-ghost-white-50 border-t border-t-white/45 border-x border-x-coffee-bean-700/60 border-b-[4px] border-b-coffee-bean-900 shadow-[inset_0_1.5px_0_rgba(255,255,255,0.4),inset_0_-1.5px_0_rgba(0,0,0,0.2),0_6px_12px_rgba(0,0,0,0.4)] hover:brightness-110 hover:border-b-coffee-bean-950 active:translate-y-[3px] active:border-b-[1px] active:shadow-[inset_0_3px_5px_rgba(0,0,0,0.6),0_1px_2px_rgba(0,0,0,0.2)] transition-all duration-100 ease-out select-none drop-shadow-[0_1px_1px_rgba(0,0,0,0.5)]"
       >
-        Book Discovery Call
+        Book a Discovery Call
       </Link>
     </div>
   );

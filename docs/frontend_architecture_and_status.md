@@ -1,6 +1,6 @@
 # ADX (AdhyayanX) Frontend Architecture & Progress Report
 
-This document outlines the technical frontend architecture of the ADX website, its design principles, folder structures, component breakdown, and a log of the operational improvements implemented so far.
+This document outlines the technical frontend architecture of the ADX website, its design principles, folder structures, component breakdown, log of operational improvements, and strict alignment with the global skill inheritance rules.
 
 ---
 
@@ -13,10 +13,10 @@ ADX (AdhyayanX) is an operations-first software engineering suite tailored for I
 The web application is built with a modern, performant, and visual-first JavaScript stack:
 
 - **Framework**: [Next.js](https://nextjs.org/) (Version `16.2.10` / React `19.2.4` and React-DOM `19.2.4`) utilizing the App Router.
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/) (Version `^4.3.2`) configured alongside [PostCSS](https://postcss.org/) (`^8.5.16`). It leverages native Tailwind v4 `@theme` directives directly in CSS files for design token declarations, eliminating the need for a legacy `tailwind.config.js` file.
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) (Version `^4.3.2`) configured alongside [PostCSS](https://postcss.org/) (`^8.5.16`). It leverages native Tailwind v4 `@theme` directives directly in CSS files (`global-new.css`) for design token declarations, eliminating the need for legacy `tailwind.config.js`.
 - **Shader Animations**: `@paper-design/shaders-react` (Version `^0.0.76`) for WebGL-based mesh gradient background animation.
-- **Icons**: `lucide-react` (Version `^0.446.0`) for clean, vector-based iconography.
-- **CSS Transitions**: `tailwindcss-animate` (Version `^1.0.7`) for micro-interactions and transitions.
+- **Icons**: `lucide-react` (Version `^0.446.0`) and `@tabler/icons-react` (Version `^3.44.0`) for clean, vector-based iconography.
+- **CSS Transitions**: `tailwindcss-animate` (Version `^1.0.7`) and `framer-motion` (Version `^11.11.17`) for micro-interactions and transitions.
 - **Utilities**: `clsx` and `tailwind-merge` combined into a custom `cn` class merger.
 
 ---
@@ -26,9 +26,9 @@ The website adopts a premium, operations-first aesthetic. It uses custom color p
 
 ### Color Palette
 Custom design tokens are defined in `global-new.css` and mapped to Shadcn UI variables:
-*   **Vivid Royal** (Brand Purple/Blue): Base brand color (`--color-vivid-royal-50` to `-950`).
-*   **Coffee Bean** (Accent Crimson/Pink): Primary Call-to-Action accent (`--color-coffee-bean-50` to `-950`).
-*   **Glaucous** (Slate Blue): Backgrounds and soft borders (`--color-glaucous-50` to `-950`).
+*   **Vivid Royal** (Dark Neutral): Base foreground and dark backgrounds (`--color-vivid-royal-50` to `-950`).
+*   **Coffee Bean** (Accent Amber/Gold): Primary Call-to-Action accent (`--color-coffee-bean-50` to `-950`, primary hex `#F5CB5C`).
+*   **Glaucous** (Slate Blue/Gray): Soft backgrounds and borders (`--color-glaucous-50` to `-950`, primary hex `#E8EDDF`).
 *   **Scarlet Fire** (Warning Red): Demarcates operational leaks and drop-offs (`--color-scarlet-fire-50` to `-950`).
 *   **Ghost White** (Card/Interactive Panel Background): High contrast backdrop for widgets (`--color-ghost-white-50` to `-950`).
 
@@ -41,7 +41,7 @@ Three primary web fonts are configured:
 ### High-Fidelity Skeuomorphism
 Buttons and interactive panels use tactile, 3D skeuomorphic styling:
 *   **Bevel Effect**: Constructed using light top borders (`border-t-white/45`), darker bottom borders (`border-b-[4px] border-b-coffee-bean-900`), and layered drop shadows.
-*   **Press State**: Hover classes increase brightness, and active states shift elements downward (`active:translate-y-[3px] active:border-b-[1px]`) to mimic physical clicking.
+*   **Press State**: Hover classes increase brightness, and active states shift elements downward (`active:translate-y-[2px] active:scale-[0.98]`) to mimic physical clicking.
 *   **Glassmorphism**: Badge containers use translucent white overlays with inner shadows (`shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.25)]`) and backdrop blur.
 
 ---
@@ -55,30 +55,41 @@ Buttons and interactive panels use tactile, 3D skeuomorphic styling:
 ├── src/
 │   ├── app/                     # Next.js App Router folders
 │   │   ├── about/               # ADX Manifesto Page
+│   │   ├── api/                 # Next.js API Routes (Serverless Endpoints)
+│   │   │   ├── assets/          # Serving local assets (legacy)
+│   │   │   ├── leads/           # Creates lead submissions and logs metadata
+│   │   │   └── track/           # Tracks page views, exit triggers, and scroll analytics
 │   │   ├── book/                # Diagnostic Scheduling Form Page
 │   │   ├── discovery/           # Operational Discovery Process Page
 │   │   ├── industries/          # Verticals Page (Coaching, Healthcare, Salons, etc.)
 │   │   ├── insights/            # Operational Essays & Case Studies
 │   │   ├── platform/            # Product Capabilities Page
 │   │   ├── favicon.ico
-│   │   ├── global-new.css       # Core Tailwind CSS directives & theme variables
-│   │   ├── globals.css          # CSS styles (synced theme variables)
+│   │   ├── global-new.css       # Active CSS stylesheet containing styles & theme tokens
+│   │   ├── globals.css          # Deprecated stylesheet (retains historical tokens)
 │   │   ├── layout.tsx           # Base RootLayout including Navbar & Footer
 │   │   └── page.tsx             # Homepage Layout
 │   ├── components/              # Modular landing page & structural components
-│   │   ├── ui/                  # Primitives (Background shader wrapper, demo files)
+│   │   ├── ui/                  # Primitives (Background shader wrapper)
 │   │   │   └── background-shader.tsx
 │   │   ├── CaseStudiesSection.tsx
 │   │   ├── FaqSection.tsx
 │   │   ├── HeroSection.tsx
-│   │   ├── IndustriesSection.tsx
+│   │   ├── IndustriesSection.tsx  # Tabbed interactive industry widget for homepage
 │   │   ├── LeakageSection.tsx   # Stateful interactive leakage pipeline
 │   │   ├── Logo.tsx             # Reusable Brand SVG Logo
 │   │   ├── MethodologySection.tsx
-│   │   ├── Navbar.tsx           # Global Header
-│   │   ├── OutcomesSection.tsx
-│   │   └── ProcessSection.tsx
-│   └── lib/                     # Reusable utilities
+│   │   ├── MotionProvider.tsx   # Framer Motion tree context provider
+│   │   ├── Navbar.tsx           # Global Header with "flying logo" transition
+│   │   ├── OutcomesSection.tsx  # Toggleable Mess-vs-System dashboard
+│   │   ├── ProcessSection.tsx
+│   │   ├── SectionTracker.tsx   # Tracks scroll entry and exits of page sections
+│   │   ├── TransformationSection.tsx
+│   │   └── WhatWeObservedSection.tsx
+│   └── lib/                     # Reusable client utilities
+│       ├── db.ts                # Deprecated database helper
+│       ├── track.ts             # Analytics POST payload wrapper
+│       ├── usePageAnalytics.ts  # Scroll tracking, exit logging, and click listeners
 │       └── utils.ts             # Tailwind CSS class merger utility (cn)
 ├── tsconfig.json                # TypeScript compilation config
 ├── package.json                 # Dependency manifest
@@ -104,32 +115,54 @@ Buttons and interactive panels use tactile, 3D skeuomorphic styling:
 -   **Interactive Leakage Pipeline (`LeakageSection.tsx`)**: An interactive pipeline widget allowing users to click through stages (Intake, Follow-up, Booking, Payment) to view conversion drop-offs (e.g., -45% drop-off in lead intake) and financial impacts alongside the ADX solution.
 -   **Procedural FAQ Accordion (`FaqSection.tsx`)**: Custom accordion widget utilizing React state (`activeFaq`) and dynamic styling to open and close answers to objections without external component libraries.
 -   **Tactile Vertical Showcase (`IndustriesSection.tsx` / `Industries Page`)**: Segmented styling displaying vertical cards. Clicking CTA buttons forwards vertical context via URL search parameters (`?vertical=...`) directly to the booking form.
--   **Pre-visit Diagnostic Output (`Book Page`)**: Handles submission and displays a mock pipeline activation log containing dynamic pipeline IDs to simulate real-time operations triggers.
+-   **Live Interactive Simulations**: Embedded CSS/Tailwind mini-simulators representing fee reminders, patient calendars, client recall timelines, member check-ins, and milestone approvals.
+-   **Real-time Analytics (`usePageAnalytics.ts`)**: Captures mouse clicks on CTAs, total elapsed time-on-page, maximum scroll depth, and exit triggers, dispatching payloads asynchronously to the server.
 
 ---
 
-## 7. Operational Progress: What Has Been Done Till Now
+## 7. Operational Progress: Sprints & Updates
 
 The following deliverables have been successfully implemented:
 
-1.  **Architecture Decoupling (Refactoring)**:
-    *   Decoupled the monolithic homepage layout inside `src/app/page.tsx`.
-    *   Moved each segment into individual, self-contained functional components inside `src/components/` (e.g., `HeroSection.tsx`, `LeakageSection.tsx`, `OutcomesSection.tsx`, `MethodologySection.tsx`, `IndustriesSection.tsx`, etc.).
-    *   Maintained clean absolute path imports (`@/...`) and isolated state logic for the interactive widgets.
-
-2.  **Skeuomorphic & 3D UI Overhaul**:
-    *   Applied tactile skeuomorphic formatting to main calls-to-action, navigation elements, badges, and background cards.
+1.  **Zero-Dependency Interactive Mockups (Frontend Upgrade)**:
+    *   Substituted the static, external `/api/assets` image references inside the homepage's Industries section with rich, interactive, state-driven CSS/Tailwind simulation panels.
     *   Designed responsive interaction states (shadow shifts, scaling, border coloring, and translate offsets) to optimize user interaction feedback.
 
-3.  **Responsive Optimization**:
-    *   Resolved mobile alignment and overflow issues.
-    *   Designed vertical-centered hero section scaling on mobile, ensuring responsive menu toggles do not conflict with the site logo or header elements.
-    *   Adjusted layout grids on `/platform`, `/industries`, and `/discovery` to snap cleanly on smaller viewports.
+2.  **Industries Page Refactoring (SEO & Navigation)**:
+    *   Implemented a tabbed vertical navigation layout on `/industries` page to cleanly present multi-dimensional data without page clutter.
+    *   Converted rendering logic to CSS-based visibility hooks (`opacity-0 pointer-events-none invisible h-0 overflow-hidden` / active transitions) to ensure all vertical-specific copy remains in the DOM for search crawler indexation.
+    *   Integrated an expandable/collapsible comparative timeline component ("Day in the Life Comparison") on the Industries page to contrast the traditional manual chaos with the automated peace of ADX.
 
-4.  **Premium Animation Integrations**:
+3.  **Hardware-Accelerated Brand Logo Transitions**:
+    *   Refactored the Hero-to-Navbar flying logo transition animation to use static coordinate caching and hardware-accelerated CSS transforms, eliminating cross-browser layout shifts and frame drops.
+
+4.  **Client-Server Integration & API Routes**:
+    *   Formulated real-world POST endpoints at `/api/leads` and `/api/track` to handle active analytics logging and lead registration from the frontend.
+    *   Implemented local directory resolution checks in the server logic to avoid initialization failures.
+
+5.  **Design Tokens & WebGL Animation**:
     *   Integrated WebGL canvas background using `@paper-design/shaders-react` within the hero section to display a fluid, slow-moving mesh gradient, adding a modern aesthetic.
     *   Added `@keyframes` animations (`grid-move`, `gradient-shift`) for moving background grids and text transitions.
+    *   Converted legacy image files to optimized WebP formats, drastically reducing network payloads.
 
-5.  **Asset Optimization**:
-    *   Converted legacy image files to optimized WebP formats, drastically reducing network payloads while maintaining high resolution.
-    *   Configured standard metadata tags inside `src/app/layout.tsx` for core search indexing support.
+---
+
+## 8. Global Skill & Shortcut Inheritance (AGENTS.md)
+The project inherits the following foundational execution skills from the root `AGENTS.md` guidelines. Any future development or modification must strictly adhere to these:
+
+1.  **`!taste` / `design-taste-frontend`**:
+    *   **Aesthetics First**: Focus on custom display typography (Share Tech, Geist Mono) and off-white/dark contrasting palettes instead of default slate-900 or generic SaaS "AI-purple/blue" gradients (strictly avoiding the "Lila Rule" slop).
+    *   **Tactile Materiality**: Active states must simulate micro-physical pushes (e.g., `active:translate-y-[2px] active:scale-[0.98]`) with high-contrast, robust borders.
+    *   **Corner Radius Consistency**: Uniform shape locks (e.g., inputs and cards locked to clean scale).
+    
+2.  **`!impeccable` / `impeccable`**:
+    *   **No Placeholders**: Deprecate fake assets, mock URLs, and raw file dependencies. All content must utilize verified structural data or interactive live components.
+    *   **Contrast & Legibility**: Ensure strict WCAG AA contrast compliance across all text layers (e.g., buttons, form fields, and placeholders) and prevent text wrapping bugs on CTAs.
+    *   **Structural Quality**: Keep HTML semantic (single H1, clean H2/H3 hierarchy, clean grid layouts over flex math).
+
+3.  **`!uiuxpromax` / `ui-ux-pro-max`**:
+    *   **Interactive Autonomy**: Leverage motion values and hardware-accelerated animations rather than CPU-blocking script loops.
+    *   **Full UI States**: Build out robust loading, confirmation, and error states for all user transactions.
+
+4.  **`!huashu` / `huashu-design`**:
+    *   **Direct Positioning**: Focus copywriting on outcome-selling (recovered revenue, time saved, manual stress removed) rather than generic custom software jargon.
