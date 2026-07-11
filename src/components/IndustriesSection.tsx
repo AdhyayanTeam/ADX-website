@@ -7,6 +7,14 @@ type IndustryKey = "coaching" | "healthcare" | "salon" | "gym" | "professional";
 
 export default function IndustriesSection() {
   const [activeInd, setActiveInd] = useState<IndustryKey>("coaching");
+  const [activeSubTab, setActiveSubTab] = useState<"problem" | "solution">("problem");
+  const [isSimOpen, setIsSimOpen] = useState(false);
+
+  const handleIndustryChange = (key: IndustryKey) => {
+    setActiveInd(key);
+    setActiveSubTab("problem");
+    setIsSimOpen(true);
+  };
   const [interactiveState, setInteractiveState] = useState({
     coaching: "pending",
     healthcare: "pending",
@@ -351,7 +359,7 @@ export default function IndustriesSection() {
         {(Object.keys(industryData) as IndustryKey[]).map((key) => (
           <button
             key={key}
-            onClick={() => setActiveInd(key)}
+            onClick={() => handleIndustryChange(key)}
             className={`px-5 py-2.5 rounded-full text-base font-medium whitespace-nowrap cursor-pointer transition-all duration-150 active:translate-y-[1px] ${
               activeInd === key
                 ? "bg-gradient-to-b from-coffee-bean-100 to-coffee-bean-50 border-t border-t-coffee-bean-300 border-x border-x-coffee-bean-200/80 border-b border-b-white/80 text-coffee-bean-800 shadow-[inset_0_2px_4px_rgba(95,7,44,0.12),0_1px_1.5px_rgba(255,255,255,0.7)] font-semibold"
@@ -363,51 +371,112 @@ export default function IndustriesSection() {
         ))}
       </div>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 bg-ghost-white-50 border border-glaucous-200 rounded-2xl p-8 sm:p-12 items-center">
-        <div>
-          <h3 className="text-4xl font-bold text-vivid-royal-950 mb-3">{industryData[activeInd].title}</h3>
-          <p className="text-lg text-glaucous-900 mb-8 leading-relaxed">{industryData[activeInd].intro}</p>
-          
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 bg-ghost-white-50 border border-glaucous-200 rounded-2xl p-4 sm:p-8 lg:p-12 items-start">
+        <div className="flex flex-col h-full justify-between">
           <div>
-            <h4 className="font-mono text-base text-glaucous-600 tracking-wide mb-4">Where it breaks</h4>
-            <ul className="flex flex-col gap-3">
-              {industryData[activeInd].bottlenecks.map((item, idx) => (
-                <li key={idx} className="flex gap-3 items-start text-lg text-glaucous-800 leading-relaxed">
-                  <span className="text-scarlet-fire-600 font-bold">→</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
+            <h3 className="text-3xl sm:text-4xl font-bold text-vivid-royal-950 mb-3">{industryData[activeInd].title}</h3>
+            <p className="text-base sm:text-lg text-glaucous-900 mb-6 leading-relaxed min-h-[72px]">{industryData[activeInd].intro}</p>
+            
+            {/* Sub-tabs Selector */}
+            <div className="flex gap-4 border-b border-glaucous-200/60 pb-2 mb-6">
+              <button
+                onClick={() => setActiveSubTab("problem")}
+                className={`pb-2 px-1 font-semibold text-base transition-all duration-200 cursor-pointer relative ${
+                  activeSubTab === "problem"
+                    ? "text-scarlet-fire-600 font-bold"
+                    : "text-glaucous-500 hover:text-glaucous-800"
+                }`}
+              >
+                The problem
+                {activeSubTab === "problem" && (
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-scarlet-fire-500 rounded-full" />
+                )}
+              </button>
+              <button
+                onClick={() => setActiveSubTab("solution")}
+                className={`pb-2 px-1 font-semibold text-base transition-all duration-200 cursor-pointer relative ${
+                  activeSubTab === "solution"
+                    ? "text-coffee-bean-600 font-bold"
+                    : "text-glaucous-500 hover:text-glaucous-800"
+                }`}
+              >
+                The solution
+                {activeSubTab === "solution" && (
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-coffee-bean-500 rounded-full" />
+                )}
+              </button>
+            </div>
+          </div>
+
+          <div className="flex-grow">
+            {activeSubTab === "problem" ? (
+              <div className="space-y-4 animate-fadeIn">
+                <h4 className="font-mono text-sm text-glaucous-600 tracking-wide mb-3">Where it breaks</h4>
+                <ul className="flex flex-col gap-3">
+                  {industryData[activeInd].bottlenecks.map((item, idx) => (
+                    <li key={idx} className="flex gap-3 items-start text-base sm:text-lg text-glaucous-800 leading-relaxed">
+                      <span className="text-scarlet-fire-600 font-bold">→</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <div className="space-y-4 animate-fadeIn">
+                <span className="font-mono text-sm text-coffee-bean-600 tracking-wide font-bold block mb-2">
+                  What ADX builds
+                </span>
+                <h4 className="text-xl font-bold text-vivid-royal-950 mb-3">{industryData[activeInd].solTitle}</h4>
+                <div className="flex flex-col gap-4">
+                  <div className="border-l-2 border-scarlet-fire-400 pl-4">
+                    <span className="block font-mono text-sm text-glaucous-600 mb-1">Before ADX</span>
+                    <p className="text-base text-glaucous-800 leading-relaxed">{industryData[activeInd].before}</p>
+                  </div>
+                  <div className="border-l-2 border-coffee-bean-600 pl-4">
+                    <span className="block font-mono text-sm text-coffee-bean-600 mb-1">With ADX</span>
+                    <p className="text-base text-glaucous-950 leading-relaxed font-medium">{industryData[activeInd].after}</p>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
         
-        <div className="flex flex-col gap-6">
-          {/* Interactive Live Simulation Widget */}
-          <div className="bg-glaucous-100/50 border border-glaucous-200/80 p-5 rounded-2xl">
-            <span className="font-mono text-sm text-glaucous-600 tracking-wide font-bold block mb-3">
-              Live pipeline simulation (click to interact)
-            </span>
-            {activeInd === "coaching" && renderCoachingWidget()}
-            {activeInd === "healthcare" && renderHealthcareWidget()}
-            {activeInd === "salon" && renderSalonWidget()}
-            {activeInd === "gym" && renderGymWidget()}
-            {activeInd === "professional" && renderProfessionalWidget()}
-          </div>
-
-          {/* Comparison Panels */}
-          <div className="bg-glaucous-50 border border-glaucous-200 p-6 rounded-2xl shadow-inner">
-            <span className="font-mono text-sm text-coffee-bean-600 tracking-wide font-bold block mb-4">
-              What ADX builds
-            </span>
-            <h4 className="text-xl font-bold text-vivid-royal-950 mb-4">{industryData[activeInd].solTitle}</h4>
-            <div className="flex flex-col gap-4">
-              <div className="border-l-2 border-scarlet-fire-400 pl-4">
-                <span className="block font-mono text-base text-glaucous-600 mb-1">Before ADX</span>
-                <p className="text-base text-glaucous-800 leading-relaxed">{industryData[activeInd].before}</p>
+        <div className="w-full">
+          {/* On Mobile: Collapsible Accordion; On Desktop: Always Open */}
+          <div className="border border-glaucous-200/80 rounded-2xl overflow-hidden bg-white/40 backdrop-blur-md shadow-sm">
+            <button
+              onClick={() => setIsSimOpen(!isSimOpen)}
+              className="w-full flex lg:hidden items-center justify-between p-4 bg-glaucous-50 hover:bg-glaucous-100/85 text-vivid-royal-950 cursor-pointer transition-all duration-200 select-none border-b border-glaucous-100/60 active:bg-glaucous-100"
+            >
+              <div className="flex items-center gap-2.5">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-coffee-bean-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-coffee-bean-500"></span>
+                </span>
+                <span className="font-mono text-xs uppercase tracking-wider text-glaucous-700 font-bold">
+                  Live simulation
+                </span>
+                <span className="px-1.5 py-0.5 text-[10px] font-bold bg-coffee-bean-50 text-coffee-bean-700 rounded border border-coffee-bean-200">
+                  Tap to interact
+                </span>
               </div>
-              <div className="border-l-2 border-coffee-bean-600 pl-4">
-                <span className="block font-mono text-base text-coffee-bean-600 mb-1">With ADX</span>
-                <p className="text-base text-glaucous-950 leading-relaxed font-medium">{industryData[activeInd].after}</p>
+              <span className={`text-glaucous-600 transition-transform duration-300 font-bold ${isSimOpen ? "rotate-180" : ""}`}>
+                ▼
+              </span>
+            </button>
+
+            <div className={`${isSimOpen ? "block" : "hidden lg:block"} p-4 sm:p-6 lg:p-5`}>
+              <span className="hidden lg:flex items-center gap-2 font-mono text-sm text-glaucous-600 tracking-wide font-bold mb-4">
+                <span className="w-2 h-2 rounded-full bg-coffee-bean-500 animate-pulse" />
+                Live pipeline simulation (click to interact)
+              </span>
+              <div className="w-full max-w-md mx-auto">
+                {activeInd === "coaching" && renderCoachingWidget()}
+                {activeInd === "healthcare" && renderHealthcareWidget()}
+                {activeInd === "salon" && renderSalonWidget()}
+                {activeInd === "gym" && renderGymWidget()}
+                {activeInd === "professional" && renderProfessionalWidget()}
               </div>
             </div>
           </div>
