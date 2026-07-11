@@ -1,27 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { m } from "framer-motion";
 
 type IndustryKey = "coaching" | "healthcare" | "salon" | "gym" | "professional";
 
 export default function IndustriesSection() {
   const [activeInd, setActiveInd] = useState<IndustryKey>("coaching");
   const [activeSubTab, setActiveSubTab] = useState<"problem" | "solution">("problem");
-  const [isSimOpen, setIsSimOpen] = useState(false);
 
   const handleIndustryChange = (key: IndustryKey) => {
     setActiveInd(key);
     setActiveSubTab("problem");
-    setIsSimOpen(true);
   };
-  const [interactiveState, setInteractiveState] = useState({
-    coaching: "pending",
-    healthcare: "pending",
-    salon: "pending",
-    gym: "expired",
-    professional: "pending",
-  });
 
   const industryData = {
     coaching: {
@@ -86,261 +76,6 @@ export default function IndustriesSection() {
     },
   };
 
-  const renderCoachingWidget = () => {
-    const isSent = interactiveState.coaching === "sent";
-    return (
-      <div className="bg-white border border-glaucous-200 rounded-xl p-4 shadow-sm space-y-3 font-sans text-base">
-        <div className="flex items-center justify-between border-b border-glaucous-100 pb-2">
-          <span className="font-mono text-sm font-bold text-glaucous-600">FEE MANAGEMENT PANEL</span>
-          <span className="px-1.5 py-0.5 bg-scarlet-fire-50 text-scarlet-fire-600 rounded text-sm font-bold">1 Pending</span>
-        </div>
-        <div className="space-y-2">
-          <div className="flex items-center justify-between p-2 bg-glaucous-50/50 rounded border border-glaucous-100">
-            <div>
-              <div className="font-bold text-vivid-royal-950">Ananya Verma</div>
-              <div className="text-sm text-glaucous-600">Grade 12 Batch A</div>
-            </div>
-            <span className="px-2 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-100 rounded-full text-sm font-bold">Paid</span>
-          </div>
-          <div className="flex items-center justify-between p-2 bg-glaucous-50/50 rounded border border-glaucous-100">
-            <div>
-              <div className="font-bold text-vivid-royal-950">Kabir Sharma</div>
-              <div className="text-sm text-glaucous-600">Grade 11 Batch B</div>
-            </div>
-            {isSent ? (
-              <m.span
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                className="px-2 py-0.5 bg-amber-50 text-amber-700 border border-amber-100 rounded-full text-sm font-bold"
-              >
-                WhatsApp Sent
-              </m.span>
-            ) : (
-              <button
-                onClick={() => setInteractiveState({ ...interactiveState, coaching: "sent" })}
-                className="px-2.5 py-1 bg-coffee-bean-500 hover:bg-coffee-bean-600 text-coffee-bean-950 font-bold rounded-lg text-sm transition-colors cursor-pointer"
-              >
-                Remind on WhatsApp
-              </button>
-            )}
-          </div>
-        </div>
-        {isSent && (
-          <m.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="p-2.5 bg-[#d9fdd3] text-neutral-800 rounded-lg rounded-tr-none border border-[#c2f3ba] text-base leading-snug space-y-1"
-          >
-            <div className="font-bold text-sm text-emerald-850 flex justify-between">
-              <span>ADX AUTOMATION</span>
-              <span>Just Now</span>
-            </div>
-            <p>Dear Parent, Kabir&apos;s fees for July are due. Tap here to pay securely via UPI: adx.pay/kabir-sharma</p>
-          </m.div>
-        )}
-      </div>
-    );
-  };
-
-  const renderHealthcareWidget = () => {
-    const isConfirmed = interactiveState.healthcare === "confirmed";
-    return (
-      <div className="bg-white border border-glaucous-200 rounded-xl p-4 shadow-sm space-y-3 font-sans text-base">
-        <div className="flex items-center justify-between border-b border-glaucous-100 pb-2">
-          <span className="font-mono text-sm font-bold text-glaucous-600">CALENDAR AUTOMATION</span>
-          <span className="px-1.5 py-0.5 bg-vivid-royal-50 text-vivid-royal-600 rounded text-sm font-bold">Today</span>
-        </div>
-        <div className="space-y-2">
-          <div className="flex items-center justify-between p-2 bg-glaucous-50/50 rounded border border-glaucous-100">
-            <div>
-              <div className="font-bold text-vivid-royal-950">Dr. Mehta - 11:30 AM Slot</div>
-              <div className="text-sm text-glaucous-600">Patient: Rahul Verma</div>
-            </div>
-            <span className={`px-2 py-0.5 rounded-full text-sm font-bold border transition-colors duration-350 ${
-              isConfirmed
-                ? "bg-emerald-50 text-emerald-700 border-emerald-100"
-                : "bg-amber-50 text-amber-700 border-amber-100 animate-pulse"
-            }`}>
-              {isConfirmed ? "Confirmed" : "Pending Confirmation"}
-            </span>
-          </div>
-        </div>
-        
-        {!isConfirmed ? (
-          <div className="p-3 bg-neutral-50 border border-neutral-100 rounded-lg space-y-2">
-            <div className="font-semibold text-neutral-500 text-sm uppercase">Automated Patient Alert</div>
-            <p className="text-base text-neutral-800 leading-snug">Hi Rahul! Please confirm your appointment with Dr. Mehta today at 11:30 AM.</p>
-            <button
-              onClick={() => setInteractiveState({ ...interactiveState, healthcare: "confirmed" })}
-              className="w-full py-1.5 bg-vivid-royal-600 hover:bg-vivid-royal-700 text-white font-bold rounded-lg text-sm transition-colors cursor-pointer"
-            >
-              Confirm Patient Booking (Simulate Reply)
-            </button>
-          </div>
-        ) : (
-          <m.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="p-2.5 bg-emerald-50 border border-emerald-100 text-emerald-800 rounded-lg text-base leading-snug"
-          >
-            <div className="font-bold text-sm mb-1">✓ APPOINTMENT CONFIRMED</div>
-            <p>Calendar updated. Notification sent to Dr. Mehta&apos;s dashboard. Automated reminder scheduled 2 hours before visit.</p>
-          </m.div>
-        )}
-      </div>
-    );
-  };
-
-  const renderSalonWidget = () => {
-    const isSent = interactiveState.salon === "sent";
-    return (
-      <div className="bg-white border border-glaucous-200 rounded-xl p-4 shadow-sm space-y-3 font-sans text-base">
-        <div className="flex items-center justify-between border-b border-glaucous-100 pb-2">
-          <span className="font-mono text-sm font-bold text-glaucous-600">RECALL TIMELINE</span>
-          <span className="text-sm text-glaucous-500 font-bold">28-Day Cycle</span>
-        </div>
-        <div className="space-y-3 relative before:absolute before:top-2 before:bottom-2 before:left-[11px] before:w-[1px] before:bg-glaucous-200">
-          <div className="flex gap-3 items-start relative pl-6">
-            <div className="absolute left-[6px] top-1 w-2.5 h-2.5 rounded-full bg-emerald-500 border border-white" />
-            <div>
-              <div className="font-bold text-vivid-royal-950">Day 0: Hair Spa Completed</div>
-              <p className="text-sm text-glaucous-600">Client: Ritu Sen</p>
-            </div>
-          </div>
-          <div className="flex gap-3 items-start relative pl-6">
-            <div className="absolute left-[6px] top-1 w-2.5 h-2.5 rounded-full bg-emerald-500 border border-white" />
-            <div>
-              <div className="font-bold text-vivid-royal-950">Day 7: Feedback WhatsApp</div>
-              <p className="text-sm text-glaucous-600">Sent. Received 5★ rating.</p>
-            </div>
-          </div>
-          <div className="flex gap-3 items-start relative pl-6">
-            <div className={`absolute left-[6px] top-1 w-2.5 h-2.5 rounded-full border border-white transition-colors duration-300 ${
-              isSent ? "bg-emerald-500" : "bg-amber-500 animate-pulse"
-            }`} />
-            <div className="w-full">
-              <div className="font-bold text-vivid-royal-950">Day 28: Recall Campaign</div>
-              <p className="text-sm text-glaucous-600 mb-2">Automated rebooking offer.</p>
-              {!isSent ? (
-                <button
-                  onClick={() => setInteractiveState({ ...interactiveState, salon: "sent" })}
-                  className="px-2.5 py-1 bg-coffee-bean-500 hover:bg-coffee-bean-600 text-coffee-bean-950 font-bold rounded-lg text-sm transition-colors cursor-pointer"
-                >
-                  Send 28-Day Recall WhatsApp
-                </button>
-              ) : (
-                <m.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="p-2 bg-[#d9fdd3] text-neutral-800 rounded-lg rounded-tr-none border border-[#c2f3ba] text-sm"
-                >
-                  &quot;Hi Ritu! It&apos;s been 4 weeks since your hair treatment. Book this Tuesday and get 15% off: adx.salon/book-ritu&quot;
-                </m.div>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  const renderGymWidget = () => {
-    const isActive = interactiveState.gym === "active";
-    return (
-      <div className="bg-white border border-glaucous-200 rounded-xl p-4 shadow-sm space-y-3 font-sans text-base">
-        <div className="flex items-center justify-between border-b border-glaucous-100 pb-2">
-          <span className="font-mono text-sm font-bold text-glaucous-600">CHECK-IN VALIDATOR</span>
-          <span className="px-1.5 py-0.5 bg-scarlet-fire-50 text-scarlet-fire-600 rounded text-sm font-bold">FRONT DESK</span>
-        </div>
-        <div className="p-3 rounded-lg border flex items-center justify-between gap-4 transition-colors duration-305 bg-neutral-50">
-          <div>
-            <div className="font-bold text-vivid-royal-950 text-lg">Member: Rohan Malhotra</div>
-            <div className="text-sm text-neutral-500 mt-0.5">Membership ID: #4092</div>
-          </div>
-          <span className={`px-2 py-1 rounded text-sm font-bold border transition-all duration-300 ${
-            isActive
-              ? "bg-emerald-50 text-emerald-700 border-emerald-100"
-              : "bg-red-50 text-red-700 border-red-100"
-          }`}>
-            {isActive ? "✓ ACCESS GRANTED" : "✗ ACCESS DENIED: EXPIRED"}
-          </span>
-        </div>
-
-        {!isActive ? (
-          <div className="p-2.5 bg-red-50/50 border border-red-100 rounded-lg space-y-2">
-            <p className="text-sm text-red-900 leading-snug">Membership expired 5 days ago. Click below to simulate WhatsApp renewal link payment.</p>
-            <button
-              onClick={() => setInteractiveState({ ...interactiveState, gym: "active" })}
-              className="w-full py-1.5 bg-coffee-bean-500 hover:bg-coffee-bean-600 text-coffee-bean-950 font-bold rounded-lg text-sm transition-colors cursor-pointer"
-            >
-              Simulate Member Payment (₹2,000)
-            </button>
-          </div>
-        ) : (
-          <m.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="p-2.5 bg-emerald-50 border border-emerald-100 text-emerald-800 rounded-lg text-base leading-snug"
-          >
-            <div className="font-bold text-sm mb-1">✓ PAYMENT RECONCILED</div>
-            <p>UPI reference checked. Account status set to Active. WhatsApp receipt sent automatically to Rohan.</p>
-          </m.div>
-        )}
-      </div>
-    );
-  };
-
-  const renderProfessionalWidget = () => {
-    const isApproved = interactiveState.professional === "approved";
-    return (
-      <div className="bg-white border border-glaucous-200 rounded-xl p-4 shadow-sm space-y-3 font-sans text-base">
-        <div className="flex items-center justify-between border-b border-glaucous-100 pb-2">
-          <span className="font-mono text-sm font-bold text-glaucous-600">MILESTONE TRACKER</span>
-          <span className="text-sm text-glaucous-500 font-bold">Agency Flow</span>
-        </div>
-        <div className="space-y-2">
-          <div className="flex items-center justify-between p-2 bg-emerald-50 border border-emerald-100 rounded">
-            <span className="font-bold text-emerald-900">Milestone 01: Project Kickoff</span>
-            <span className="text-sm text-emerald-700 font-bold">Done</span>
-          </div>
-          <div className="flex items-center justify-between p-2 bg-emerald-50 border border-emerald-100 rounded">
-            <span className="font-bold text-emerald-900">Milestone 02: Design Complete</span>
-            <span className="text-sm text-emerald-700 font-bold">Done</span>
-          </div>
-          <div className={`flex items-center justify-between p-2 rounded border transition-colors duration-300 ${
-            isApproved
-              ? "bg-emerald-50 border-emerald-100 text-emerald-900"
-              : "bg-amber-50 border-amber-100 text-amber-900 animate-pulse"
-          }`}>
-            <span className="font-bold">Milestone 03: Alpha Delivery</span>
-            <span className="text-sm font-bold">{isApproved ? "Approved" : "Awaiting Signoff"}</span>
-          </div>
-        </div>
-
-        {!isApproved ? (
-          <div className="p-2.5 bg-neutral-50 border border-neutral-100 rounded-lg space-y-2">
-            <p className="text-sm text-neutral-800 leading-snug">Client gets a WhatsApp message to tap and approve the milestone.</p>
-            <button
-              onClick={() => setInteractiveState({ ...interactiveState, professional: "approved" })}
-              className="w-full py-1.5 bg-vivid-royal-600 hover:bg-vivid-royal-700 text-white font-bold rounded-lg text-sm transition-colors cursor-pointer"
-            >
-              Click to Approve Milestone as Client
-            </button>
-          </div>
-        ) : (
-          <m.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="p-2.5 bg-emerald-50 border border-emerald-100 text-emerald-800 rounded-lg text-base leading-snug space-y-1.5"
-          >
-            <div className="font-bold text-sm text-emerald-900">✓ MILESTONE SIGNED OFF</div>
-            <p>Invoice #1042 generated automatically. Sent to client on WhatsApp. Integrated with Tally.</p>
-          </m.div>
-        )}
-      </div>
-    );
-  };
-
   return (
     <section className="w-full bg-white border-t border-glaucous-200/80 py-16 lg:py-20 px-6" id="industries">
       <div className="max-w-7xl mx-auto text-center mb-10 lg:mb-16">
@@ -371,115 +106,73 @@ export default function IndustriesSection() {
         ))}
       </div>
 
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 bg-ghost-white-50 border border-glaucous-200 rounded-2xl p-4 sm:p-8 lg:p-12 items-start">
-        <div className="flex flex-col h-full justify-between">
-          <div>
-            <h3 className="text-3xl sm:text-4xl font-bold text-vivid-royal-950 mb-3">{industryData[activeInd].title}</h3>
-            <p className="text-base sm:text-lg text-glaucous-900 mb-6 leading-relaxed min-h-[72px]">{industryData[activeInd].intro}</p>
-            
-            {/* Sub-tabs Selector */}
-            <div className="flex gap-4 border-b border-glaucous-200/60 pb-2 mb-6">
-              <button
-                onClick={() => setActiveSubTab("problem")}
-                className={`pb-2 px-1 font-semibold text-base transition-all duration-200 cursor-pointer relative ${
-                  activeSubTab === "problem"
-                    ? "text-scarlet-fire-600 font-bold"
-                    : "text-glaucous-500 hover:text-glaucous-800"
-                }`}
-              >
-                The problem
-                {activeSubTab === "problem" && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-scarlet-fire-500 rounded-full" />
-                )}
-              </button>
-              <button
-                onClick={() => setActiveSubTab("solution")}
-                className={`pb-2 px-1 font-semibold text-base transition-all duration-200 cursor-pointer relative ${
-                  activeSubTab === "solution"
-                    ? "text-coffee-bean-600 font-bold"
-                    : "text-glaucous-500 hover:text-glaucous-800"
-                }`}
-              >
-                The solution
-                {activeSubTab === "solution" && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-coffee-bean-500 rounded-full" />
-                )}
-              </button>
-            </div>
-          </div>
-
-          <div className="flex-grow">
-            {activeSubTab === "problem" ? (
-              <div className="space-y-4 animate-fadeIn">
-                <h4 className="font-mono text-sm text-glaucous-600 tracking-wide mb-3">Where it breaks</h4>
-                <ul className="flex flex-col gap-3">
-                  {industryData[activeInd].bottlenecks.map((item, idx) => (
-                    <li key={idx} className="flex gap-3 items-start text-base sm:text-lg text-glaucous-800 leading-relaxed">
-                      <span className="text-scarlet-fire-600 font-bold">→</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : (
-              <div className="space-y-4 animate-fadeIn">
-                <span className="font-mono text-sm text-coffee-bean-600 tracking-wide font-bold block mb-2">
-                  What ADX builds
-                </span>
-                <h4 className="text-xl font-bold text-vivid-royal-950 mb-3">{industryData[activeInd].solTitle}</h4>
-                <div className="flex flex-col gap-4">
-                  <div className="border-l-2 border-scarlet-fire-400 pl-4">
-                    <span className="block font-mono text-sm text-glaucous-600 mb-1">Before ADX</span>
-                    <p className="text-base text-glaucous-800 leading-relaxed">{industryData[activeInd].before}</p>
-                  </div>
-                  <div className="border-l-2 border-coffee-bean-600 pl-4">
-                    <span className="block font-mono text-sm text-coffee-bean-600 mb-1">With ADX</span>
-                    <p className="text-base text-glaucous-950 leading-relaxed font-medium">{industryData[activeInd].after}</p>
-                  </div>
-                </div>
-              </div>
-            )}
+      <div className="max-w-4xl mx-auto bg-ghost-white-50 border border-glaucous-200 rounded-2xl p-6 sm:p-8 lg:p-10 shadow-[0_4px_20px_rgba(0,0,0,0.02)]">
+        <div>
+          <h3 className="text-3xl sm:text-4xl font-bold text-vivid-royal-950 mb-3">{industryData[activeInd].title}</h3>
+          <p className="text-base sm:text-lg text-glaucous-900 mb-6 leading-relaxed min-h-[72px]">{industryData[activeInd].intro}</p>
+          
+          {/* Sub-tabs Selector */}
+          <div className="flex gap-4 border-b border-glaucous-200/60 pb-2 mb-6">
+            <button
+              onClick={() => setActiveSubTab("problem")}
+              className={`pb-2 px-1 font-semibold text-base transition-all duration-200 cursor-pointer relative ${
+                activeSubTab === "problem"
+                  ? "text-scarlet-fire-600 font-bold"
+                  : "text-glaucous-500 hover:text-glaucous-800"
+              }`}
+            >
+              The problem
+              {activeSubTab === "problem" && (
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-scarlet-fire-500 rounded-full" />
+              )}
+            </button>
+            <button
+              onClick={() => setActiveSubTab("solution")}
+              className={`pb-2 px-1 font-semibold text-base transition-all duration-200 cursor-pointer relative ${
+                activeSubTab === "solution"
+                  ? "text-coffee-bean-600 font-bold"
+                  : "text-glaucous-500 hover:text-glaucous-800"
+              }`}
+            >
+              The solution
+              {activeSubTab === "solution" && (
+                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-coffee-bean-500 rounded-full" />
+              )}
+            </button>
           </div>
         </div>
-        
-        <div className="w-full">
-          {/* On Mobile: Collapsible Accordion; On Desktop: Always Open */}
-          <div className="border border-glaucous-200/80 rounded-2xl overflow-hidden bg-white/40 backdrop-blur-md shadow-sm">
-            <button
-              onClick={() => setIsSimOpen(!isSimOpen)}
-              className="w-full flex lg:hidden items-center justify-between p-4 bg-glaucous-50 hover:bg-glaucous-100/85 text-vivid-royal-950 cursor-pointer transition-all duration-200 select-none border-b border-glaucous-100/60 active:bg-glaucous-100"
-            >
-              <div className="flex items-center gap-2.5">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-coffee-bean-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-coffee-bean-500"></span>
-                </span>
-                <span className="font-mono text-xs uppercase tracking-wider text-glaucous-700 font-bold">
-                  Live simulation
-                </span>
-                <span className="px-1.5 py-0.5 text-[10px] font-bold bg-coffee-bean-50 text-coffee-bean-700 rounded border border-coffee-bean-200">
-                  Tap to interact
-                </span>
-              </div>
-              <span className={`text-glaucous-600 transition-transform duration-300 font-bold ${isSimOpen ? "rotate-180" : ""}`}>
-                ▼
-              </span>
-            </button>
 
-            <div className={`${isSimOpen ? "block" : "hidden lg:block"} p-4 sm:p-6 lg:p-5`}>
-              <span className="hidden lg:flex items-center gap-2 font-mono text-sm text-glaucous-600 tracking-wide font-bold mb-4">
-                <span className="w-2 h-2 rounded-full bg-coffee-bean-500 animate-pulse" />
-                Live pipeline simulation (click to interact)
+        <div className="mt-4">
+          {activeSubTab === "problem" ? (
+            <div className="space-y-4 animate-fadeIn">
+              <h4 className="font-mono text-sm text-glaucous-600 tracking-wide mb-3">Where it breaks</h4>
+              <ul className="flex flex-col gap-3">
+                {industryData[activeInd].bottlenecks.map((item, idx) => (
+                  <li key={idx} className="flex gap-3 items-start text-base sm:text-lg text-glaucous-800 leading-relaxed">
+                    <span className="text-scarlet-fire-600 font-bold">→</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            <div className="space-y-4 animate-fadeIn">
+              <span className="font-mono text-sm text-coffee-bean-600 tracking-wide font-bold block mb-2">
+                What ADX builds
               </span>
-              <div className="w-full max-w-md mx-auto">
-                {activeInd === "coaching" && renderCoachingWidget()}
-                {activeInd === "healthcare" && renderHealthcareWidget()}
-                {activeInd === "salon" && renderSalonWidget()}
-                {activeInd === "gym" && renderGymWidget()}
-                {activeInd === "professional" && renderProfessionalWidget()}
+              <h4 className="text-xl font-bold text-vivid-royal-950 mb-3">{industryData[activeInd].solTitle}</h4>
+              <div className="flex flex-col gap-4">
+                <div className="border-l-2 border-scarlet-fire-400 pl-4">
+                  <span className="block font-mono text-sm text-glaucous-600 mb-1">Before ADX</span>
+                  <p className="text-base text-glaucous-800 leading-relaxed">{industryData[activeInd].before}</p>
+                </div>
+                <div className="border-l-2 border-coffee-bean-600 pl-4">
+                  <span className="block font-mono text-sm text-coffee-bean-600 mb-1">With ADX</span>
+                  <p className="text-base text-glaucous-950 leading-relaxed font-medium">{industryData[activeInd].after}</p>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </section>

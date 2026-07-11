@@ -44,10 +44,19 @@ function CardRotate({
   function handleDragEnd(_: any, info: PanInfo) {
     if (isAnimating) return;
 
-    const swipedRight = info.offset.x > sensitivity;
-    const swipedLeft = info.offset.x < -sensitivity;
-    const swipedUp = info.offset.y < -sensitivity;
-    const swipedDown = info.offset.y > sensitivity;
+    // Use a smaller sensitivity on mobile to make swipe easier
+    const effectiveSensitivity = isMobile ? Math.min(sensitivity, 50) : sensitivity;
+    // Check both offset distance and velocity for a smooth "flick" swipe experience on mobile
+    const velocityThreshold = 150; // px/s
+    const flickedRight = info.offset.x > 20 && info.velocity.x > velocityThreshold;
+    const flickedLeft = info.offset.x < -20 && info.velocity.x < -velocityThreshold;
+    const flickedUp = !isMobile && info.offset.y < -20 && info.velocity.y < -velocityThreshold;
+    const flickedDown = !isMobile && info.offset.y > 20 && info.velocity.y > velocityThreshold;
+
+    const swipedRight = info.offset.x > effectiveSensitivity || flickedRight;
+    const swipedLeft = info.offset.x < -effectiveSensitivity || flickedLeft;
+    const swipedUp = !isMobile && (info.offset.y < -effectiveSensitivity || flickedUp);
+    const swipedDown = !isMobile && (info.offset.y > effectiveSensitivity || flickedDown);
 
     // Only allow swipe directions that correspond to the allowed drag axes
     const canSwipeX = swipedRight || swipedLeft;
@@ -82,7 +91,15 @@ function CardRotate({
   return (
     <m.div
       className={disableDrag ? "absolute inset-0 cursor-pointer" : "absolute inset-0 cursor-grab active:cursor-grabbing"}
-      style={{ x, y, rotateX, rotateY, width: '100%', height: '100%' }}
+      style={{ 
+        x, 
+        y, 
+        rotateX, 
+        rotateY, 
+        width: '100%', 
+        height: '100%',
+        touchAction: disableDrag ? "auto" : (isMobile ? "pan-y" : "none")
+      }}
       // On mobile, restrict drag strictly to X axis so vertical scrolls are never hijacked
       drag={disableDrag ? false : (isMobile ? "x" : true)}
       dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
@@ -213,7 +230,7 @@ export default function Stack({
         const isTopCard = index === stack.length - 1;
         return (
           <CardRotate
-            key={card.id}
+            key={`${card.id}-${isMobile}`}
             onSendToBack={() => sendToBack(card.id)}
             sensitivity={sensitivity}
             disableDrag={shouldDisableDrag || !isTopCard}
