@@ -1,9 +1,27 @@
 "use client";
 
-import { m, useMotionValue, useTransform, animate } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { m, useMotionValue, useTransform, animate, PanInfo } from 'framer-motion';
+import { useState, useEffect, ReactNode } from 'react';
 
-function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false, enableClick = false, shiftDistance = 320, isMobile = false }) {
+interface CardRotateProps {
+  children: ReactNode;
+  onSendToBack: () => void;
+  sensitivity: number;
+  disableDrag?: boolean;
+  enableClick?: boolean;
+  shiftDistance?: number;
+  isMobile?: boolean;
+}
+
+function CardRotate({
+  children,
+  onSendToBack,
+  sensitivity,
+  disableDrag = false,
+  enableClick = false,
+  shiftDistance = 320,
+  isMobile = false
+}: CardRotateProps) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotateX = useTransform(y, [-100, 100], [60, -60]);
@@ -15,7 +33,7 @@ function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false, 
     setIsAnimating(true);
     
     // Shift by responsive shiftDistance to show card deck shuffling, then send to back and slide back in
-    animate(x, shiftDistance, { duration: 0.2, ease: "easeOut" }).then(() => {
+    animate(x, shiftDistance || 320, { duration: 0.2, ease: "easeOut" }).then(() => {
       onSendToBack();
       // Slide back in under the stack
       animate(x, 0, { type: 'spring', stiffness: 150, damping: 22 });
@@ -23,7 +41,7 @@ function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false, 
     });
   }
 
-  function handleDragEnd(_, info) {
+  function handleDragEnd(_: any, info: PanInfo) {
     if (isAnimating) return;
 
     const swipedRight = info.offset.x > sensitivity;
@@ -39,10 +57,10 @@ function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false, 
       setIsAnimating(true);
       let targetX = 0;
       let targetY = 0;
-      if (swipedRight) targetX = shiftDistance;
-      else if (swipedLeft) targetX = -shiftDistance;
-      else if (swipedUp) targetY = -shiftDistance;
-      else if (swipedDown) targetY = shiftDistance;
+      if (swipedRight) targetX = shiftDistance || 320;
+      else if (swipedLeft) targetX = -(shiftDistance || 320);
+      else if (swipedUp) targetY = -(shiftDistance || 320);
+      else if (swipedDown) targetY = shiftDistance || 320;
 
       Promise.all([
         animate(x, targetX, { duration: 0.2, ease: "easeOut" }),
@@ -81,6 +99,20 @@ function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false, 
   );
 }
 
+interface StackProps {
+  randomRotation?: boolean;
+  sensitivity?: number;
+  cards?: ReactNode[];
+  animationConfig?: { stiffness: number; damping: number };
+  sendToBackOnClick?: boolean;
+  autoplay?: boolean;
+  autoplayDelay?: number;
+  pauseOnHover?: boolean;
+  mobileClickOnly?: boolean;
+  mobileBreakpoint?: number;
+  onCardChange?: (id: number) => void;
+}
+
 export default function Stack({
   randomRotation = false,
   sensitivity = 200,
@@ -93,7 +125,7 @@ export default function Stack({
   mobileClickOnly = false,
   mobileBreakpoint = 768,
   onCardChange
-}) {
+}: StackProps) {
   const [isMobile, setIsMobile] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -110,7 +142,12 @@ export default function Stack({
   const shouldDisableDrag = mobileClickOnly && isMobile;
   const shouldEnableClick = sendToBackOnClick || shouldDisableDrag;
 
-  const [stack, setStack] = useState(() => {
+  interface CardState {
+    id: number;
+    content: ReactNode;
+  }
+
+  const [stack, setStack] = useState<CardState[]>(() => {
     if (cards.length) {
       return cards
         .map((content, index) => ({ id: index + 1, content }))
@@ -136,7 +173,7 @@ export default function Stack({
     }
   }, [stack, onCardChange]);
 
-  const sendToBack = id => {
+  const sendToBack = (id: number) => {
     setStack(prev => {
       const newStack = [...prev];
       const index = newStack.findIndex(card => card.id === id);
