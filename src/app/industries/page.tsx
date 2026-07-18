@@ -3,242 +3,372 @@
 import { useState } from "react";
 import Link from "next/link";
 import { m, AnimatePresence } from "framer-motion";
+import { 
+  IconCheck, 
+  IconUsers, 
+  IconCalendar, 
+  IconReceipt, 
+  IconBolt, 
+  IconShield, 
+  IconChevronDown,
+  IconAlertCircle,
+  IconCircleCheck
+} from "@tabler/icons-react";
 
-export default function Industries() {
+export default function IndustriesPage() {
   const verticals = [
     {
-      id: "ind-coaching-block",
+      id: "ind-coaching",
       tabName: "Coaching",
-      title: "Coaching & Test Prep Institutes",
-      tagline: "300 students. 8 batches. No system to keep track.",
-      image: "/api/assets?file=coaching_dashboard.png",
-      description:
-        "It's the first week of the month. Parents start calling about fees. Counselors search old WhatsApp chats for payment details. Someone opens an Excel file. Someone else says, \"Ask accounting.\"",
+      title: "Coaching & Test Prep",
+      tagline: "300 students. 8 batches. Stop tracking on spreadsheets.",
+      description: "Automate fee collections, student enrollments, and parent notifications. We connect Meta Ads directly to your CRM database, letting counselors allocate batches and send Razorpay payment links on WhatsApp in 1 click.",
       observations: [
-        "Parents ask the same questions every week. Counselors answer them every week. The answers already exist, but nobody can find them quickly.",
-        "Two students get booked for the same batch. The Excel file has two different versions. Nobody knows which one is correct.",
-        "Fees are due. Someone needs to call each parent. Nobody has time. The fees don't come in until someone chases — sometimes weeks late.",
-      ],
-      typicalDayBefore: [
-        { time: "9:00 AM", text: "A parent messages about fees. A counselor searches three WhatsApp chats for their payment history." },
-        { time: "10:30 AM", text: "Two students register for the same batch. The Excel file has conflicting data." },
-        { time: "12:00 PM", text: "Fees were due today. Nobody has called the parents yet." },
-        { time: "3:00 PM", text: "Someone starts calling. Half the calls go to voicemail." },
-      ],
-      typicalDayAfter: [
-        { time: "9:00 AM", text: "A parent messages about fees. The system shows their payment status instantly." },
-        { time: "10:30 AM", text: "The batch reaches its limit. Registrations close automatically." },
-        { time: "12:00 PM", text: "Payment reminders were already sent this morning. Three parents have already paid." },
-        { time: "3:00 PM", text: "No chasing needed. Payments are reconciled automatically." },
+        "Counselors spend hours typing payment reminders to parents on WhatsApp.",
+        "Spreadsheet versions get out of sync, leading to double-booked student batches.",
+        "Average outstanding accounts receivable runs at 15-20% of monthly revenue."
       ],
       howWeHelp: [
         {
-          title: "Payment reminders that work",
-          desc: "WhatsApp sends a payment link automatically. Parents tap and pay. No awkward phone calls, no chasing.",
+          title: "Automated WhatsApp Collections",
+          desc: "Triggers personalized installment alerts with embedded Razorpay payment links."
         },
         {
-          title: "One place for every student",
-          desc: "Every enquiry, payment, and batch assignment lives in one system. Any counselor can pick up where another left off.",
+          title: "Intelligent Batch Rosters",
+          desc: "Closes enrollment pipelines automatically when batch capacity reaches 100%."
         },
         {
-          title: "Never overfill another batch",
-          desc: "Registration closes automatically when a batch is full. No double-bookings. No angry parents.",
-        },
+          title: "Lead Distribution Engine",
+          desc: "Allocates inbound Meta/Google ad leads to available counselors in under 5 seconds."
+        }
       ],
-      cta: "Book a Discovery Call",
+      typicalDayBefore: [
+        { time: "9:00 AM", text: "Parent asks about fee receipts. Counselor digs through bank statements and WhatsApp logs to verify." },
+        { time: "11:30 AM", text: "Two counselors register students to the same morning Dropper batch. Excel sheet gets double-booked." },
+        { time: "3:00 PM", text: "Counselors spend the afternoon calling parents about overdue fees. 60% of calls go unanswered." }
+      ],
+      typicalDayAfter: [
+        { time: "9:00 AM", text: "Receipt is generated and sent via WhatsApp instantly upon student check-in." },
+        { time: "11:30 AM", text: "Batch rosters update in real time. System closes admissions automatically at limit." },
+        { time: "3:00 PM", text: "Overdue balances trigger automated WhatsApp reminder cycles. Payments clear without calls." }
+      ],
+      widget: (
+        <div className="bg-[#FAFAFA] border border-border rounded-xl p-6 font-mono space-y-4 text-xs">
+          <div className="flex justify-between items-center pb-3 border-b border-border">
+            <span className="font-bold text-foreground">Institute Roster Status</span>
+            <span className="text-[10px] text-accent font-bold">LIVE METRICS</span>
+          </div>
+          
+          <div className="space-y-3">
+            <div>
+              <div className="flex justify-between mb-1">
+                <span>JEE Dropper Batch A</span>
+                <span className="font-bold">40/40 (Full)</span>
+              </div>
+              <div className="w-full bg-border h-2 rounded-full overflow-hidden">
+                <div className="bg-accent h-full w-full" />
+              </div>
+            </div>
+            <div>
+              <div className="flex justify-between mb-1">
+                <span>NEET Target Batch B</span>
+                <span className="font-bold">28/35 (80%)</span>
+              </div>
+              <div className="w-full bg-border h-2 rounded-full overflow-hidden">
+                <div className="bg-accent h-full w-[80%]" />
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white border border-border p-3 rounded-lg space-y-2">
+            <div className="flex items-center text-accent">
+              <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping mr-2" />
+              <span className="font-bold text-[10px] uppercase">Auto WhatsApp Queue</span>
+            </div>
+            <p className="text-[10px] text-secondary">To: Rajesh Kumar (Parent)</p>
+            <p className="text-[10px] text-foreground font-bold">"Dear Rajesh, installment for Kabir is due. Pay via: adx.pay/kabir-sh"</p>
+          </div>
+        </div>
+      )
     },
     {
-      id: "ind-healthcare-block",
+      id: "ind-healthcare",
       tabName: "Clinics",
-      title: "Clinics & Healthcare Practices",
-      tagline: "Your receptionist spends half the morning answering the same booking calls.",
-      image: "/api/assets?file=clinic_calendar.png",
-      description:
-        "The phone rings before the doors open. A patient wants to book. Another wants to reschedule. Someone asks if the doctor is available. By 11 AM, your receptionist has answered 30 calls and confirmed 5 appointments. The rest didn't pick up when she called back.",
+      title: "Clinics & Practices",
+      tagline: "Receptionists waste half the morning answering basic booking queries.",
+      description: "Patients book appointments directly via WhatsApp without waiting on hold. The system syncs with the doctor's calendar, triggers check-in forms, and sends automatic recall follow-ups for chronic cases.",
       observations: [
-        "Receptionists spend more time on the phone confirming appointments than helping patients at the front desk.",
-        "Patients forget their appointments. Nobody reminds them. A 30-minute slot stays empty. Another patient who needed it never got called.",
-        "A chronic patient who visited three months ago needs a follow-up. Their file is in a cabinet. Nobody opens it.",
-      ],
-      typicalDayBefore: [
-        { time: "9:00 AM", text: "The receptionist answers booking calls. A patient forgets their appointment. Nobody notices until they're 15 minutes late." },
-        { time: "10:15 AM", text: "A dentist asks where a patient's X-ray is. Nobody can find it. The patient waits." },
-        { time: "11:30 AM", text: "Someone starts calling tomorrow's patients to confirm. Half don't pick up." },
-        { time: "2:00 PM", text: "A patient who needed a follow-up three months ago walks in. No one has their records ready." },
-      ],
-      typicalDayAfter: [
-        { time: "9:00 AM", text: "Patients book on WhatsApp. The first appointment reminder was already delivered." },
-        { time: "10:15 AM", text: "Patient history opens with one tap. X-rays and prescriptions are already uploaded." },
-        { time: "11:30 AM", text: "Tomorrow's patients have already confirmed via WhatsApp. No calls needed." },
-        { time: "2:00 PM", text: "The follow-up was scheduled automatically. Patient history is ready before they walk in." },
+        "Receptionists spend 60% of their day answering calls to confirm or reschedule bookings.",
+        "No-show rates sit at 15-20%, leaving expensive practitioner slots empty.",
+        "Chronic care patients are forgotten after initial checkout due to paper-based filing systems."
       ],
       howWeHelp: [
         {
-          title: "Patients book themselves",
-          desc: "They check available slots on WhatsApp and pick their own time. No phone tag, no back-and-forth.",
+          title: "Self-Service Booking",
+          desc: "Patients check live calendars and book slots directly inside WhatsApp."
         },
         {
-          title: "Reminders that actually arrive",
-          desc: "The system sends a reminder before every appointment. Patients confirm or reschedule with one tap.",
+          title: "Confirmation Loops",
+          desc: "Triggers WhatsApp confirmation prompts, reducing practitioner no-shows to under 3%."
         },
         {
-          title: "Patients who need another visit don't get forgotten",
-          desc: "Follow-ups are scheduled automatically. Chronic patients never fall through the cracks.",
-        },
+          title: "Systematic Recalls",
+          desc: "Auto-schedules checkups for chronic patients exactly 90 days after discharge."
+        }
       ],
-      cta: "Book a Discovery Call",
+      typicalDayBefore: [
+        { time: "9:30 AM", text: "Reception phone rings continuously. Two walk-ins wait at the desk while the receptionist handles bookings." },
+        { time: "11:00 AM", text: "A patient misses their dental implant slot. The slot remains empty as there was no reminder." },
+        { time: "2:00 PM", text: "Receptionist calls tomorrow's appointments to verify. Most calls go straight to voicemail." }
+      ],
+      typicalDayAfter: [
+        { time: "9:30 AM", text: "Patients book themselves via WhatsApp. Receptionist focuses entirely on in-clinic hospitality." },
+        { time: "11:00 AM", text: "Reminders confirm all slots. A patient rescheduling frees a slot that gets filled instantly by the queue." },
+        { time: "2:00 PM", text: "All confirmations are automated. Receptionist logs zero manual reminder calls." }
+      ],
+      widget: (
+        <div className="bg-[#FAFAFA] border border-border rounded-xl p-6 font-mono space-y-4 text-xs">
+          <div className="flex justify-between items-center pb-3 border-b border-border">
+            <span className="font-bold text-foreground">Doctor's Schedule Queue</span>
+            <span className="text-[10px] text-accent font-bold">DR. MEHTA</span>
+          </div>
+
+          <div className="space-y-2">
+            <div className="bg-white border border-border p-2.5 rounded-lg flex justify-between items-center">
+              <div>
+                <p className="font-bold text-foreground">10:00 AM - Rohan Shah</p>
+                <p className="text-[9px] text-secondary">General Consultation</p>
+              </div>
+              <span className="text-[9px] bg-emerald-500/10 text-emerald-600 px-2 py-0.5 rounded font-bold">CONFIRMED</span>
+            </div>
+            <div className="bg-white border border-border p-2.5 rounded-lg flex justify-between items-center">
+              <div>
+                <p className="font-bold text-foreground">11:00 AM - Priya Sen</p>
+                <p className="text-[9px] text-secondary">Orthodontic Review</p>
+              </div>
+              <span className="text-[9px] bg-amber-500/10 text-amber-600 px-2 py-0.5 rounded font-bold">PENDING SMS</span>
+            </div>
+          </div>
+
+          <div className="bg-white border border-border p-3 rounded-lg space-y-2">
+            <div className="flex items-center text-accent">
+              <IconCircleCheck className="w-4 h-4 mr-2" />
+              <span className="font-bold text-[10px]">RECALL ASSISTANT TRIGGERED</span>
+            </div>
+            <p className="text-[10px] text-secondary">Chronic Patient: S. Sharma (Diabetes)</p>
+            <p className="text-[9px] text-foreground">"90-Day checkup schedule alert queued for WhatsApp dispatch."</p>
+          </div>
+        </div>
+      )
     },
     {
-      id: "ind-salon-block",
+      id: "ind-salon",
       tabName: "Salons",
-      title: "Salons, Spas & Wellness Centres",
-      tagline: "Tuesdays are empty. Saturdays are chaos. Good customers come once and never return.",
-      image: "/api/assets?file=salon_scheduler.png",
-      description:
-        "Three technicians sit idle on Tuesday morning. Saturday has been fully booked for a week. A customer gets a great haircut, pays in cash, and leaves. Nobody takes their number. Nobody calls them back. They find a new salon closer to home.",
+      title: "Salons & Wellness",
+      tagline: "Tuesdays are empty. Saturdays are chaos. Stop losing repeat clients.",
+      description: "Optimize empty calendar slots and build loyalty. We set up systems that trigger off-peak discounts, auto-calculate therapist commissions, and send regular recall sequences to previous clients.",
       observations: [
-        "Slow days are predictable. You know Tuesday will be empty. But there's no easy way to fill those chairs.",
-        "First-time customers don't come back. The service was great. But nobody followed up. They forgot about you.",
-        "The owner doesn't know which staff bring repeat business. Commission is calculated from memory, not data.",
-      ],
-      typicalDayBefore: [
-        { time: "10:00 AM", text: "Two technicians are free. No appointments until 2 PM. They're getting paid to wait." },
-        { time: "11:30 AM", text: "A walk-in gets a haircut. Pays cash. Leaves. No record of their visit." },
-        { time: "2:00 PM", text: "All chairs are full. Three walk-ins are turned away." },
-        { time: "6:00 PM", text: "Close. Nobody scheduled any follow-ups. Tomorrow will be the same." },
-      ],
-      typicalDayAfter: [
-        { time: "10:00 AM", text: "A discount offer filled both empty slots. Both technicians are working." },
-        { time: "11:30 AM", text: "The walk-in's details are saved. A thank-you message was sent automatically." },
-        { time: "2:00 PM", text: "Appointments are already scheduled. No walk-ins are turned away." },
-        { time: "6:00 PM", text: "The system schedules recall reminders for every first-time customer from today." },
+        "weekday seat utilization stays below 30%, while weekends result in long customer wait times.",
+        "First-time walk-ins are never recorded, leaking valuable client details.",
+        "Commission reports are calculated from manual memory registers, causing staff disputes."
       ],
       howWeHelp: [
         {
-          title: "Fill empty weekday slots automatically",
-          desc: "Send discount offers for empty Tuesday and Wednesday slots via WhatsApp. Slow days become productive.",
+          title: "Off-Peak Optimizers",
+          desc: "Sends automated Tuesday/Wednesday discount packages to inactive clients."
         },
         {
-          title: "Bring customers back",
-          desc: "Exactly 28 days after each visit, the system sends a reminder. Customers rebook before they forget.",
+          title: "Loyalty Recalls",
+          desc: "Triggers return booking offers exactly 28 days after their last hair or spa session."
         },
         {
-          title: "See which staff bring customers back",
-          desc: "Track who generates repeat business. Know your best performers without guessing.",
-        },
+          title: "Commission Logs",
+          desc: "Calculates technician payouts transparently based on POS checkouts."
+        }
       ],
-      cta: "Book a Discovery Call",
+      typicalDayBefore: [
+        { time: "10:30 AM", text: "Three therapists sit idle. Rent and utilities accrue while chairs remain empty." },
+        { time: "2:00 PM", text: "A client pays cash for a hair coloring service. No record is saved, losing their number." },
+        { time: "7:00 PM", text: "Owner struggles with spreadsheets to calculate commissions for 5 stylists." }
+      ],
+      typicalDayAfter: [
+        { time: "10:30 AM", text: "Weekday discount campaigns fill empty seats. 80% chair utilization." },
+        { time: "2:00 PM", text: "Customer details are saved instantly upon check-in. Loyalty reminder queued." },
+        { time: "7:00 PM", text: "POS synchronization logs stylist commissions automatically. Transparent payouts." }
+      ],
+      widget: (
+        <div className="bg-[#FAFAFA] border border-border rounded-xl p-6 font-mono space-y-4 text-xs">
+          <div className="flex justify-between items-center pb-3 border-b border-border">
+            <span className="font-bold text-foreground">Off-Peak Campaign</span>
+            <span className="text-[10px] text-accent font-bold">STATUS: RUNNING</span>
+          </div>
+
+          <div className="bg-white border border-border p-3 rounded-lg space-y-3">
+            <div className="flex justify-between text-[10px]">
+              <span>Target: Inactive (30 Days)</span>
+              <span className="font-bold text-accent">142 Clients</span>
+            </div>
+            <div className="bg-[#FAFAFA] p-2 rounded text-[10px] text-secondary">
+              "Hi, we missed you! Book a slot this Tuesday and get 20% off. Code: TUES20"
+            </div>
+            <div className="flex justify-between items-center pt-1">
+              <span className="text-[9px] text-secondary">Redemptions: 18 (12.6%)</span>
+              <span className="text-[9px] font-bold text-emerald-600">Active</span>
+            </div>
+          </div>
+        </div>
+      )
     },
     {
-      id: "ind-gym-block",
+      id: "ind-gym",
       tabName: "Gyms",
-      title: "Gyms & Fitness Studios",
-      tagline: "Every month, a few members keep using the gym after their membership has expired.",
-      image: "/api/assets?file=gym_checkin.png",
-      description:
-        "The membership lapsed last week. The member walks past the front desk. The staff is busy. Nobody checks. The member uses the equipment, leaves, and does the same thing tomorrow. This happens with multiple members every month.",
+      title: "Gyms & Studios",
+      tagline: "Expired memberships bypass your front desk silently every day.",
+      description: "Connect entry gates or tablets to a centralized database. Expired memberships trigger instant alerts at reception, renewals are handled automatically on WhatsApp, and class capacities are capped.",
       observations: [
-        "Expired members keep showing up. The front desk doesn't check. Revenue leaks every single day.",
-        "Members don't know their renewal date. Staff mentions it verbally. Most members forget. The renewal doesn't happen.",
-        "Popular classes are overcrowded. Members show up excited and can't get in. They go somewhere else next time.",
-      ],
-      typicalDayBefore: [
-        { time: "7:00 AM", text: "Peak hour. Three expired members check in. Nobody notices." },
-        { time: "9:00 AM", text: "A member asks about their renewal date. The staff doesn't have the information." },
-        { time: "5:00 PM", text: "Evening class is full. Five members are turned away at the door." },
-        { time: "7:00 PM", text: "Close. No renewal reminders were sent today. Another day of silent churn." },
-      ],
-      typicalDayAfter: [
-        { time: "7:00 AM", text: "Digital check-in. One expired member is alerted at the door. They renew on the spot." },
-        { time: "9:00 AM", text: "That member's renewal was reminded via WhatsApp last week. They already paid yesterday." },
-        { time: "5:00 PM", text: "Class was fully booked via WhatsApp in advance. No one is turned away." },
-        { time: "7:00 PM", text: "The system sends renewal reminders for members expiring in 7 days." },
+        "Lapsed members continue using facilities because front-desk staff fails to verify dates.",
+        "Members claim they did not receive renewal notices, causing payment friction.",
+        "Peak-hour classes are overcrowded, leading to poor member satisfaction."
       ],
       howWeHelp: [
         {
-          title: "Stop free access",
-          desc: "Digital check-in validates every member's status at the door. Expired members get an instant alert.",
+          title: "Access Control Integration",
+          desc: "Validates membership status instantly upon check-in scan, highlighting issues in red."
         },
         {
-          title: "Renewals that happen automatically",
-          desc: "WhatsApp sends a renewal link 7 days before expiry. Members pay and continue without interruption.",
+          title: "WhatsApp Renewals",
+          desc: "Sends renewal warning links 7 days before membership expirations."
         },
         {
-          title: "No more overcrowded classes",
-          desc: "Members book their spot on WhatsApp before coming. Classes never exceed capacity.",
-        },
+          title: "Class Bookings",
+          desc: "Caps class bookings via a simple WhatsApp slot booking portal."
+        }
       ],
-      cta: "Book a Discovery Call",
+      typicalDayBefore: [
+        { time: "7:00 AM", text: "Peak check-in rush. Two members with expired passes walk in unnoticed." },
+        { time: "12:00 PM", text: "Staff checks records and finds 15 members active without paying dues." },
+        { time: "6:30 PM", text: "Evening yoga class is overcrowded. Five members leave frustrated." }
+      ],
+      typicalDayAfter: [
+        { time: "7:00 AM", text: "Scan highlights expired status. Receptionist collects renewal on the spot." },
+        { time: "12:00 PM", text: "Database sends automated WhatsApp reminders. 95% renewal collection rate." },
+        { time: "6:30 PM", text: "Class bookings are locked at capacity. Roster is balanced and confirmed." }
+      ],
+      widget: (
+        <div className="bg-[#FAFAFA] border border-border rounded-xl p-6 font-mono space-y-4 text-xs">
+          <div className="flex justify-between items-center pb-3 border-b border-border">
+            <span className="font-bold text-foreground">Reception Check-in Scanner</span>
+            <span className="text-[10px] text-accent font-bold">GATE A</span>
+          </div>
+
+          <div className="space-y-2">
+            <div className="bg-white border border-border p-2.5 rounded-lg flex justify-between items-center">
+              <div>
+                <p className="font-bold text-foreground">Aman Verma</p>
+                <p className="text-[9px] text-secondary">Card ID: #9832</p>
+              </div>
+              <span className="text-[9px] bg-emerald-500/10 text-emerald-600 px-2 py-0.5 rounded font-bold">ACTIVE</span>
+            </div>
+            <div className="bg-white border border-border p-2.5 rounded-lg flex justify-between items-center">
+              <div>
+                <p className="font-bold text-foreground">Vikram Lal</p>
+                <p className="text-[9px] text-secondary">Expired 3 days ago</p>
+              </div>
+              <span className="text-[9px] bg-red-500/10 text-red-600 px-2 py-0.5 rounded font-bold">EXPIRED</span>
+            </div>
+          </div>
+        </div>
+      )
     },
     {
-      id: "ind-professional-block",
+      id: "ind-professional",
       tabName: "Services",
-      title: "Professional & SME Services",
-      tagline: "A project finishes. The client doesn't approve it for a week. The invoice waits. The next project starts without the previous one being paid.",
-      image: "/api/assets?file=agency_milestones.png",
-      description:
-        "The team finishes a piece of work. Someone emails the client. The client is busy. The email sits unread for five days. Work on the next phase can't start. The invoice can't go out. Payment gets delayed by two weeks. This happens on every project.",
+      title: "Professional Services",
+      tagline: "Late project approvals delay invoices, hurting your cash flow.",
+      description: "Speed up project signs and billing. We build approval workflows directly on WhatsApp, triggering automatic GST invoicing and updating Tally ledgers instantly.",
       observations: [
-        "Projects stall because approvals get buried in email inboxes. Nobody knows if the client has seen the latest version.",
-        "Invoices go out late because finance doesn't know a milestone was completed. Late invoices mean late payments.",
-        "New team members spend weeks catching up because client history is scattered across personal email threads.",
-      ],
-      typicalDayBefore: [
-        { time: "9:00 AM", text: "A piece of work is complete. Someone emails the client for approval." },
-        { time: "11:00 AM", text: "The client hasn't replied. Someone follows up." },
-        { time: "2:00 PM", text: "Still no reply. Work on the next part can't start." },
-        { time: "4:00 PM", text: "The client finally approves. The invoice goes out tomorrow. Payment arrives in 30 days." },
-      ],
-      typicalDayAfter: [
-        { time: "9:00 AM", text: "Work is complete. WhatsApp sends an approval request to the client." },
-        { time: "10:00 AM", text: "The client approves with one tap. An invoice is generated automatically." },
-        { time: "11:00 AM", text: "Work on the next part starts immediately. Payment is already scheduled." },
-        { time: "2:00 PM", text: "No delays. No chasing. The project moves forward." },
+        "Project deliverables stall in email inboxes waiting for customer feedback.",
+        "Finance teams invoice late because they are not notified when milestones are met.",
+        "Team members waste hours looking for communication logs across personal emails."
       ],
       howWeHelp: [
         {
-          title: "Approvals in minutes, not days",
-          desc: "WhatsApp sends an approval request the moment work is done. The client taps yes. Work continues.",
+          title: "WhatsApp Approvals",
+          desc: "Sends 1-click approval button alerts directly to clients' WhatsApp chats."
         },
         {
-          title: "Invoices that send themselves",
-          desc: "The moment a client approves, the system generates an invoice. Your ledger updates automatically.",
+          title: "Automated GST Billing",
+          desc: "Triggers invoices automatically upon milestone approval, syncing with ERPs."
         },
         {
-          title: "Every client detail in one place",
-          desc: "All project history, communications, and payments are saved centrally. No more digging through email chains.",
-        },
+          title: "Central Client Profiles",
+          desc: "Saves communication records, billing history, and deliverables centrally."
+        }
       ],
-      cta: "Book a Discovery Call",
-    },
+      typicalDayBefore: [
+        { time: "9:00 AM", text: "Designer sends a proposal draft via email. Client misses it in their inbox." },
+        { time: "3:00 PM", text: "Designer stops work because approval is pending. Project delivery is delayed." },
+        { time: "5:00 PM", text: "Milestone was met two days ago, but accounting hasn't sent the invoice." }
+      ],
+      typicalDayAfter: [
+        { time: "9:00 AM", text: "Designer updates status. System requests approval on WhatsApp." },
+        { time: "10:30 AM", text: "Client approves on WhatsApp with one tap. Next milestone unlocks." },
+        { time: "11:00 AM", text: "Invoice is generated and synced with Tally Prime automatically." }
+      ],
+      widget: (
+        <div className="bg-[#FAFAFA] border border-border rounded-xl p-6 font-mono space-y-4 text-xs">
+          <div className="flex justify-between items-center pb-3 border-b border-border">
+            <span className="font-bold text-foreground">Milestone Tracker</span>
+            <span className="text-[10px] text-accent font-bold">ADX-92</span>
+          </div>
+
+          <div className="space-y-3">
+            <div className="flex items-center justify-between text-[11px] text-secondary">
+              <span>Phase 1: Design Draft</span>
+              <span className="text-emerald-600 font-bold">Approved ✓</span>
+            </div>
+            
+            <div className="bg-white border border-border p-3 rounded-lg space-y-2">
+              <div className="flex justify-between items-center text-[10px]">
+                <span className="font-bold">Phase 2: Database Setup</span>
+                <span className="bg-accent/5 text-accent px-1.5 py-0.5 rounded text-[9px]">PENDING SIGN</span>
+              </div>
+              <p className="text-[9px] text-secondary">WhatsApp approval sent to client.</p>
+            </div>
+          </div>
+        </div>
+      )
+    }
   ];
 
-
-  const [activeTab, setActiveTab] = useState("ind-coaching-block");
+  const [activeTab, setActiveTab] = useState("ind-coaching");
   const [isTimelineExpanded, setIsTimelineExpanded] = useState(false);
   const activeVertical = verticals.find((v) => v.id === activeTab) || verticals[0];
 
   return (
-    <main className="min-h-screen bg-white text-vivid-royal-950 pt-24 pb-20 relative overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-coffee-bean-100/5 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-glaucous-100/10 blur-[120px] rounded-full pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="border-b border-glaucous-200 pb-12 mb-12 text-center max-w-3xl mx-auto">
-          <span className="text-sm font-mono font-semibold tracking-widest text-glaucous-600 uppercase">
-            Industries
+    <main className="w-full bg-background text-foreground selection:bg-accent/15 selection:text-accent pb-20">
+      
+      {/* Hero Header */}
+      <section className="relative w-full py-16 lg:py-24 border-b border-border bg-white">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#FAFAFA_1px,transparent_1px),linear-gradient(to_bottom,#FAFAFA_1px,transparent_1px)] bg-[size:40px_40px] opacity-60 pointer-events-none" />
+        <div className="max-w-4xl mx-auto px-6 text-center space-y-6 relative z-10">
+          <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold px-3 py-1 bg-accent/5 rounded-full">
+            Verticals
           </span>
-          <h1 className="text-4xl lg:text-5xl font-extrabold text-vivid-royal-950 mt-2 mb-4 tracking-tight leading-tight">
-            Tailored for your business.
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tighter leading-[0.95] text-foreground">
+            Custom Operations Software
           </h1>
-          <p className="text-lg text-glaucous-800 leading-relaxed">
-            Choose your industry vertical to see how ADX automates manual bottlenecks, recovers lost revenue, and replaces spreadsheets.
+          <p className="text-base sm:text-lg text-secondary leading-relaxed max-w-2xl mx-auto">
+            Choose your vertical to see how ADX solves manual leaks, automates customer messaging, and replaces Excel files.
           </p>
         </div>
+      </section>
 
+      {/* Main Content Area */}
+      <section className="max-w-7xl mx-auto px-6 mt-12 lg:mt-16">
+        
         {/* Segmented Tab Control */}
-        <div className="flex flex-wrap justify-center gap-1.5 mb-16 bg-ghost-white-200 border border-glaucous-200 p-1.5 rounded-xl max-w-2xl mx-auto shadow-sm">
+        <div className="flex flex-wrap justify-center gap-1 mb-16 bg-white border border-border p-1 rounded-full max-w-2xl mx-auto shadow-[0_4px_12px_rgba(0,0,0,0.015)]">
           {verticals.map((v) => (
             <button
               key={v.id}
@@ -246,193 +376,177 @@ export default function Industries() {
                 setActiveTab(v.id);
                 setIsTimelineExpanded(false);
               }}
-              className={`relative px-5 py-2 rounded-lg text-sm font-bold tracking-tight transition-all duration-300 cursor-pointer ${
+              className={`relative px-5 py-2.5 rounded-full text-xs font-bold transition-all duration-200 cursor-pointer ${
                 activeTab === v.id
-                  ? "text-vivid-royal-950"
-                  : "text-glaucous-600 hover:text-vivid-royal-800"
+                  ? "text-white bg-accent"
+                  : "text-secondary hover:text-foreground"
               }`}
             >
-              {activeTab === v.id && (
-                <m.div
-                  layoutId="activeIndustryTab"
-                  className="absolute inset-0 bg-white border border-glaucous-200/50 rounded-lg shadow-sm"
-                  transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                />
-              )}
               <span className="relative z-10">{v.tabName}</span>
             </button>
           ))}
         </div>
 
+        {/* Tab Content Panels */}
         <div className="relative">
           {verticals.map((v) => {
             const isActive = v.id === activeTab;
             return (
               <div
                 key={v.id}
-                className={`transition-all duration-500 ease-out ${
+                className={`transition-all duration-300 ${
                   isActive
-                    ? "opacity-100 translate-y-0 scale-100 relative pointer-events-auto visible"
-                    : "opacity-0 translate-y-8 scale-[0.98] absolute inset-x-0 top-0 pointer-events-none invisible h-0 overflow-hidden"
+                    ? "opacity-100 translate-y-0 scale-100 relative pointer-events-auto block"
+                    : "opacity-0 translate-y-8 scale-[0.98] absolute inset-x-0 top-0 pointer-events-none hidden"
                 }`}
               >
-                {/* 50/50 Upper Grid (Left: Copy & Key features, Right: Mockup) */}
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-12">
-                  <div>
-                    <span className="font-mono text-sm text-coffee-bean-600 font-bold tracking-widest block mb-2">
+                {/* 50/50 Grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center mb-16">
+                  
+                  {/* Left Column */}
+                  <div className="lg:col-span-7 space-y-6">
+                    <span className="font-mono text-xs text-accent font-bold uppercase tracking-wider block">
                       {v.tagline}
                     </span>
-                    <h2 className="text-3xl sm:text-4xl font-extrabold text-vivid-royal-950 mb-4 tracking-tight">
+                    <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground tracking-tight leading-none">
                       {v.title}
                     </h2>
-                    <p className="text-base sm:text-lg text-glaucous-800 leading-relaxed mb-8">
+                    <p className="text-sm sm:text-base text-secondary leading-relaxed max-w-2xl">
                       {v.description}
                     </p>
 
-                    <div className="grid sm:grid-cols-2 gap-8 bg-ghost-white-100 border border-glaucous-200/50 p-6 rounded-xl shadow-[0_2px_8px_rgba(66,47,208,0.01)]">
-                      <div>
-                        <h4 className="font-mono text-xs text-scarlet-fire-600 uppercase tracking-widest font-bold mb-3 pb-1 border-b border-scarlet-fire-100">
-                          What we keep seeing
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-6 border-t border-border">
+                      {/* Observations */}
+                      <div className="space-y-4">
+                        <h4 className="font-mono text-[10px] text-red-500 uppercase tracking-widest font-bold pb-2 border-b border-border">
+                          Common Bottlenecks
                         </h4>
-                        <ul className="flex flex-col gap-3">
+                        <ul className="space-y-3">
                           {v.observations.map((item, idx) => (
-                            <li key={idx} className="flex gap-2.5 items-start text-sm text-glaucous-800 leading-relaxed">
-                              <span className="text-scarlet-fire-600 font-bold mt-0.5">→</span>
+                            <li key={idx} className="flex items-start text-xs text-secondary leading-relaxed">
+                              <span className="text-red-500 mr-2 font-bold">→</span>
                               <span>{item}</span>
                             </li>
                           ))}
                         </ul>
                       </div>
-                      <div>
-                        <h4 className="font-mono text-xs text-coffee-bean-600 uppercase tracking-widest font-bold mb-3 pb-1 border-b border-coffee-bean-100">
-                          How we help
+                      
+                      {/* How we help */}
+                      <div className="space-y-4">
+                        <h4 className="font-mono text-[10px] text-accent uppercase tracking-widest font-bold pb-2 border-b border-border">
+                          ADX Solutions
                         </h4>
-                        <ul className="flex flex-col gap-3.5">
+                        <ul className="space-y-4">
                           {v.howWeHelp.map((item, idx) => (
-                            <li key={idx} className="text-sm leading-relaxed border-l-2 border-coffee-bean-400 pl-3">
-                              <strong className="font-bold text-vivid-royal-950 block">{item.title}</strong>
-                              <p className="text-sm text-glaucous-700 mt-1 leading-relaxed">{item.desc}</p>
+                            <li key={idx} className="space-y-1">
+                              <strong className="text-xs font-bold text-foreground block">{item.title}</strong>
+                              <p className="text-[11px] text-secondary leading-normal">{item.desc}</p>
                             </li>
                           ))}
                         </ul>
                       </div>
                     </div>
-
-
                   </div>
 
-                  <div>
-                    {/* Visual mockup frame */}
-                    <div className="relative rounded-2xl overflow-hidden border border-glaucous-200 shadow-lg bg-white p-2">
-                      <img
-                        src={v.image}
-                        alt={v.title}
-                        className="w-full h-auto rounded-xl object-cover hover:scale-[1.01] transition-transform duration-500"
-                        loading="lazy"
-                      />
+                  {/* Right Column: Custom CSS widget preview */}
+                  <div className="lg:col-span-5 bg-white border border-border rounded-2xl p-4 shadow-[0_8px_30px_rgba(0,0,0,0.015)]">
+                    <div className="border border-border rounded-xl overflow-hidden bg-white shadow-[0_4px_12px_rgba(0,0,0,0.01)]">
+                      <div className="bg-[#FAFAFA] border-b border-border px-4 py-2 flex items-center space-x-1.5">
+                        <div className="w-2.5 h-2.5 rounded-full bg-border" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-border" />
+                        <div className="w-2.5 h-2.5 rounded-full bg-border" />
+                      </div>
+                      <div className="p-4">
+                        {v.widget}
+                      </div>
                     </div>
                   </div>
+
                 </div>
 
-                {/* Lower Comparison Card */}
-                <div className="bg-white border border-glaucous-200 rounded-2xl p-6 sm:p-8 shadow-sm relative overflow-hidden">
-                  <h3 className="font-mono text-xs text-glaucous-500 uppercase tracking-widest font-bold mb-6 text-center">
-                    A Day in the Life Comparison
+                {/* Day in the Life comparison section */}
+                <div className="bg-white border border-border rounded-2xl p-6 sm:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.01)] space-y-6">
+                  <h3 className="font-mono text-[10px] text-secondary uppercase tracking-widest font-bold text-center">
+                    Workflow Timelines Comparison
                   </h3>
 
-                  <div
-                    className={`transition-all duration-500 ease-in-out overflow-hidden relative ${
-                      isTimelineExpanded ? "max-h-[1000px] pb-4" : "max-h-[155px]"
-                    }`}
-                  >
-                    <div className="grid md:grid-cols-2 gap-8 md:gap-12 relative">
-                      {/* Middle divider line */}
-                      <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-glaucous-200 -translate-x-1/2" />
+                  <div className={`transition-all duration-300 overflow-hidden ${
+                    isTimelineExpanded ? "max-h-[1000px] pb-4" : "max-h-[160px] relative"
+                  }`}>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 relative">
+                      <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-border -translate-x-1/2" />
 
-                      {/* Column 1: Before ADX */}
-                      <div>
-                        <div className="flex items-center gap-2.5 mb-6 border-b border-scarlet-fire-100 pb-3">
-                          <span className="w-2.5 h-2.5 rounded-full bg-scarlet-fire-500 shadow-[0_0_8px_rgba(220,38,38,0.4)]" />
-                          <h4 className="font-mono text-sm text-scarlet-fire-600 uppercase tracking-widest font-bold">
-                            Before ADX (Manual Chaos)
+                      {/* Before */}
+                      <div className="space-y-6">
+                        <div className="flex items-center space-x-2 border-b border-border pb-3">
+                          <span className="w-2 h-2 rounded-full bg-red-500" />
+                          <h4 className="font-mono text-[10px] text-secondary uppercase tracking-widest font-bold">
+                            Before ADX (Manual Leaks)
                           </h4>
                         </div>
-                        <div className="flex flex-col gap-6 relative border-l border-scarlet-fire-100 ml-3 pl-5">
+                        <div className="border-l border-border pl-4 space-y-6 ml-1">
                           {v.typicalDayBefore.map((item, idx) => (
-                            <div key={idx} className="relative text-sm text-glaucous-800">
-                              {/* Red timeline dot */}
-                              <div className="absolute -left-[25px] top-1.5 w-2 h-2 rounded-full bg-scarlet-fire-500 border border-white" />
-                              <span className="font-mono font-bold text-scarlet-fire-600 block text-xs mb-1">
-                                {item.time}
-                              </span>
-                              <p className="leading-relaxed text-glaucous-800">{item.text}</p>
+                            <div key={idx} className="relative text-xs text-secondary space-y-1">
+                              <div className="absolute -left-[21px] top-1 w-1.5 h-1.5 rounded-full bg-red-500 border border-white" />
+                              <span className="font-mono font-bold text-red-500 block text-[9px]">{item.time}</span>
+                              <p className="leading-relaxed">{item.text}</p>
                             </div>
                           ))}
                         </div>
                       </div>
 
-                      {/* Column 2: With ADX */}
-                      <div>
-                        <div className="flex items-center gap-2.5 mb-6 border-b border-emerald-100 pb-3">
-                          <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.4)]" />
-                          <h4 className="font-mono text-sm text-emerald-600 uppercase tracking-widest font-bold">
-                            With ADX (Automated Peace)
+                      {/* After */}
+                      <div className="space-y-6">
+                        <div className="flex items-center space-x-2 border-b border-border pb-3">
+                          <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                          <h4 className="font-mono text-[10px] text-secondary uppercase tracking-widest font-bold">
+                            With ADX (Automated Systems)
                           </h4>
                         </div>
-                        <div className="flex flex-col gap-6 relative border-l border-emerald-100 ml-3 pl-5">
+                        <div className="border-l border-border pl-4 space-y-6 ml-1">
                           {v.typicalDayAfter.map((item, idx) => (
-                            <div key={idx} className="relative text-sm text-glaucous-800">
-                              {/* Green timeline dot */}
-                              <div className="absolute -left-[25px] top-1.5 w-2 h-2 rounded-full bg-emerald-500 border border-white" />
-                              <span className="font-mono font-bold text-emerald-600 block text-xs mb-1">
-                                {item.time}
-                              </span>
-                              <p className="leading-relaxed text-glaucous-800">{item.text}</p>
+                            <div key={idx} className="relative text-xs text-secondary space-y-1">
+                              <div className="absolute -left-[21px] top-1 w-1.5 h-1.5 rounded-full bg-emerald-500 border border-white" />
+                              <span className="font-mono font-bold text-emerald-600 block text-[9px]">{item.time}</span>
+                              <p className="leading-relaxed">{item.text}</p>
                             </div>
                           ))}
                         </div>
                       </div>
                     </div>
 
-                    {/* Bottom Fading Gradient when collapsed */}
                     {!isTimelineExpanded && (
-                      <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-white to-transparent pointer-events-none z-10" />
+                      <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent pointer-events-none" />
                     )}
                   </div>
 
-                  {/* Toggle Button */}
-                  <div className="mt-4 border-t border-glaucous-100 pt-4 text-center relative z-20">
+                  <div className="border-t border-border pt-4 text-center">
                     <button
                       onClick={() => setIsTimelineExpanded(!isTimelineExpanded)}
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-glaucous-200 bg-white hover:bg-ghost-white-100 text-xs font-mono font-bold uppercase text-glaucous-600 hover:text-vivid-royal-950 shadow-sm hover:shadow transition-all duration-200 cursor-pointer"
+                      className="inline-flex items-center justify-center px-4 py-2 rounded-full border border-border bg-[#FAFAFA] text-[10px] font-mono font-bold uppercase text-secondary hover:text-foreground cursor-pointer transition-colors"
                     >
-                      <span>{isTimelineExpanded ? "Collapse Schedule Contrast" : "Expand Full Schedule Contrast"}</span>
-                      <svg
-                        className={`w-3.5 h-3.5 transition-transform duration-300 ${isTimelineExpanded ? "rotate-180" : ""}`}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
-                      </svg>
+                      {isTimelineExpanded ? "Collapse Timeline" : "Expand Full Comparison"}
                     </button>
                   </div>
                 </div>
 
-                {/* Centered Bottom CTA */}
-                <div className="mt-12 text-center">
+                {/* Bottom Callout */}
+                <div className="mt-16 text-center">
                   <Link
-                    href={`/book?vertical=${encodeURIComponent(v.title)}`}
-                    className="inline-flex items-center justify-center px-8 py-4 bg-coffee-bean-500 hover:bg-coffee-bean-600 text-coffee-bean-950 font-bold rounded-lg shadow-[0_4px_12px_rgba(191,149,37,0.15)] active:translate-y-[2px] active:scale-[0.98] transition-all duration-300 text-lg"
+                    href="/book"
+                    className="inline-flex items-center justify-center px-6 py-3.5 text-sm font-semibold rounded-full bg-accent text-white hover:bg-brand-blue-dark active:scale-[0.98] transition-all shadow-[0_4px_12px_rgba(0,82,255,0.15)]"
                   >
-                    {v.cta}
+                    Initiate {v.tabName} Audit
                   </Link>
                 </div>
+
               </div>
             );
           })}
         </div>
-      </div>
+
+      </section>
+
     </main>
   );
 }

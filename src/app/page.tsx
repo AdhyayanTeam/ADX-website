@@ -1,14 +1,18 @@
 "use client";
 
 import { useEffect } from "react";
-import HeroSection from "@/components/HeroSection";
-import LeakageSection from "@/components/LeakageSection";
-import IndustriesSection from "@/components/IndustriesSection";
-import WhatWeObservedSection from "@/components/WhatWeObservedSection";
-import MethodologySection from "@/components/MethodologySection";
-import TransformationSection from "@/components/TransformationSection";
-import ProcessSection from "@/components/ProcessSection";
-import FaqSection from "@/components/FaqSection";
+import Hero from "@/components/home/Hero";
+import TechLogos from "@/components/home/TechLogos";
+import WhatWeBuild from "@/components/home/WhatWeBuild";
+import FeaturedProduct from "@/components/home/FeaturedProduct";
+import ProductsGrid from "@/components/home/ProductsGrid";
+import ServicesBento from "@/components/home/ServicesBento";
+import WebsiteShowcase from "@/components/home/WebsiteShowcase";
+import AutomationShowcase from "@/components/home/AutomationShowcase";
+import WhyADX from "@/components/home/WhyADX";
+import ProcessTimeline from "@/components/home/ProcessTimeline";
+import HomeFaq from "@/components/home/HomeFaq";
+import CTASection from "@/components/home/CTASection";
 import SectionTracker from "@/components/SectionTracker";
 import { usePageAnalytics } from "@/lib/usePageAnalytics";
 
@@ -24,38 +28,65 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="relative min-h-screen bg-glaucous-50 text-vivid-royal-950 selection:bg-coffee-bean-200 selection:text-coffee-bean-900 pt-16">
+    <main className="relative min-h-screen bg-background text-foreground selection:bg-accent/15 selection:text-accent">
       <div className="relative">
         <SectionTracker id="hero" />
-        <HeroSection />
+        <Hero />
       </div>
+      
       <div className="relative">
-        <SectionTracker id="leakage" />
-        <LeakageSection />
+        <SectionTracker id="tech-logos" />
+        <TechLogos />
       </div>
+
       <div className="relative">
-        <SectionTracker id="industries" />
-        <IndustriesSection />
+        <SectionTracker id="what-we-build" />
+        <WhatWeBuild />
       </div>
+
       <div className="relative">
-        <SectionTracker id="observation" />
-        <WhatWeObservedSection />
+        <SectionTracker id="featured-product" />
+        <FeaturedProduct />
       </div>
+
       <div className="relative">
-        <SectionTracker id="methodology" />
-        <MethodologySection />
+        <SectionTracker id="products-grid" />
+        <ProductsGrid />
       </div>
+
       <div className="relative">
-        <SectionTracker id="transformation" />
-        <TransformationSection />
+        <SectionTracker id="services-bento" />
+        <ServicesBento />
       </div>
+
       <div className="relative">
-        <SectionTracker id="process" />
-        <ProcessSection />
+        <SectionTracker id="website-showcase" />
+        <WebsiteShowcase />
       </div>
+
+      <div className="relative">
+        <SectionTracker id="automation-showcase" />
+        <AutomationShowcase />
+      </div>
+
+      <div className="relative">
+        <SectionTracker id="why-adx" />
+        <WhyADX />
+      </div>
+
+      <div className="relative">
+        <SectionTracker id="process-timeline" />
+        <ProcessTimeline />
+      </div>
+
       <div className="relative">
         <SectionTracker id="faq" />
-        <FaqSection />
+        <HomeFaq />
+      </div>
+
+      <div className="relative">
+        <SectionTracker id="cta" />
+        <CTASection />
       </div>
     </main>
   );

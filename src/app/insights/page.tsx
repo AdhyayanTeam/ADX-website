@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { IconArrowRight } from "@tabler/icons-react";
 
-export default function Insights() {
+export default function InsightsPage() {
   const articles = [
     {
       date: "JULY 2026",
@@ -25,45 +26,52 @@ export default function Insights() {
   ];
 
   return (
-    <main className="min-h-screen bg-glaucous-50 text-vivid-royal-950 pt-24 pb-20">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="border-b border-glaucous-200 pb-12 mb-16">
-          <span className="text-sm font-mono font-semibold tracking-widest text-glaucous-600 uppercase">
-            Operational Insights
+    <main className="w-full bg-background text-foreground selection:bg-accent/15 selection:text-accent pb-20">
+      
+      {/* Hero Header */}
+      <section className="relative w-full py-16 lg:py-24 border-b border-border bg-white">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#FAFAFA_1px,transparent_1px),linear-gradient(to_bottom,#FAFAFA_1px,transparent_1px)] bg-[size:40px_40px] opacity-60 pointer-events-none" />
+        <div className="max-w-4xl mx-auto px-6 text-center space-y-6 relative z-10">
+          <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold px-3 py-1 bg-accent/5 rounded-full">
+            Library
           </span>
-          <h1 className="text-5xl sm:text-6xl font-extrabold text-vivid-royal-950 mt-2 mb-4 tracking-tight leading-tight">
-            ADX Essays & Case Studies.
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tighter leading-[0.95] text-foreground">
+            ADX Essays & Case Studies
           </h1>
-          <p className="text-lg text-glaucous-800 max-w-2xl">
+          <p className="text-base sm:text-lg text-secondary leading-relaxed max-w-2xl mx-auto">
             Data-driven analyses of administrative leaks, conversion bottlenecks, and database architectures in growing businesses.
           </p>
         </div>
+      </section>
 
-        <div className="grid md:grid-cols-3 gap-8">
+      {/* Articles Grid */}
+      <section className="max-w-7xl mx-auto px-6 mt-16 lg:mt-24">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {articles.map((art, idx) => (
             <article
               key={idx}
-              className="bg-ghost-white-50 border border-glaucous-200 p-8 rounded-lg flex flex-col justify-between hover:border-glaucous-400 transition-all duration-300 shadow-sm"
+              className="bg-white border border-border p-8 rounded-2xl flex flex-col justify-between hover:border-accent/30 transition-all duration-300 shadow-[0_4px_24px_rgba(0,0,0,0.01)]"
             >
-              <div>
-                <span className="font-mono text-sm text-glaucous-600 tracking-widest block mb-4 uppercase">
+              <div className="space-y-4">
+                <span className="font-mono text-[10px] text-secondary tracking-wider block uppercase">
                   {art.date} // {art.readTime}
                 </span>
-                <h3 className="text-xl font-bold text-vivid-royal-950 mb-3 leading-snug">{art.title}</h3>
-                <p className="text-base text-glaucous-800 leading-relaxed mb-6">{art.desc}</p>
+                <h3 className="text-lg font-bold text-foreground leading-snug tracking-tight">{art.title}</h3>
+                <p className="text-xs text-secondary leading-relaxed">{art.desc}</p>
               </div>
-              <div>
+              <div className="pt-8 border-t border-border mt-8">
                 <Link
                   href="/book"
-                  className="text-sm font-semibold text-coffee-bean-600 hover:text-coffee-bean-700 transition-all duration-300 inline-flex items-center gap-1.5"
+                  className="text-xs font-semibold text-accent hover:text-brand-blue-dark transition-all duration-300 inline-flex items-center gap-1.5"
                 >
-                  Discuss operations <span className="font-sans">→</span>
+                  Discuss operational bottlenecks <IconArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             </article>
           ))}
         </div>
-      </div>
+      </section>
+
     </main>
   );
 }
