@@ -80,7 +80,7 @@ export default function RootLayout({
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
             <div className="flex flex-col items-start gap-4">
               <Link href="/" className="flex items-center">
-                <Logo className="h-14 w-auto" />
+                <Logo className="h-10 w-auto" />
               </Link>
               <p className="text-sm text-secondary leading-relaxed max-w-xs">
                 Building premium digital infrastructure and automation engines for growing businesses.

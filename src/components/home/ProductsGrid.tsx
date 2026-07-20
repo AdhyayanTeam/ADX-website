@@ -9,6 +9,7 @@ import {
   IconBrandWhatsapp, 
   IconArrowRight 
 } from "@tabler/icons-react";
+import { Highlighter } from "@/registry/magicui/highlighter";
 
 export default function ProductsGrid() {
   const products = [
@@ -55,8 +56,8 @@ export default function ProductsGrid() {
           <span className="font-mono text-sm uppercase tracking-widest text-accent font-bold">
             Product Lineup
           </span>
-          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tighter text-foreground">
-            Our Business Platforms
+          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tighter text-foreground pb-1">
+            Our <Highlighter action="underline" strokeWidth={3}>Business Platforms</Highlighter>
           </h2>
           <p className="text-base text-secondary leading-relaxed">
             ADX builds connected infrastructure to replace disconnected systems. Explore our software suites designed for operational growth.
@@ -70,7 +71,7 @@ export default function ProductsGrid() {
             return (
               <m.div
                 key={product.title}
-                className={`group relative neumorphic-flat rounded-2xl p-6 flex flex-col justify-between overflow-hidden transition-all duration-300 ${product.accent}`}
+                className={`group relative neumorphic-flat rounded-2xl p-6 flex flex-col justify-between overflow-hidden transition-colors duration-300 ${product.accent}`}
                 initial={{ opacity: 0, y: 15 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-10%" }}

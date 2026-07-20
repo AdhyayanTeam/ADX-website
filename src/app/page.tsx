@@ -3,7 +3,6 @@
 import { useEffect } from "react";
 import Hero from "@/components/home/Hero";
 import TechLogos from "@/components/home/TechLogos";
-import WhatWeBuild from "@/components/home/WhatWeBuild";
 import FeaturedProduct from "@/components/home/FeaturedProduct";
 import ProductsGrid from "@/components/home/ProductsGrid";
 import ServicesBento from "@/components/home/ServicesBento";
@@ -37,11 +36,6 @@ export default function Home() {
       <div className="relative">
         <SectionTracker id="tech-logos" />
         <TechLogos />
-      </div>
-
-      <div className="relative">
-        <SectionTracker id="what-we-build" />
-        <WhatWeBuild />
       </div>
 
       <div className="relative">

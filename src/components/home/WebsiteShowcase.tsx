@@ -12,6 +12,7 @@ import {
   IconDevices,
   IconHeart
 } from "@tabler/icons-react";
+import { Highlighter } from "@/registry/magicui/highlighter";
 
 export default function WebsiteShowcase() {
   const [currentIdx, setCurrentIdx] = useState(0);
@@ -132,8 +133,8 @@ export default function WebsiteShowcase() {
             <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold">
               Showcase
             </span>
-            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tighter text-foreground">
-              Premium Website Designs
+            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tighter text-foreground pb-1">
+              Premium <Highlighter action="underline" strokeWidth={3}>Website Designs</Highlighter>
             </h2>
           </div>
           <p className="text-base text-secondary leading-relaxed max-w-md">

@@ -7,6 +7,7 @@ import {
   IconShieldLock, 
   IconChartBar 
 } from "@tabler/icons-react";
+import { Highlighter } from "@/registry/magicui/highlighter";
 
 export default function WhyADX() {
   const pillars = [
@@ -45,8 +46,8 @@ export default function WhyADX() {
           <span className="font-mono text-sm uppercase tracking-widest text-accent font-bold">
             Pillars
           </span>
-          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tighter text-foreground">
-            Why ADX
+          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tighter text-foreground pb-1">
+            Why <Highlighter action="underline" strokeWidth={3}>ADX</Highlighter>
           </h2>
           <p className="text-base sm:text-lg text-secondary leading-relaxed max-w-2xl">
             We are not a standard software agency, nor do we sell off-the-shelf dashboards. We engineer custom operational infrastructure for Indian SMBs.

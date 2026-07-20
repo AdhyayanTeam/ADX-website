@@ -3,6 +3,7 @@
 import { m } from "framer-motion";
 import Link from "next/link";
 import { IconArrowRight } from "@tabler/icons-react";
+import { Highlighter } from "@/registry/magicui/highlighter";
 
 export default function CTASection() {
   return (
@@ -28,8 +29,8 @@ export default function CTASection() {
             <span className="font-mono text-xs uppercase tracking-widest text-accent font-bold px-3 py-1 bg-accent/5 rounded-full">
               Get Started
             </span>
-            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tighter text-foreground">
-              Ready to Build Your Next Digital Solution?
+            <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tighter text-foreground leading-[1.2] pb-1">
+              Ready to Build Your Next <Highlighter action="underline" strokeWidth={3}>Digital Solution?</Highlighter>
             </h2>
             <p className="text-sm sm:text-base text-secondary leading-relaxed">
               Partner with ADX to automate manual workflows, synchronize your databases, establish WhatsApp triggers, and scale customer pipelines. Let&apos;s map your system requirements.

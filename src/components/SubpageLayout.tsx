@@ -263,7 +263,7 @@ export default function SubpageLayout({
         <div className="max-w-4xl mx-auto px-6 space-y-6">
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-foreground">{ctaTitle}</h2>
           <p className="text-base text-secondary leading-relaxed max-w-xl mx-auto">{ctaDesc}</p>
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-xs mx-auto pt-2">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-xs sm:max-w-md mx-auto pt-2">
             <Link
               href="/book"
               className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 text-sm font-semibold rounded-full neumorphic-button-accent"

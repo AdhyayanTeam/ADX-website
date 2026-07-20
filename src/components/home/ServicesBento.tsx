@@ -12,6 +12,7 @@ import {
   IconShare,
   IconArrowUpRight
 } from "@tabler/icons-react";
+import { Highlighter } from "@/registry/magicui/highlighter";
 
 export default function ServicesBento() {
   return (
@@ -24,7 +25,7 @@ export default function ServicesBento() {
             Execution
           </span>
           <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tighter text-foreground">
-            Our Digital Services
+            Our <Highlighter action="highlight">Digital Services</Highlighter>
           </h2>
           <p className="text-base text-secondary leading-relaxed">
             Professional digital execution backed by solid engineering. We design, deploy, and optimize your business assets to drive measurable outcomes.
