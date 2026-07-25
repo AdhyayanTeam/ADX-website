@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Outfit, JetBrains_Mono } from "next/font/google";
 import "./global-new.css";
 import Navbar from "@/components/Navbar";
-import Link from "next/link";
-import Logo from "@/components/Logo";
+import Footer from "@/components/Footer";
 import MotionProvider from "@/components/MotionProvider";
 
 const outfit = Outfit({
@@ -76,59 +75,9 @@ export default function RootLayout({
         <MotionProvider>
           <div className="flex-grow pt-18">{children}</div>
         </MotionProvider>
-        <footer className="w-full bg-background border-t border-border py-16 px-6 relative z-10">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
-            <div className="flex flex-col items-start gap-4">
-              <Link href="/" className="flex items-center">
-                <Logo className="h-10 w-auto" />
-              </Link>
-              <p className="text-sm text-secondary leading-relaxed max-w-xs">
-                Building premium digital infrastructure and automation engines for growing businesses.
-              </p>
-            </div>
-            
-            <div>
-              <h5 className="font-mono text-xs text-secondary uppercase tracking-widest mb-6 font-bold">Products</h5>
-              <ul className="flex flex-col gap-3 text-sm text-secondary">
-                <li><Link href="/products/institute-os" className="hover:text-accent transition-colors">Institute OS</Link></li>
-                <li><Link href="/products/crm" className="hover:text-accent transition-colors">Business CRM</Link></li>
-                <li><Link href="/products/ai-automation" className="hover:text-accent transition-colors">AI Automation</Link></li>
-                <li><Link href="/products/whatsapp-automation" className="hover:text-accent transition-colors">WhatsApp Automation</Link></li>
-              </ul>
-            </div>
-
-            <div>
-              <h5 className="font-mono text-xs text-secondary uppercase tracking-widest mb-6 font-bold">Services</h5>
-              <ul className="flex flex-col gap-3 text-sm text-secondary">
-                <li><Link href="/services/website-development" className="hover:text-accent transition-colors">Website Development</Link></li>
-                <li><Link href="/services/seo" className="hover:text-accent transition-colors">SEO Optimization</Link></li>
-                <li><Link href="/services/google-ads" className="hover:text-accent transition-colors">Google Ads</Link></li>
-                <li><Link href="/services/social-media-marketing" className="hover:text-accent transition-colors">Social Media Marketing</Link></li>
-                <li><Link href="/services/branding" className="hover:text-accent transition-colors">Branding & Design</Link></li>
-              </ul>
-            </div>
-
-            <div>
-              <h5 className="font-mono text-xs text-secondary uppercase tracking-widest mb-6 font-bold">Company</h5>
-              <ul className="flex flex-col gap-3 text-sm text-secondary">
-                <li><Link href="/about" className="hover:text-accent transition-colors">About Us</Link></li>
-                <li><Link href="/pricing" className="hover:text-accent transition-colors">Pricing</Link></li>
-                <li><Link href="/contact" className="hover:text-accent transition-colors">Contact</Link></li>
-                <li><Link href="/book" className="hover:text-accent transition-colors">Book Strategy Call</Link></li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="max-w-7xl mx-auto mt-16 pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
-            <span className="font-mono text-xs text-secondary">
-              © {new Date().getFullYear()} ADX Digital. All rights reserved.
-            </span>
-            <span className="font-mono text-xs text-secondary">
-              Engineered with precision.
-            </span>
-          </div>
-        </footer>
+        <Footer />
       </body>
     </html>
   );
 }
+// Trigger layout rebuild
