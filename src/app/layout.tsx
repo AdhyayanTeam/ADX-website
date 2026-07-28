@@ -73,7 +73,7 @@ export default function RootLayout({
         />
         <Navbar />
         <MotionProvider>
-          <div className="flex-grow pt-18">{children}</div>
+          <div className="flex-grow layout-wrapper">{children}</div>
         </MotionProvider>
         <Footer />
       </body>
